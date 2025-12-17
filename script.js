@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    /* --- 1. LOGIC RANGE SLIDER (Copy từ source gốc) --- */
+    // 1. Xử lý thanh Slider (Kéo tiền)
     const slider = document.getElementById('meo-range-input');
     const amountDisplay = document.getElementById('meo-amount-display');
 
-    if(slider && amountDisplay) {
-        // Hàm format tiền Việt Nam
+    if (slider && amountDisplay) {
+        // Hàm định dạng tiền (thêm dấu chấm)
         const formatMoney = (num) => {
             return new Intl.NumberFormat('vi-VN').format(num);
         };
@@ -14,43 +14,31 @@ document.addEventListener('DOMContentLoaded', function() {
             const value = slider.value;
             const min = slider.min;
             const max = slider.max;
-            
-            // Tính % để tô màu gradient nền
             const percentage = ((value - min) / (max - min)) * 100;
 
-            // Gradient: Vàng (trái) -> Xám (phải)
+            // Hiệu ứng màu vàng chạy theo nút kéo
             slider.style.background = `linear-gradient(to right, #F4C542 0%, #F4C542 ${percentage}%, #F0F0F0 ${percentage}%, #F0F0F0 100%)`;
-            
-            // Cập nhật text số tiền
             amountDisplay.textContent = formatMoney(value);
         };
 
         slider.addEventListener('input', updateSlider);
-        // Chạy lần đầu
-        updateSlider();
+        updateSlider(); // Chạy lần đầu
     }
 
-    /* --- 2. FAQ ACCORDION --- */
-    const accHeaders = document.querySelectorAll('.accordion-header');
+    // 2. Xử lý FAQ Accordion (Click mở nội dung)
+    const accTitles = document.querySelectorAll('.accordion-title');
 
-    accHeaders.forEach(header => {
-        header.addEventListener('click', function() {
-            const item = this.parentElement;
-            // Đóng các cái khác (nếu muốn)
-            // document.querySelectorAll('.accordion-item').forEach(i => {
-            //     if(i !== item) i.classList.remove('active');
-            // });
-            item.classList.toggle('active');
+    accTitles.forEach(title => {
+        title.addEventListener('click', function(e) {
+            e.preventDefault();
+            const content = this.nextElementSibling;
+            
+            // Toggle hiển thị
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+            } else {
+                content.style.display = 'block';
+            }
         });
     });
-
-    /* --- 3. MOBILE MENU TOGGLE (Đơn giản) --- */
-    const navTrigger = document.querySelector('.mobile-nav-trigger');
-    // Ở đây mình chưa code menu xổ xuống, nhưng để tránh click vào link # bị nhảy
-    if(navTrigger){
-        navTrigger.addEventListener('click', function(e){
-            e.preventDefault();
-            alert("Đây là bản demo tĩnh. Menu mobile sẽ cần thêm code JS để hiển thị overlay.");
-        });
-    }
 });
