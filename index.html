@@ -14,6 +14,7 @@
     <script src="js/jquery-migrate.min.js"></script>
 
     <style>
+        /* CẤU HÌNH CSS CƠ BẢN */
         :root {--primary-color: #fec629;--fs-color-primary: #fec629;--fs-color-secondary: #d26e4b;--fs-color-success: #7a9c59;--fs-color-alert: #b20000;}
         body{font-family: "Roboto", sans-serif; color: #1d212a;}
         .header-main{height: 90px}
@@ -31,7 +32,7 @@
         .meo-range {
             -webkit-appearance: none; width: 100%; height: 16px; border-radius: 10px;
             background: linear-gradient(to right, #f7dda1 0%, #f5ba11 50%, #F0F0F0 50%, #F0F0F0 100%);
-            outline: none; transition: background 450ms ease-in; cursor: pointer;
+            outline: none; cursor: pointer;
         }
         .meo-range::-webkit-slider-thumb {
             -webkit-appearance: none; width: 45px; height: 45px; border-radius: 50%;
@@ -209,6 +210,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col small-12 large-12 text-center" style="margin-top: 30px;">
+                         <a href="#" class="button primary lowercase btn-ct-1" style="border-radius:99px;padding:6px 80px;"><span>Vay Ngay!</span></a>
+                    </div>
                 </div>
             </section>
 
@@ -247,6 +251,32 @@
             </section>
             
             <div id="ve-catcredit"></div>
+
+            <section class="section" style="padding: 30px 0;">
+                <div class="row align-middle">
+                     <div class="col medium-6 small-12 large-6">
+                         <div class="col-inner">
+                             <div class="sub-title" style="font-family: 'Dancing Script', cursive; font-size: 1.5rem; color: #d26e4b;">Về CatCredit</div>
+                             <h2 class="s-title" style="font-weight: 700; font-size: 2.2rem;">CatCredit – Mèo tài chính đồng hành cùng bạn</h2>
+                             <img src="images/gioi-thieu.svg" style="width: 65%; margin-top:20px;" alt="">
+                         </div>
+                     </div>
+                     <div class="col medium-6 small-12 large-6">
+                        <div class="col-inner" style="background-color:#fff; padding:20px; border-radius:20px; margin-bottom:20px;">
+                            <div style="display:flex; align-items:flex-start;">
+                                <img src="images/list-mark-1.svg" style="width:30px; margin-right:15px;">
+                                <p style="margin:0;"><strong>Tại CatCredit, chúng tôi hướng đến mục tiêu giúp bạn tiếp cận các giải pháp vay nhanh, đơn giản và minh bạch nhất.</strong></p>
+                            </div>
+                        </div>
+                        <div class="col-inner" style="background-color:#fff; padding:20px; border-radius:20px;">
+                            <div style="display:flex; align-items:flex-start;">
+                                <img src="images/list-mark-1.svg" style="width:30px; margin-right:15px;">
+                                <p style="margin:0;"><strong>Ưu tiên hàng đầu của CatCredit là giúp bạn chạm tới các mục tiêu tài chính một cách thật đơn giản và nhanh chóng.</strong></p>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+             </section>
 
             <section class="section" id="faq" style="padding:30px 0;">
                 <div class="section-bg fill"><img src="images/line-2.svg" class="bg attachment-original size-original"></div>
@@ -291,13 +321,12 @@
 </div>
 
 <script type="text/javascript">
-/* Đây là "bộ não" để Flatsome biết cách chạy, thiếu cái này là vỡ */
 var flatsomeVars = {
     "theme": {"version":"3.19.8"},
     "ajaxurl": "",
     "rtl": "",
     "sticky_height": "70",
-    "assets_url": "images/", /* Trỏ về thư mục images */
+    "assets_url": "images/", /* Dòng này cực quan trọng để load ảnh loading/icon */
     "lightbox": {
         "close_markup": "<button title=\"%title%\" type=\"button\" class=\"mfp-close\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-x\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line></svg></button>",
         "close_btn_inside": false
