@@ -1,0 +1,1086 @@
+/*
+Theme Name: vaymeo
+Description: This is a child theme for Flatsome Theme
+Author: UX Themes
+Template: flatsome
+Version: 3.0
+*/
+
+/* ==========================================================================
+   1. BASE STYLES
+   ========================================================================== */
+
+.section_1336257852 {
+    border-radius: 0 0 80px 80px;
+}
+
+.sub-title {
+    color: rgb(29 33 42 / 80%);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 32px;
+    margin-bottom: 15px;
+}
+
+.s-title {
+    font-size: 40px;
+    line-height: 48px;
+    color: #1d212a;
+}
+
+.col-831514105>.col-inner {
+    overflow: hidden;
+}
+
+.btn-ct-1 {
+    border: none;
+    color: #1d212a !important;
+}
+
+/* ==========================================================================
+   2. PROCESS STEPS
+   ========================================================================== */
+
+.vm_process_item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.vm_process_visual {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin-right: 15px;
+}
+
+.vm_process_number {
+    width: 40px;
+    height: 40px;
+    background-color: #F4C542;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    color: #222;
+    font-size: 16px;
+}
+
+.vm_process_number.number-1 {
+    background: rgb(254 198 41 / 50%);
+}
+
+.vm_process_number.number-2 {
+    background: rgb(254 198 41 / 75%);
+}
+
+.vm_process_number.number-3 {
+    background: #fec629;
+}
+
+.vm_process_line {
+    width: 20px;
+    height: 2px;
+    background-color: #333;
+    margin-left: 10px;
+}
+
+.vm_process_content {
+    flex-grow: 1;
+    margin-top: 4px;
+}
+
+.vm_process_title {
+    font-weight: 800;
+    color: #111;
+    font-size: 22px;
+    line-height: 32px;
+}
+
+.vm_process_desc {
+    margin: 0;
+    font-size: 18px;
+    color: #444;
+    line-height: 1.5;
+}
+
+.vm_process_btn_wrap {
+    margin-top: 40px;
+}
+
+/* ==========================================================================
+   3. HOW BLOCK
+   ========================================================================== */
+
+.how__block-number {
+    width: 40px;
+    height: 40px;
+    background-color: #F4C542;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    color: #222;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.how__block-number.number--1 {
+    background-color: rgb(254 198 41 / 50%);
+}
+
+.how__block p {
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   4. ACCORDION
+   ========================================================================== */
+
+.accordion-item {
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.accordion-title {
+    border: none;
+}
+
+.accordion-title.active,
+.accordion-title {
+    font-weight: 700;
+    color: #000;
+    font-size: 16px;
+}
+
+.accordion-inner p {
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   5. IMAGES POSITIONING
+   ========================================================================== */
+
+.image_1630702124 {
+    position: absolute;
+    right: 0;
+    top: 70%;
+}
+
+.image_558949136 {
+    position: absolute;
+    left: 10%;
+    top: 100%;
+}
+
+/* ==========================================================================
+   6. MONEY CARD
+   ========================================================================== */
+
+.money-card-wrapper {
+    border: 1px solid #fdd835;
+    border-radius: 20px;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    max-width: 400px;
+    margin: 20px auto;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.money-card-header {
+    background-color: #cceeff;
+    padding: 12px;
+    text-align: center;
+    font-weight: 700;
+    color: #333;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.money-card-body {
+    padding: 20px;
+}
+
+.money-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.brand-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: #f9f9f9;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+    color: #222;
+    line-height: 1.2;
+}
+
+.service-type {
+    font-size: 14px;
+    color: #999;
+}
+
+.promo-badge {
+    background-color: #f0eee9;
+    color: #555;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.money-card-details {
+    margin-bottom: 25px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.detail-row .label {
+    color: #888;
+}
+
+.detail-row .value {
+    color: #222;
+    font-weight: 600;
+}
+
+.detail-row .value.highlight {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.detail-row .value.bold {
+    font-weight: 800;
+}
+
+.money-btn-cta {
+    display: block;
+    width: 100%;
+    background-color: #fdd835;
+    color: #222;
+    text-align: center;
+    padding: 15px;
+    border-radius: 50px;
+    font-weight: 800;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background 0.3s;
+}
+
+.money-btn-cta:hover {
+    background-color: #fbc02d;
+}
+
+.money-card-footer {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+    color: #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+/* ==========================================================================
+   7. ARCHIVE & TAXONOMY
+   ========================================================================== */
+
+.taxonomy-description p {
+    margin-bottom: 0;
+}
+
+.archive-page-header .page-title {
+    font-size: 2em;
+}
+
+/* ==========================================================================
+   8. SPECIAL OFFER CARD (Horizontal)
+   ========================================================================== */
+
+.special-offer-card {
+    border: 1px solid #fdd835;
+    border-radius: 12px;
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+}
+
+.card-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    align-items: center;
+}
+
+.card-thumb {
+    width: 35%;
+    flex-shrink: 0;
+}
+
+.card-thumb img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 5/3;
+}
+
+.card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.meta-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.meta-info {
+    display: flex;
+    gap: 15px;
+    font-size: 13px;
+    color: #999;
+}
+
+.meta-item i {
+    margin-right: 5px;
+}
+
+.badge-newest {
+    background-color: #90dbf9;
+    color: #0d4f75;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+.card-title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 10px 0;
+    color: #222;
+}
+
+.card-title a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+.card-title a:hover {
+    color: #fdd835;
+}
+
+.card-desc {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.btn-read-more {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: 0.3s;
+}
+
+.btn-read-more:hover {
+    color: #fdd835;
+    transform: translateX(5px);
+}
+
+.btn-read-more .arrow {
+    font-size: 16px;
+    line-height: 1;
+}
+
+/* ==========================================================================
+   9. VERTICAL CARD
+   ========================================================================== */
+
+.custom-vertical-card {
+    border: 1px solid #fdd835;
+    border-radius: 12px;
+    padding: 20px;
+    background: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-vertical-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.card-v-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+
+.card-v-meta {
+    color: #999;
+    display: flex;
+    gap: 10px;
+}
+
+.card-v-meta i {
+    margin-right: 3px;
+}
+
+.card-v-badge {
+    background-color: #90dbf9;
+    color: #0d4f75;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+.card-v-body {
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.card-v-title {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.card-v-title a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.card-v-title a:hover {
+    color: #fdd835;
+}
+
+.card-v-excerpt {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-v-more {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.card-v-more:hover {
+    color: #fdd835;
+}
+
+.card-v-image {
+    margin-top: auto;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+}
+
+.card-v-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.custom-vertical-card:hover .card-v-image img {
+    transform: scale(1.05);
+}
+
+.placeholder-v-img {
+    background: #f0f0f0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ==========================================================================
+   10. ICONS (Calendar & Eye)
+   ========================================================================== */
+
+.icon-calendar,
+.icon-eye {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    top: -2px;
+    position: relative;
+    background-color: #999;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+.icon-calendar::before,
+.icon-eye::before {
+    display: none !important;
+}
+
+.icon-calendar {
+    -webkit-mask-image: url('../images/date-svgrepo-com.svg');
+    mask-image: url('../images/date-svgrepo-com.svg');
+}
+
+.icon-eye {
+    -webkit-mask-image: url('../images/eye-show-svgrepo-com.svg');
+    mask-image: url('../images/eye-show-svgrepo-com.svg');
+}
+
+.custom-vertical-card:hover .icon-calendar,
+.custom-vertical-card:hover .icon-eye {
+    background-color: #fdd835;
+    transition: background-color 0.3s;
+}
+
+/* ==========================================================================
+   11. RELATED POSTS SLIDER
+   ========================================================================== */
+
+#slider-related .col-inner {
+    height: 100%;
+}
+
+#slider-related .custom-vertical-card {
+    height: 100%;
+}
+
+/* ==========================================================================
+   12. SINGLE POST
+   ========================================================================== */
+
+.single-post #masthead {
+    background: #f4efed;
+}
+
+.single-post .entry-header {
+    background: #fff;
+    padding: 50px;
+    border-radius: 20px;
+}
+
+.single-header-wrapper {
+    padding: 40px 0;
+    border-radius: 10px;
+}
+
+.single-header-card {
+    background-color: #ffffff;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.header-badge {
+    display: inline-block;
+    background-color: #cceeff;
+    color: #005580;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+
+.header-badge.badge-newest {
+    background-color: #cceeff;
+    color: #005580;
+}
+
+.header-badge.badge-trending {
+    /* Custom styles if needed */
+}
+
+.custom-single-title {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #111;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.header-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    color: #555;
+    font-size: 15px;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.meta-item i,
+.meta-item svg {
+    color: #333;
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+.entry-content.single-page {
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.entry-content.single-page .post-thumbnail {
+    margin-bottom: 10px;
+}
+
+.entry-content.single-page .post-thumbnail img {
+    border-radius: 20px;
+}
+
+/* ==========================================================================
+   13. TABLE OF CONTENTS
+   ========================================================================== */
+
+.custom-toc-wrapper {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 80px;
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    padding-left: 0;
+    border-left: none;
+}
+
+.toc-progress-track {
+    width: 4px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    margin-right: 10px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.toc-progress-bar {
+    width: 100%;
+    background-color: #fdd835;
+    height: 0%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 4px;
+    transition: height 0.1s ease-out;
+}
+
+.toc-content-container {
+    flex-grow: 1;
+}
+
+.toc-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.toc-title::before {
+    display: none;
+}
+
+.toc-list {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.toc-list li {
+    margin-bottom: 10px;
+    margin-left: 0 !important;
+}
+
+.toc-list a {
+    color: rgb(29 33 42 / 50%);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 300;
+    transition: all 0.2s;
+    display: block;
+}
+
+.toc-list a:hover {
+    color: #fdd835;
+}
+
+.toc-list a.is-active {
+    color: #111;
+    font-weight: 700;
+    transform: translateX(5px);
+}
+
+.toc-item-h3 {
+    margin-left: 15px;
+    font-size: 0.9em;
+}
+
+.toc-list::-webkit-scrollbar {
+    width: 3px;
+}
+
+.toc-list::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+}
+
+/* ==========================================================================
+   14. SHARE BUTTONS
+   ========================================================================== */
+
+.post-sidebar-share {
+    margin-top: 25px;
+}
+
+.share-label {
+    display: block;
+    font-size: 13px;
+    color: #999;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   15. FOOTER
+   ========================================================================== */
+
+@media only screen and (min-width: 48em) {
+    #footer .ux-menu {
+        flex-direction: row;
+        gap: 30px;
+        justify-content: end;
+        font-weight: 500;
+    }
+}
+
+/* ==========================================================================
+   16. RESPONSIVE - MOBILE
+   ========================================================================== */
+
+@media only screen and (max-width: 48em) {
+    /* Mobile specific styles */
+    .vm-tabs-nav{
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .vm_process_item {
+        flex-wrap: wrap;
+    }
+
+    .vm_process_visual {
+        margin-bottom: 10px;
+    }
+
+    .vm_process_line {
+        display: none;
+    }
+
+    .vm_process_btn {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 360px) {
+    .money-card-top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .promo-badge {
+        align-self: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Card Inner */
+    .card-inner {
+        flex-direction: column;
+    }
+
+    .card-thumb {
+        width: 100%;
+    }
+
+    .card-thumb img {
+        aspect-ratio: 16/9;
+    }
+
+    .meta-wrapper {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .card-title {
+        font-size: 18px;
+    }
+
+    /* Related Slider */
+    #slider-related .flickity-page-dots {
+        bottom: -25px;
+    }
+
+    .related-posts-container {
+        margin-bottom: 50px !important;
+    }
+
+    /* Single Post */
+    .single-header-card {
+        padding: 20px;
+    }
+
+    .custom-single-title {
+        font-size: 24px;
+    }
+
+    .header-meta-row {
+        gap: 15px;
+        font-size: 13px;
+    }
+}
+
+.vm-tabs-wrapper {
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.vm-tabs-nav {
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.vm-tab-link {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
+    padding: 6px 16px;
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background-image: linear-gradient(to right, #b2e1ff, #b2e1ff);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    transition: background-size 0s;
+}
+
+.vm-tab-link:hover {
+    background-color: #b2e1ff;
+}
+
+.vm-tab-link.active {
+    color: #333;
+    border-color: #dcf0fa;
+    background-size: 100% 100%;
+    transition: background-size var(--slider-duration) linear;
+}
+
+.vm-tab-panel {
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+.vm-tab-panel.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.vm-panel-inner {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.vm-col-img {
+    flex: 1;
+    text-align: center;
+}
+
+.vm-col-img img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.vm-col-text {
+    flex: 1.5;
+}
+
+.vm-col-text h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.vm-benefits-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.vm-benefits-list li {
+    position: relative;
+    padding-left: 35px;
+    margin-left: 0 !important;
+    margin-bottom: 15px;
+    color: #444;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.vm-benefits-list li::before {
+    content: url(../images/list-mark-1.svg);
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #fbc531;
+    font-size: 18px;
+}
+
+.vm-btn-action {
+    display: inline-block;
+    background-color: #fbc531;
+    color: #000;
+    padding: 15px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    transition: transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.vm-btn-action:hover {
+    transform: scale(1.02);
+    background-color: #eeb51d;
+}
+
+@media (max-width: 768px) {
+    .vm-panel-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .vm-benefits-list li {
+        text-align: left;
+    }
+
+    .vm-btn-action {
+        width: 100%;
+        text-align: center;
+    }
+}
