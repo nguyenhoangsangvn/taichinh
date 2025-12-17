@@ -3,54 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Vay Tiền Nhanh Online Uy Tín Chỉ Cần CCCD</title>
+    <title>Vay Tiền Nhanh Online Uy Tín Chỉ Cần CCCD tại CatCredit.vn</title>
     
-    <link rel="stylesheet" href="assets/css/flatsome.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="css/flatsome.css">
+    <link rel="stylesheet" href="css/style.css">
     
     <link href="https://fonts.googleapis.com/css?family=Roboto:regular,700,500|Dancing+Script:regular&display=swap" rel="stylesheet">
     
-    <style id="custom-css" type="text/css">
-        :root {--primary-color: #fec629;--fs-color-primary: #fec629;--fs-color-secondary: #d26e4b;--fs-color-success: #7a9c59;--fs-color-alert: #b20000;}
-        .header-main{height: 90px}
-        #logo img{max-height: 90px}
-        body{font-family: Roboto, sans-serif; color: #1d212a;}
-        .alt-font{font-family: "Dancing Script", sans-serif;}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <style>
+        :root {--primary-color: #fec629;}
+        body { font-family: "Roboto", sans-serif; color: #1d212a; }
+        .header-main { height: 90px; }
+        #logo img { max-height: 90px; }
+        .alt-font { font-family: "Dancing Script", sans-serif; }
         
-        /* CSS Slider giống 100% */
-        .meo-title { font-size: 3em; line-height: 1.2; color: #222; font-weight: 800; margin-bottom: 30px; text-align: left; }
-        .meo-input-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; }
-        .meo-label { font-size: 16px; color: #333; font-weight: 500; }
+        /* CSS CHO SLIDER KÉO TIỀN */
+        .meo-loan-widget { padding: 20px 0; }
+        .meo-title { font-size: 3em; line-height: 1.2; color: #222; font-weight: 800; margin-bottom: 30px; }
+        .meo-input-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         .meo-amount { font-size: 28px; font-weight: 800; color: #222; }
         .meo-slider-wrapper { position: relative; margin-bottom: 40px; padding: 10px 0; }
         
         .meo-range {
             -webkit-appearance: none; width: 100%; height: 16px; border-radius: 10px;
             background: linear-gradient(to right, #f7dda1 0%, #f5ba11 50%, #F0F0F0 50%, #F0F0F0 100%);
-            outline: none; transition: background 450ms ease-in; cursor: pointer;
+            outline: none; cursor: pointer;
         }
         .meo-range::-webkit-slider-thumb {
             -webkit-appearance: none; width: 45px; height: 45px; border-radius: 50%;
             background-color: #FCEeb5;
-            background-image: url("assets/img/cats-paws.svg"); /* Đã sửa link */
+            /* QUAN TRỌNG: Đường dẫn icon trong thư mục img */
+            background-image: url("img/cats-paws.svg");
             background-repeat: no-repeat; background-position: center; background-size: 24px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15); cursor: pointer;
         }
         .meo-range::-moz-range-thumb {
             width: 45px; height: 45px; border-radius: 50%; background-color: #FCEeb5;
-            background-image: url("assets/img/cats-paws.svg"); /* Đã sửa link */
+            background-image: url("img/cats-paws.svg");
             background-repeat: no-repeat; background-position: center; background-size: 24px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); border: none; cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15); border: none; cursor: pointer;
         }
-        .meo-range-labels { display: flex; justify-content: space-between; color: #888; font-size: 16px; margin-top: 10px; font-weight: 500; }
-        .meo-btn { display: block; width: 100%; padding: 18px; background-color: #F4C542; color: #222; text-align: center; text-decoration: none; font-weight: 800; font-size: 18px; border-radius: 50px; transition: background 0.3s; box-shadow: 0 4px 10px rgba(244, 197, 66, 0.3); }
-        .meo-btn:hover { background-color: #eeb928; color: #000; }
-        
-        /* Mobile Fix */
+        .meo-range-labels { display: flex; justify-content: space-between; color: #888; font-weight: 500; margin-top: 10px; }
+        .meo-btn { display: block; width: 100%; padding: 18px; background-color: #F4C542; color: #222; text-align: center; text-decoration: none; font-weight: 800; font-size: 18px; border-radius: 50px; box-shadow: 0 4px 10px rgba(244, 197, 66, 0.3); transition: 0.3s; }
+        .meo-btn:hover { background-color: #eeb928; }
+
+        /* Fix Mobile */
         @media (max-width: 549px) {
-            .header-main{height: 70px}
-            #logo img{max-height: 70px}
-            .meo-title { font-size: 24px; }
+            .header-main { height: 70px; }
+            #logo img { max-height: 70px; }
+            .meo-title { font-size: 2rem; }
             .row-1507120500 { display: flex !important; flex-wrap: nowrap !important; overflow-x: auto; margin-left: -15px !important; padding-left: 15px; padding-bottom: 20px; }
             .row-1507120500 > .col { flex: 0 0 85%; max-width: 85% !important; }
         }
@@ -66,7 +69,7 @@
                 <div class="header-inner flex-row container logo-left medium-logo-left" role="navigation">
                     <div id="logo" class="flex-col logo">
                         <a href="/" title="CatCredit" rel="home">
-                            <img width="300" height="205" src="assets/img/logo.png" class="header_logo header-logo" alt="CatCredit">
+                            <img width="300" height="205" src="img/logo.png" class="header_logo header-logo" alt="CatCredit">
                         </a>
                     </div>
                     
@@ -74,10 +77,9 @@
                         <ul class="header-nav header-nav-main nav nav-right nav-size-large nav-spacing-xlarge">
                             <li class="menu-item active"><a href="#vay-tien" class="nav-top-link">Vay tiền</a></li>
                             <li class="menu-item"><a href="#loai-hinh-vay" class="nav-top-link">Loại hình vay</a></li>
-                            <li class="menu-item"><a href="#ve-vaymeo" class="nav-top-link">Về CatCredit</a></li>
+                            <li class="menu-item"><a href="#ve-catcredit" class="nav-top-link">Về CatCredit</a></li>
                             <li class="menu-item"><a href="#quy-trinh" class="nav-top-link">Quy trình vay</a></li>
                             <li class="menu-item"><a href="#faq" class="nav-top-link">FAQ</a></li>
-                            <li class="menu-item"><a href="#" class="nav-top-link">Blog</a></li>
                         </ul>
                     </div>
 
@@ -121,9 +123,9 @@
                         <div class="col medium-1 small-12 large-1"></div>
                         <div class="col medium-5 small-12 large-5">
                             <div class="col-inner">
-                                <div class="img has-hover x md-x lg-x y md-y lg-y">
+                                <div class="img has-hover">
                                     <div class="img-inner dark">
-                                        <img src="assets/img/dang-ky-vay.svg" alt="">
+                                        <img src="img/dang-ky-vay.svg" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -131,12 +133,10 @@
                     </div>
                 </div>
             </section>
-            
-            <div id="loai-hinh-vay"></div>
 
-            <section class="section" style="padding-top: 50px; padding-bottom: 50px;">
+            <section class="section" id="loai-hinh-vay" style="padding-top: 50px; padding-bottom: 50px;">
                 <div class="section-bg fill">
-                    <img src="assets/img/bg-1.svg" class="bg attachment-original size-original" alt="">
+                    <img src="img/bg-1.svg" class="bg attachment-original size-original" alt="">
                 </div>
                 <div class="section-content relative">
                     <div class="row align-equal">
@@ -159,7 +159,7 @@
                                     </div>
                                     <div class="col medium-5 small-12 large-5">
                                         <div class="col-inner text-right">
-                                            <img src="assets/img/icon-mien-phi.svg" width="150" alt="">
+                                            <img src="img/icon-mien-phi.svg" width="150" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -176,7 +176,7 @@
                                     </div>
                                     <div class="col medium-5 small-12 large-5">
                                         <div class="col-inner text-right">
-                                            <img src="assets/img/icon-nhanh.svg" width="150" alt="">
+                                            <img src="img/icon-nhanh.svg" width="150" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -193,7 +193,7 @@
                                     </div>
                                     <div class="col medium-5 small-12 large-5">
                                         <div class="col-inner text-right">
-                                            <img src="assets/img/icon-linh-hoat.svg" width="150" alt="">
+                                            <img src="img/icon-linh-hoat.svg" width="150" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -210,24 +210,17 @@
                                     </div>
                                     <div class="col medium-5 small-12 large-5">
                                         <div class="col-inner text-right">
-                                            <img src="assets/img/icon-bao-mat.svg" width="150" alt="">
+                                            <img src="img/icon-bao-mat.svg" width="150" alt="">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col small-12 large-12">
-                        <div class="col-inner text-center" style="padding-top: 30px;">
-                            <a href="#" class="button primary lowercase btn-ct-1" style="border-radius:99px;padding:6px 80px;"><span>Vay Ngay!</span></a>
-                        </div>
-                    </div>
                 </div>
             </section>
 
-            <div id="quy-trinh"></div>
-
-            <section class="section" style="padding: 30px 0;">
+            <section class="section" id="quy-trinh" style="padding: 30px 0;">
                 <div class="section-content relative">
                     <div class="row align-equal">
                         <div class="col medium-6 small-12 large-6">
@@ -263,81 +256,45 @@
                         </div>
                         <div class="col medium-6 small-12 large-6">
                             <div class="col-inner text-right">
-                                <img src="assets/img/quy-trinh-vay.svg" style="width: 89%;" alt="">
+                                <img src="img/quy-trinh-vay.svg" style="width: 89%;" alt="">
                                 <div style="margin-top: -50px; position: relative; z-index: 10;">
-                                    <img src="assets/img/steps-4.svg" style="width: 50%;" alt="">
+                                    <img src="img/steps-4.svg" style="width: 50%;" alt="">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            
-            <div id="ve-vaymeo"></div>
-            <section class="section" id="section_255647105" style="padding-top:30px; padding-bottom:30px;">
-                <div class="section-bg fill">
-                    <img src="assets/img/line-1.svg" class="bg attachment-original size-original" alt="">
-                </div>
-                <div class="section-content relative">
-                     <div class="row">
-                        <div class="col medium-6 small-12 large-6">
-                            <div class="col-inner">
-                                <div class="sub-title" style="font-family: 'Dancing Script', cursive; font-size: 1.5rem; color: #d26e4b;">Gợi ý sử dụng</div>
-                                <h2 class="s-title" style="font-weight: 700; font-size: 2.2rem;">Khám phá các cách sử dụng khoản vay hiệu quả!</h2>
+
+             <section class="section" id="ve-catcredit" style="padding: 30px 0;">
+                <div class="row align-middle">
+                     <div class="col medium-6 small-12 large-6">
+                         <div class="col-inner">
+                             <div class="sub-title" style="font-family: 'Dancing Script', cursive; font-size: 1.5rem; color: #d26e4b;">Về CatCredit</div>
+                             <h2 class="s-title" style="font-weight: 700; font-size: 2.2rem;">CatCredit – Mèo tài chính đồng hành cùng bạn</h2>
+                             <img src="img/gioi-thieu.svg" style="width: 65%; margin-top:20px;" alt="">
+                         </div>
+                     </div>
+                     <div class="col medium-6 small-12 large-6">
+                        <div class="col-inner" style="background-color:#fff; padding:20px; border-radius:20px; margin-bottom:20px;">
+                            <div style="display:flex; align-items:flex-start;">
+                                <img src="img/list-mark.svg" style="width:30px; margin-right:15px;">
+                                <p style="margin:0;"><strong>Tại CatCredit, chúng tôi hướng đến mục tiêu giúp bạn tiếp cận các giải pháp vay nhanh, đơn giản và minh bạch nhất.</strong></p>
                             </div>
                         </div>
-                        <div class="col small-12 large-12">
-                             <div class="col-inner" style="background-color:rgb(255,255,255); border-radius: 20px; padding: 20px;">
-                                  <div class="vm-tabs-wrapper">
-                                      <div class="vm-tabs-nav" style="display:flex; gap:10px; margin-bottom:20px; overflow-x:auto;">
-                                          <button class="vm-tab-link active" onclick="openTab(event, 'tab-1')" style="padding:10px 20px; border:none; background:#eee; border-radius:20px; cursor:pointer; font-weight:700;">Khẩn Cấp</button>
-                                          <button class="vm-tab-link" onclick="openTab(event, 'tab-2')" style="padding:10px 20px; border:none; background:#eee; border-radius:20px; cursor:pointer; font-weight:700;">Giải Quyết Nợ</button>
-                                          <button class="vm-tab-link" onclick="openTab(event, 'tab-3')" style="padding:10px 20px; border:none; background:#eee; border-radius:20px; cursor:pointer; font-weight:700;">Tận Hưởng</button>
-                                          <button class="vm-tab-link" onclick="openTab(event, 'tab-4')" style="padding:10px 20px; border:none; background:#eee; border-radius:20px; cursor:pointer; font-weight:700;">Đầu Tư</button>
-                                      </div>
-                                      <div id="tab-1" class="vm-tab-panel" style="display:block;">
-                                          <div class="row">
-                                              <div class="col medium-6"><img src="assets/img/tab-1.webp" alt=""></div>
-                                              <div class="col medium-6">
-                                                  <h3>Giải quyết tình huống cấp bách cùng CatCredit</h3>
-                                                  <ul>
-                                                      <li>Khoản vay luôn sẵn sàng cho mọi tình huống.</li>
-                                                      <li>Thao tác nhanh chóng.</li>
-                                                      <li>Giải ngân thẳng tài khoản.</li>
-                                                  </ul>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div id="tab-2" class="vm-tab-panel" style="display:none;">
-                                          <div class="row">
-                                              <div class="col medium-6"><img src="assets/img/tab-2.webp" alt=""></div>
-                                              <div class="col medium-6"><h3>Để CatCredit “quét sạch” nỗi lo nợ nần</h3></div>
-                                          </div>
-                                      </div>
-                                      <div id="tab-3" class="vm-tab-panel" style="display:none;">
-                                          <div class="row">
-                                              <div class="col medium-6"><img src="assets/img/tab-3.webp" alt=""></div>
-                                              <div class="col medium-6"><h3>Cho bản thân chút ưu ái cùng CatCredit!</h3></div>
-                                          </div>
-                                      </div>
-                                      <div id="tab-4" class="vm-tab-panel" style="display:none;">
-                                           <div class="row">
-                                              <div class="col medium-6"><img src="assets/img/tab-4.webp" alt=""></div>
-                                              <div class="col medium-6"><h3>CatCredit đồng hành nâng tầm cuộc sống!</h3></div>
-                                          </div>
-                                      </div>
-                                  </div>
-                             </div>
+                        <div class="col-inner" style="background-color:#fff; padding:20px; border-radius:20px;">
+                            <div style="display:flex; align-items:flex-start;">
+                                <img src="img/list-mark.svg" style="width:30px; margin-right:15px;">
+                                <p style="margin:0;"><strong>Ưu tiên hàng đầu của CatCredit là giúp bạn chạm tới các mục tiêu tài chính một cách thật đơn giản và nhanh chóng.</strong></p>
+                            </div>
                         </div>
                      </div>
                 </div>
-            </section>
-            
-            <div id="faq"></div>
+             </section>
 
-            <section class="section" id="section_692190780" style="padding-top:30px; padding-bottom: 30px;">
+            <section class="section" id="faq" style="padding-top:30px; padding-bottom: 30px;">
                 <div class="section-bg fill">
-                    <img src="assets/img/line-2.svg" class="bg attachment-original size-original" alt="">
+                    <img src="img/line-2.svg" class="bg attachment-original size-original" alt="">
                 </div>
                 <div class="section-content relative">
                     <div class="row row-large">
@@ -358,7 +315,21 @@
                                         </a>
                                         <div class="accordion-inner" style="padding-bottom: 10px; color: #555;">CatCredit là nền tảng hỗ trợ tìm kiếm – so sánh – kết nối khoản vay từ các đối tác uy tín. CatCredit không phải đơn vị cho vay trực tiếp.</div>
                                     </div>
+                                    <div class="accordion-item" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                        <a href="#" class="accordion-title plain" style="display:flex; justify-content:space-between; padding: 10px 0; font-weight: 700; color: #333;">
+                                            <span>Sử dụng CatCredit.vn có tốn phí không?</span>
+                                            <i class="icon-angle-down"></i>
+                                        </a>
+                                        <div class="accordion-inner" style="padding-bottom: 10px; color: #555; display:none;">Không. Người dùng được sử dụng hoàn toàn miễn phí.</div>
                                     </div>
+                                    <div class="accordion-item" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                        <a href="#" class="accordion-title plain" style="display:flex; justify-content:space-between; padding: 10px 0; font-weight: 700; color: #333;">
+                                            <span>Tôi có thể vay bao nhiêu tiền?</span>
+                                            <i class="icon-angle-down"></i>
+                                        </a>
+                                        <div class="accordion-inner" style="padding-bottom: 10px; color: #555; display:none;">Tùy từng đối tác, hạn mức có thể từ: 1.000.000đ – 30.000.000đ.</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -373,13 +344,13 @@
              <div class="row row-small align-middle">
                  <div class="col medium-2 small-6 large-2">
                      <div class="col-inner">
-                         <img src="assets/img/logo.png" style="height: 100px;">
+                         <img src="img/logo.png" style="height: 100px;">
                      </div>
                  </div>
                  <div class="col medium-10 small-6 large-10">
                      <div class="col-inner text-right">
-                         <a href="#" style="margin-left: 20px; color: #333; font-weight: 500;">Điều khoản</a>
-                         <a href="#" style="margin-left: 20px; color: #333; font-weight: 500;">Bảo mật</a>
+                         <a href="#" style="margin-left: 20px; color: #333; font-weight: 500;">Điều khoản sử dụng</a>
+                         <a href="#" style="margin-left: 20px; color: #333; font-weight: 500;">Chính sách bảo mật</a>
                      </div>
                  </div>
                  <div class="col small-12 large-12"><div class="is-divider divider clearfix" style="height:1px;background-color:#ccc;margin:20px 0;"></div></div>
@@ -391,55 +362,45 @@
 
 </div>
 
-<script src="assets/js/flatsome.js"></script>
+<script src="js/flatsome.js"></script>
+
 <script>
-    // Tab Logic
-    function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("vm-tab-panel");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("vm-tab-link");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Logic cho Slider Kéo Tiền
+    const slider = document.getElementById('meo-range-input');
+    const amountDisplay = document.getElementById('meo-amount-display');
+    const formatMoney = (num) => new Intl.NumberFormat('vi-VN').format(num);
+
+    if(slider){
+        slider.addEventListener('input', function() {
+            const value = this.value;
+            const min = this.min;
+            const max = this.max;
+            const percentage = ((value - min) / (max - min)) * 100;
+            // Màu vàng chạy theo nút
+            this.style.background = `linear-gradient(to right, #F4C542 0%, #F4C542 ${percentage}%, #F0F0F0 ${percentage}%, #F0F0F0 100%)`;
+            amountDisplay.textContent = formatMoney(value);
+        });
+        // Chạy ngay khi tải trang
+        slider.dispatchEvent(new Event('input'));
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-        // Slider Logic
-        const slider = document.getElementById('meo-range-input');
-        const amountDisplay = document.getElementById('meo-amount-display');
-        const formatMoney = (num) => new Intl.NumberFormat('vi-VN').format(num);
-
-        if(slider){
-            slider.addEventListener('input', function() {
-                const value = this.value;
-                const min = this.min;
-                const max = this.max;
-                const percentage = ((value - min) / (max - min)) * 100;
-                this.style.background = `linear-gradient(to right, #F4C542 0%, #F4C542 ${percentage}%, #F0F0F0 ${percentage}%, #F0F0F0 100%)`;
-                amountDisplay.textContent = formatMoney(value);
-            });
-            slider.dispatchEvent(new Event('input'));
-        }
-        
-        // Accordion Logic
-        const accLinks = document.querySelectorAll('.accordion-title');
-        accLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const content = this.nextElementSibling;
-                if(content.style.display === 'none') {
-                    content.style.display = 'block';
-                } else {
-                    content.style.display = 'none';
-                }
-            });
+    // 2. Logic cho FAQ Accordion
+    const accLinks = document.querySelectorAll('.accordion-title');
+    accLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const content = this.nextElementSibling;
+            if(content.style.display === 'none' || content.style.display === '') {
+                content.style.display = 'block';
+                this.classList.add('active');
+            } else {
+                content.style.display = 'none';
+                this.classList.remove('active');
+            }
         });
     });
+});
 </script>
 
 </body>
