@@ -4,122 +4,124 @@
 	<meta charset="UTF-8">
 	<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Đề xuất khoản vay - CatCredit</title>
+	<title>Danh sách khoản vay ưu đãi - CatCredit</title>
 	<meta name="robots" content="noindex, nofollow">
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link href="https://fonts.gstatic.com" crossorigin="" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 	
-	<style id="wp-block-library-inline-css" type="text/css">
-		:root{--wp-admin-theme-color:#007cba;}
-	</style>
-	<style id="global-styles-inline-css" type="text/css">
-		:root{--wp--preset--color--primary: #fec629;}
-	</style>
-
 	<link rel="stylesheet" id="flatsome-main-css" href="css/flatsome.css" type="text/css" media="all">
-	<style id="flatsome-main-inline-css" type="text/css">
-		@font-face {
-			font-family: "fl-icons";
-			font-display: block;
-			src: url(fonts/fl-icons.eot);
-			src: url(fonts/fl-icons.eot?#iefix) format("embedded-opentype"),
-				url(fonts/fl-icons.woff2) format("woff2"),
-				url(fonts/fl-icons.ttf) format("truetype"),
-				url(fonts/fl-icons.woff) format("woff"),
-				url(images/fl-icons.svg#fl-icons) format("svg");
-		}
-	</style>
 	<link rel="stylesheet" id="flatsome-style-css" href="css/style.css" type="text/css" media="all">
-	<link rel="stylesheet" id="flatsome-googlefonts-css" href="//fonts.googleapis.com/css?family=Roboto%3Aregular%2C700%2Cregular%2C500%7CDancing+Script%3Aregular%2Cregular&display=swap&ver=3.9" type="text/css" media="all">
-	<script type="text/javascript" src="js/jquery.min.js" id="jquery-core-js"></script>
-	<script type="text/javascript" src="js/jquery-migrate.min.js" id="jquery-migrate-js"></script>
-	
-	<link rel="icon" href="images/cropped-catcredit-icon-32x32.png" sizes="32x32">
+    <link rel="icon" href="images/cropped-catcredit-icon-32x32.png" sizes="32x32">
 	
     <style>
-        .offer-page-title {
-            background-color: #f4efed;
-            padding: 40px 0 20px;
+        body { font-family: 'Roboto', sans-serif; background-color: #f0f2f5; }
+        
+        /* Header Offer */
+        .offer-header-section {
+            background: linear-gradient(135deg, #fec629 0%, #f5ba11 100%);
+            padding: 40px 0 60px;
             text-align: center;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            margin-bottom: -40px; /* Để card đè lên */
         }
-        .offer-page-title h1 {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .offer-card {
+        .offer-header-section h1 { font-size: 24px; font-weight: 800; color: #333; margin-bottom: 5px; }
+        .offer-header-section p { color: #444; font-size: 15px; max-width: 600px; margin: 0 auto; }
+
+        /* Filter Bar */
+        .filter-bar {
             background: #fff;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border: 1px solid #eee;
-            transition: transform 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            height: 100%;
-        }
-        .offer-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-        .offer-logo {
-            height: 60px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .offer-logo img {
-            max-height: 100%;
-            max-width: 100%;
-            object-fit: contain;
-        }
-        .offer-info {
-            width: 100%;
-            margin-bottom: 15px;
-        }
-        .offer-info-row {
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
+            align-items: center;
+            margin-bottom: 20px;
             font-size: 14px;
-            border-bottom: 1px dashed #eee;
-            padding-bottom: 5px;
         }
-        .offer-info-row span:first-child { color: #666; }
-        .offer-info-row span:last-child { font-weight: bold; color: #333; }
-        .offer-btn {
-            background-color: #fec629;
+        .filter-options span { margin-right: 15px; cursor: pointer; color: #666; font-weight: 500; }
+        .filter-options span.active { color: #d26e4b; border-bottom: 2px solid #d26e4b; }
+
+        /* Offer Card - PC Styles */
+        .offer-item {
+            background: #fff;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+        .offer-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            border-color: #fec629;
+        }
+
+        /* Badge (Nhãn) */
+        .offer-badge {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #d26e4b; /* Màu cam đậm */
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .badge-green { background: #28a745; }
+
+        /* Layout Grid trong Card */
+        .offer-col-logo { width: 15%; text-align: center; border-right: 1px dashed #eee; padding-right: 15px; }
+        .offer-col-logo img { max-width: 100px; max-height: 50px; object-fit: contain; }
+        .rating-stars { color: #fec629; font-size: 12px; margin-top: 5px; }
+        
+        .offer-col-info { width: 60%; padding: 0 20px; display: flex; justify-content: space-around; }
+        .info-box { text-align: center; }
+        .info-box label { display: block; font-size: 12px; color: #888; margin-bottom: 2px; }
+        .info-box strong { display: block; font-size: 16px; color: #222; font-weight: 700; }
+        .info-box.highlight strong { color: #d26e4b; font-size: 18px; }
+
+        .offer-col-action { width: 25%; text-align: center; padding-left: 15px; border-left: 1px dashed #eee; }
+        .btn-register {
+            background: #fec629;
             color: #000;
-            font-weight: bold;
-            padding: 10px 30px;
-            border-radius: 99px;
+            font-weight: 700;
+            display: block;
+            padding: 10px;
+            border-radius: 50px;
             text-decoration: none;
-            display: inline-block;
-            width: 100%;
-            transition: 0.3s;
+            box-shadow: 0 3px 6px rgba(254, 198, 41, 0.4);
+            margin-bottom: 5px;
+            transition: 0.2s;
         }
-        .offer-btn:hover {
-            background-color: #d2a11b;
-            color: #fff;
-        }
-        .badge-0-percent {
-            background: #d26e4b;
-            color: #fff;
-            font-size: 11px;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-bottom: 10px;
-            display: inline-block;
+        .btn-register:hover { background: #eeb928; transform: scale(1.02); }
+        .success-rate { font-size: 11px; color: #28a745; font-weight: 500; }
+
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            .offer-item { flex-direction: column; padding: 15px; }
+            .offer-col-logo { width: 100%; border-right: none; border-bottom: 1px dashed #eee; padding-bottom: 10px; margin-bottom: 10px; }
+            .offer-col-info { width: 100%; flex-wrap: wrap; padding: 0; margin-bottom: 15px; }
+            .info-box { width: 50%; margin-bottom: 10px; text-align: left; }
+            .info-box:nth-child(even) { text-align: right; }
+            .offer-col-action { width: 100%; border-left: none; padding-left: 0; }
+            .offer-header-section { padding: 20px 0 50px; }
+            .filter-bar { display: none; /* Ẩn lọc trên mobile cho gọn */ }
         }
     </style>
 </head>
 
-<body class="page-template-default page page-id-99 wp-theme-flatsome wp-child-theme-vaymeo lightbox nav-dropdown-has-arrow">
+<body>
 
 <div id="wrapper">
 
@@ -134,7 +136,7 @@
 					</div>
                     <div class="flex-col hide-for-medium flex-right">
                         <ul class="header-nav header-nav-main nav nav-right nav-size-large nav-spacing-xlarge">
-                            <li><a href="index.html" class="nav-top-link">Quay lại Trang chủ</a></li>
+                            <li><a href="index.html" class="nav-top-link"><i class="icon-angle-left"></i> Quay lại Trang chủ</a></li>
                         </ul>
                     </div>
 				</div>
@@ -142,112 +144,149 @@
 		</div>
 	</header>
 
-	<main id="main" class="">
+	<main id="main">
         
-        <div class="offer-page-title">
+        <div class="offer-header-section">
             <div class="container">
-                <h1>Đề xuất khoản vay tốt nhất cho bạn</h1>
-                <p>Dựa trên hồ sơ, đây là các đối tác phù hợp nhất.</p>
+                <h1>Kết quả tìm kiếm cho bạn</h1>
+                <p>Hệ thống CatCredit đã tìm thấy <strong>4 đối tác</strong> phù hợp nhất với hồ sơ của bạn. <br>Tỷ lệ duyệt vay ước tính: <strong>95%</strong>.</p>
             </div>
         </div>
 
-		<div id="content" class="content-area" style="padding-top: 30px; padding-bottom: 50px; background-color: #f4efed;">
-            <div class="row row-large" id="offers-list">
-                
-                <div class="col medium-4 small-12 large-3">
-                    <div class="offer-card">
-                        <span class="badge-0-percent">0% Lãi suất lần đầu</span>
-                        <div class="offer-logo">
-                            <img src="images/catcredit-logo.png" alt="Partner"> 
+		<div id="content" class="container" style="margin-top: -30px; position: relative; z-index: 10; max-width: 900px;">
+            
+            <div class="filter-bar">
+                <div class="filter-label"><strong>Sắp xếp theo:</strong></div>
+                <div class="filter-options">
+                    <span class="active">Đề xuất tốt nhất</span>
+                    <span>Lãi suất thấp</span>
+                    <span>Duyệt nhanh</span>
+                    <span>Khoản vay cao</span>
+                </div>
+            </div>
+
+            <div class="offer-list">
+
+                <div class="offer-item featured">
+                    <div class="offer-badge">ĐỀ XUẤT TỐT NHẤT</div>
+                    <div class="offer-col-logo">
+                        <img src="images/catcredit-logo.png" alt="Partner 1">
+                        <div class="rating-stars">★★★★★ (4.9)</div>
+                    </div>
+                    <div class="offer-col-info">
+                        <div class="info-box highlight">
+                            <label>Khoản vay</label>
+                            <strong>1 - 10 Triệu</strong>
                         </div>
-                        <div class="offer-info">
-                            <div class="offer-info-row">
-                                <span>Khoản vay:</span>
-                                <span>1 - 10 Triệu</span>
-                            </div>
-                            <div class="offer-info-row">
-                                <span>Kỳ hạn:</span>
-                                <span>30 ngày</span>
-                            </div>
-                            <div class="offer-info-row">
-                                <span>Duyệt:</span>
-                                <span>5 phút</span>
-                            </div>
+                        <div class="info-box">
+                            <label>Lãi suất</label>
+                            <strong>0% lần đầu</strong>
                         </div>
-                        <a href="#" class="offer-btn">ĐĂNG KÝ NGAY</a>
+                        <div class="info-box">
+                            <label>Kỳ hạn</label>
+                            <strong>30 ngày</strong>
+                        </div>
+                        <div class="info-box">
+                            <label>Duyệt hồ sơ</label>
+                            <strong>5 phút</strong>
+                        </div>
+                    </div>
+                    <div class="offer-col-action">
+                        <a href="#" class="btn-register">ĐĂNG KÝ VAY</a>
+                        <span class="success-rate"><i class="icon-checkmark"></i> Tỷ lệ duyệt: 98%</span>
                     </div>
                 </div>
 
-                <div class="col medium-4 small-12 large-3">
-                    <div class="offer-card">
-                        <span class="badge-0-percent">Giải ngân nhanh</span>
-                        <div class="offer-logo">
-                             <img src="images/catcredit-logo.png" alt="Partner">
+                <div class="offer-item">
+                    <div class="offer-badge badge-green">DUYỆT TỰ ĐỘNG</div>
+                    <div class="offer-col-logo">
+                        <img src="images/catcredit-logo.png" alt="Partner 2">
+                        <div class="rating-stars">★★★★☆ (4.5)</div>
+                    </div>
+                    <div class="offer-col-info">
+                        <div class="info-box highlight">
+                            <label>Khoản vay</label>
+                            <strong>500k - 15 Triệu</strong>
                         </div>
-                        <div class="offer-info">
-                            <div class="offer-info-row">
-                                <span>Khoản vay:</span>
-                                <span>500k - 15 Triệu</span>
-                            </div>
-                            <div class="offer-info-row">
-                                <span>Kỳ hạn:</span>
-                                <span>3 - 6 tháng</span>
-                            </div>
-                            <div class="offer-info-row">
-                                <span>Duyệt:</span>
-                                <span>15 phút</span>
-                            </div>
+                        <div class="info-box">
+                            <label>Lãi suất</label>
+                            <strong>1.2% / tháng</strong>
                         </div>
-                        <a href="#" class="offer-btn">ĐĂNG KÝ NGAY</a>
+                        <div class="info-box">
+                            <label>Kỳ hạn</label>
+                            <strong>3 - 6 tháng</strong>
+                        </div>
+                        <div class="info-box">
+                            <label>Giải ngân</label>
+                            <strong>15 phút</strong>
+                        </div>
+                    </div>
+                    <div class="offer-col-action">
+                        <a href="#" class="btn-register">NHẬN TIỀN</a>
+                        <span class="success-rate" style="color:#666">Chỉ cần CCCD</span>
                     </div>
                 </div>
 
-                 <div class="col medium-4 small-12 large-3">
-                    <div class="offer-card">
-                        <span class="badge-0-percent">Chỉ cần CCCD</span>
-                        <div class="offer-logo">
-                             <img src="images/catcredit-logo.png" alt="Partner">
+                 <div class="offer-item">
+                    <div class="offer-col-logo">
+                        <img src="images/catcredit-logo.png" alt="Partner 3">
+                        <div class="rating-stars">★★★★☆ (4.7)</div>
+                    </div>
+                    <div class="offer-col-info">
+                        <div class="info-box highlight">
+                            <label>Khoản vay</label>
+                            <strong>Đến 20 Triệu</strong>
                         </div>
-                        <div class="offer-info">
-                            <div class="offer-info-row">
-                                <span>Khoản vay:</span>
-                                <span>1 - 20 Triệu</span>
-                            </div>
-                            <div class="offer-info-row">
-                                <span>Kỳ hạn:</span>
-                                <span>12 tháng</span>
-                            </div>
-                            <div class="offer-info-row">
-                                <span>Duyệt:</span>
-                                <span>Trong ngày</span>
-                            </div>
+                        <div class="info-box">
+                            <label>Lãi suất</label>
+                            <strong>Ưu đãi</strong>
                         </div>
-                        <a href="#" class="offer-btn">ĐĂNG KÝ NGAY</a>
+                        <div class="info-box">
+                            <label>Kỳ hạn</label>
+                            <strong>12 tháng</strong>
+                        </div>
+                        <div class="info-box">
+                            <label>Thủ tục</label>
+                            <strong>Đơn giản</strong>
+                        </div>
+                    </div>
+                    <div class="offer-col-action">
+                        <a href="#" class="btn-register">ĐĂNG KÝ NGAY</a>
+                        <span class="success-rate" style="color:#666">Không thẩm định</span>
                     </div>
                 </div>
 
-                 <div class="col medium-4 small-12 large-3">
-                    <div class="offer-card">
-                        <span class="badge-0-percent">Ưu đãi sinh viên</span>
-                        <div class="offer-logo">
-                             <img src="images/catcredit-logo.png" alt="Partner">
-                        </div>
-                        <div class="offer-info">
-                            <div class="offer-info-row">
-                                <span>Khoản vay:</span>
-                                <span>500k - 5 Triệu</span>
-                            </div>
-                            <div class="offer-info-row">
-                                <span>Kỳ hạn:</span>
-                                <span>14 ngày</span>
-                            </div>
-                            <div class="offer-info-row">
-                                <span>Duyệt:</span>
-                                <span>Tự động</span>
-                            </div>
-                        </div>
-                        <a href="#" class="offer-btn">ĐĂNG KÝ NGAY</a>
+                 <div class="offer-item">
+                    <div class="offer-col-logo">
+                        <img src="images/catcredit-logo.png" alt="Partner 4">
+                        <div class="rating-stars">★★★★☆ (4.2)</div>
                     </div>
+                    <div class="offer-col-info">
+                        <div class="info-box highlight">
+                            <label>Khoản vay</label>
+                            <strong>1 - 5 Triệu</strong>
+                        </div>
+                        <div class="info-box">
+                            <label>Lãi suất</label>
+                            <strong>0% / 7 ngày</strong>
+                        </div>
+                        <div class="info-box">
+                            <label>Kỳ hạn</label>
+                            <strong>1 - 3 tháng</strong>
+                        </div>
+                        <div class="info-box">
+                            <label>Độ tuổi</label>
+                            <strong>18 - 60</strong>
+                        </div>
+                    </div>
+                    <div class="offer-col-action">
+                        <a href="#" class="btn-register">VAY NHANH</a>
+                        <span class="success-rate" style="color:#666">Dành cho sinh viên</span>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px; color: #888; font-size: 13px;">
+                    <p>* Lưu ý: Các khoản vay được cung cấp bởi đối tác. CatCredit không thu phí hồ sơ.</p>
                 </div>
 
             </div>
@@ -255,7 +294,7 @@
 	</main>
 
 	<footer id="footer" class="footer-wrapper">
-        <section class="section pb-0" style="background-color: #fff; padding-top:30px;">
+		<section class="section pb-0" style="background-color: #fff; padding-top:30px;">
 			<div class="section-content relative">
 				<div class="row row-small align-middle">
 					<div class="col pb-0 medium-12 small-12 large-12">
@@ -277,13 +316,19 @@ var flatsomeVars = {
     "rtl": "",
     "sticky_height": "70",
     "assets_url": "", 
-    "lightbox": {
-        "close_markup": "<button title=\"%title%\" type=\"button\" class=\"mfp-close\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-x\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line></svg></button>",
-        "close_btn_inside": false
-    }
+    "lightbox": { "close_markup": "", "close_btn_inside": false }
 };
 </script>
 <script type="text/javascript" src="js/flatsome.js"></script>
+<script>
+    // Script đơn giản để active bộ lọc (chỉ làm đẹp giao diện)
+    document.querySelectorAll('.filter-options span').forEach(item => {
+        item.addEventListener('click', event => {
+            document.querySelectorAll('.filter-options span').forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+        })
+    })
+</script>
 
 </body>
 </html>
