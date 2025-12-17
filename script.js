@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // 1. Xử lý thanh kéo chọn tiền (Loan Slider)
+    // --- 1. LOGIC RANGE SLIDER (Quan trọng để giống 100%) ---
     const slider = document.getElementById('range-input');
     const amountDisplay = document.getElementById('amount-display');
 
     if(slider && amountDisplay) {
+        // Hàm định dạng tiền tệ Việt Nam (thêm dấu chấm)
         const formatMoney = (num) => {
             return new Intl.NumberFormat('vi-VN').format(num);
         };
@@ -13,53 +14,42 @@ document.addEventListener('DOMContentLoaded', function() {
             const value = slider.value;
             const min = slider.min;
             const max = slider.max;
+            
+            // Tính phần trăm để tô màu background
             const percentage = ((value - min) / (max - min)) * 100;
 
-            // Đổi màu nền thanh trượt
-            slider.style.background = `linear-gradient(to right, #F4C542 0%, #F4C542 ${percentage}%, #ddd ${percentage}%, #ddd 100%)`;
+            // Gradient: Màu vàng bên trái, màu xám bên phải thumb
+            slider.style.background = `linear-gradient(to right, #F4C542 0%, #F4C542 ${percentage}%, #f0f0f0 ${percentage}%, #f0f0f0 100%)`;
             
-            // Cập nhật số tiền hiển thị
+            // Cập nhật số tiền text
             amountDisplay.textContent = formatMoney(value);
         };
 
+        // Lắng nghe sự kiện kéo
         slider.addEventListener('input', updateSlider);
-        // Chạy lần đầu
+        
+        // Chạy lần đầu khi load trang
         updateSlider();
     }
 
-    // 2. Xử lý FAQ Accordion
-    const accButtons = document.querySelectorAll('.accordion-btn');
+    // --- 2. LOGIC FAQ ACCORDION ---
+    const accHeaders = document.querySelectorAll('.acc-header');
 
-    accButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
+    accHeaders.forEach(header => {
+        header.addEventListener('click', function() {
             const item = this.parentElement;
-            
-            // Đóng các tab khác (nếu muốn chỉ mở 1 cái)
-            // document.querySelectorAll('.accordion-item').forEach(i => {
-            //     if(i !== item) i.classList.remove('active');
-            // });
-
-            // Toggle tab hiện tại
+            // Toggle class active
             item.classList.toggle('active');
         });
     });
 
-    // 3. Mobile Menu (Đơn giản)
-    const mobileBtn = document.querySelector('.mobile-menu-btn');
-    const navMenu = document.querySelector('.nav-menu');
-
-    if(mobileBtn) {
-        mobileBtn.addEventListener('click', () => {
-            navMenu.style.display = navMenu.style.display === 'block' ? 'none' : 'block';
-            if(navMenu.style.display === 'block') {
-                navMenu.style.position = 'absolute';
-                navMenu.style.top = '90px';
-                navMenu.style.left = '0';
-                navMenu.style.width = '100%';
-                navMenu.style.background = '#fff';
-                navMenu.style.padding = '20px';
-                navMenu.style.boxShadow = '0 5px 10px rgba(0,0,0,0.1)';
-            }
-        });
-    }
+    // --- 3. SCROLL HEADER EFFECT ---
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
 });
