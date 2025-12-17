@@ -464,4 +464,476 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
                             <div class="col-inner" style="background-color:rgb(255,255,255);">
                                 <div class="vm-tabs-wrapper" style="--slider-duration: 5000ms;">
                                     <div class="vm-tabs-nav">
-                                        <div class="vm-tab-link
+                                        <div class="vm-tab-link active" data-tab="tab-1">Trường Hợp Khẩn Cấp</div>
+                                        <div class="vm-tab-link" data-tab="tab-2">Giải Quyết Nợ Nần</div>
+                                        <div class="vm-tab-link" data-tab="tab-3">Tận Hưởng Cuộc Sống</div>
+                                        <div class="vm-tab-link" data-tab="tab-4">Đầu Tư Cho Tương Lai</div>
+                                    </div>
+                                    <div class="vm-tabs-content">
+                                        <div id="tab-1" class="vm-tab-panel active">
+                                            <div class="vm-panel-inner">
+                                                <div class="vm-col-img">
+                                                    <img decoding="async" src="/wp-content/uploads/2025/11/tinh-huong-cap-bach.webp" alt="item 1">
+                                                </div>
+                                                <div class="vm-col-text">
+                                                    <h2>Giải quyết tình huống cấp bách cùng CatCredit:</h2>
+                                                    <ul class="vm-benefits-list">
+                                                        <li>Khoản vay luôn sẵn sàng, có tiền ngay cho mọi tình huống bất ngờ.</li>
+                                                        <li>Thao tác nhanh chóng – làm ở đâu cũng được.</li>
+                                                        <li>Giải ngân thẳng tài khoản, không thủ tục rối rắm.</li>
+                                                    </ul>
+                                                    <a href="/offers/" class="vm-btn-action">Bắt đầu ngay hôm nay!</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="tab-2" class="vm-tab-panel">
+                                            <div class="vm-panel-inner">
+                                                <div class="vm-col-img">
+                                                    <img decoding="async" src="/wp-content/uploads/2025/11/giai-quyet-no-nan.webp" alt="item 2">
+                                                </div>
+                                                <div class="vm-col-text">
+                                                    <h2>Để CatCredit “quét sạch” nỗi lo nợ nần:</h2>
+                                                    <ul class="vm-benefits-list">
+                                                        <li>Hỗ trợ thanh toán nợ, mở ra trang mới nhẹ nhàng.</li>
+                                                        <li>Xử lý nhanh, tư vấn tận tâm.</li>
+                                                        <li>Mang đến khoản vay tối ưu cho bạn.</li>
+                                                    </ul>
+                                                    <a href="/offers/" class="vm-btn-action">Đăng ký tư vấn</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="tab-3" class="vm-tab-panel">
+                                            <div class="vm-panel-inner">
+                                                <div class="vm-col-img">
+                                                    <img decoding="async" src="/wp-content/uploads/2025/11/tan-huong-cuoc-song.webp" alt="item 3">
+                                                </div>
+                                                <div class="vm-col-text">
+                                                    <h2>Cho bản thân chút ưu ái cùng CatCredit!</h2>
+                                                    <ul class="vm-benefits-list">
+                                                        <li>Khoản vay linh hoạt cho du lịch, mua sắm, trải nghiệm.</li>
+                                                        <li>Tự chọn phương án trả góp tiện lợi.</li>
+                                                        <li>Tạo thêm những khoảnh khắc đáng nhớ.</li>
+                                                    </ul>
+                                                    <a href="/offers/" class="vm-btn-action">Khám phá ngay</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="tab-4" class="vm-tab-panel">
+                                            <div class="vm-panel-inner">
+                                                <div class="vm-col-img">
+                                                    <img decoding="async" src="/wp-content/uploads/2025/11/dau-tu-tuong-lai.webp" alt="item 4">
+                                                </div>
+                                                <div class="vm-col-text">
+                                                    <h2>CatCredit đồng hành nâng tầm cuộc sống!</h2>
+                                                    <ul class="vm-benefits-list">
+                                                        <li>Hỗ trợ chi phí học tập, phát triển kỹ năng.</li>
+                                                        <li>Bổ sung vốn cho kinh doanh, khởi nghiệp.</li>
+                                                        <li>Nâng cấp, sửa sang tổ ấm dễ dàng.</li>
+                                                    </ul>
+                                                    <a href="/offers/" class="vm-btn-action">Đầu tư ngay</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        const wrapper = document.querySelector('.vm-tabs-wrapper');
+                                        const tabs = document.querySelectorAll('.vm-tab-link');
+                                        const panels = document.querySelectorAll('.vm-tab-panel');
+                                        let durationStr = getComputedStyle(wrapper).getPropertyValue('--slider-duration').trim();
+                                        let intervalTime = parseInt(durationStr) || 5000;
+                                        let currentIndex = 0;
+                                        let slideInterval;
+                                        function activateTab(index) {
+                                            tabs.forEach(t => t.classList.remove('active'));
+                                            panels.forEach(p => p.classList.remove('active'));
+                                            tabs[index].classList.add('active');
+                                            const tabId = tabs[index].getAttribute('data-tab');
+                                            document.getElementById(tabId).classList.add('active');
+                                        }
+                                        function startSlider() {
+                                            clearInterval(slideInterval);
+                                            slideInterval = setInterval(() => {
+                                                currentIndex++;
+                                                if (currentIndex >= tabs.length) { currentIndex = 0; }
+                                                activateTab(currentIndex);
+                                            }, intervalTime);
+                                        }
+                                        tabs.forEach((tab, index) => {
+                                            tab.addEventListener('click', function() {
+                                                currentIndex = index;
+                                                activateTab(currentIndex);
+                                                startSlider();
+                                            });
+                                        });
+                                        setTimeout(() => {
+                                            activateTab(0);
+                                            startSlider();
+                                        }, 100);
+                                    });
+                                </script>
+                            </div>
+                            <style>#col-277271539 > .col-inner { padding: 20px 20px 20px 20px; border-radius: 20px; }</style>
+                        </div>
+                    </div>
+                </div>
+                <style>#section_255647105 { padding-top: 30px; padding-bottom: 30px; }</style>
+            </section>
+            
+            <span class="scroll-to" data-label="Scroll to: #ve-vaymeo" data-bullet="false" data-link="#ve-vaymeo" data-title="Change this"><a name="ve-vaymeo"></a></span>
+            <div class="row" id="row-150268701">
+                <div id="col-716866416" class="col medium-6 small-12 large-6">
+                    <div class="col-inner">
+                        <div class="sub-title">Về CatCredit</div>
+                        <h2 class="s-title">CatCredit – Mèo tài chính đồng hành cùng bạn </h2>
+                        <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1596837590">
+                            <div class="img-inner dark">
+                                <img decoding="async" width="1" height="1" src="https://catcredit.vn/wp-content/uploads/2025/11/gioi-thieu.svg" class="attachment-large size-large" alt="">
+                            </div>
+                            <style>#image_1596837590 { width: 65%; }</style>
+                        </div>
+                        <div class="hidden"></div>
+                    </div>
+                </div>
+                <div id="col-1032063009" class="col medium-6 small-12 large-6">
+                    <div class="col-inner">
+                        <div class="row" id="row-1086445624">
+                            <div id="col-415132265" class="col small-12 large-12">
+                                <div class="col-inner" style="background-color:rgb(255,255,255);">
+                                    <div class="icon-box featured-box icon-box-top text-left">
+                                        <div class="icon-box-img" style="width: 36px">
+                                            <div class="icon">
+                                                <div class="icon-inner">
+                                                    <img loading="lazy" decoding="async" width="1" height="1" src="https://catcredit.vn/wp-content/uploads/2025/11/list-mark-1.svg" class="attachment-medium size-medium" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="icon-box-text last-reset">
+                                            <div id="text-2374538530" class="text">
+                                                <p class="mb-0"><strong>Tại CatCredit, chúng tôi hướng đến mục tiêu giúp bạn tiếp cận các giải pháp vay nhanh, đơn giản và minh bạch nhất.</strong></p>
+                                                <style>#text-2374538530 { font-size: 1rem; }</style>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <style>#col-415132265 > .col-inner { padding: 20px 20px 20px 20px; border-radius: 20px; }</style>
+                            </div>
+                            <div id="col-394070274" class="col small-12 large-12">
+                                <div class="col-inner" style="background-color:rgb(255,255,255);">
+                                    <div class="icon-box featured-box icon-box-top text-left">
+                                        <div class="icon-box-img" style="width: 36px">
+                                            <div class="icon">
+                                                <div class="icon-inner">
+                                                    <img loading="lazy" decoding="async" width="1" height="1" src="https://catcredit.vn/wp-content/uploads/2025/11/list-mark-1.svg" class="attachment-medium size-medium" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="icon-box-text last-reset">
+                                            <div id="text-4169065407" class="text">
+                                                <p class="mb-0"><strong>Ưu tiên hàng đầu của CatCredit là giúp bạn chạm tới các mục tiêu tài chính một cách thật đơn giản và nhanh chóng. Chúng tôi mang đến những lựa chọn vay được thiết kế để phù hợp hoàn hảo với nhu cầu riêng của bạn.</strong></p>
+                                                <style>#text-4169065407 { font-size: 1rem; }</style>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <style>#col-394070274 > .col-inner { padding: 20px 20px 20px 20px; border-radius: 20px; }</style>
+                            </div>
+                            <div id="col-907661143" class="col small-12 large-12">
+                                <div class="col-inner" style="background-color:rgb(255,255,255);">
+                                    <div class="icon-box featured-box icon-box-top text-left">
+                                        <div class="icon-box-img" style="width: 36px">
+                                            <div class="icon">
+                                                <div class="icon-inner">
+                                                    <img loading="lazy" decoding="async" width="1" height="1" src="https://catcredit.vn/wp-content/uploads/2025/11/list-mark-1.svg" class="attachment-medium size-medium" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="icon-box-text last-reset">
+                                            <div id="text-1527300576" class="text">
+                                                <p class="mb-0"><strong>Với linh vật Mèo đáng yêu, CatCredit đại diện cho sự nhanh nhẹn, tận tâm và minh bạch trong mọi khâu kết nối khoản vay. Hãy để CatCredit đồng hành và mang đến cho bạn giải pháp tài chính nhanh chóng mỗi khi cần tiền gấp!!</strong></p>
+                                                <style>#text-1527300576 { font-size: 1rem; }</style>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <style>#col-907661143 > .col-inner { padding: 20px 20px 20px 20px; border-radius: 20px; }</style>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="col-472562673" class="col small-12 large-12">
+                    <div class="col-inner text-center">
+                        <a href="/offers/" class="button primary lowercase btn-ct-1" style="border-radius:99px;padding:6px 80px 6px 80px;">
+                            <span>Khởi đầu tương lai tài chính cùng CatCredit!</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <span class="scroll-to" data-label="Scroll to: #quy-trinh" data-bullet="false" data-link="#quy-trinh" data-title="Change this"><a name="quy-trinh"></a></span>
+            <section class="section" id="section_1598723547">
+                <div class="section-bg fill"></div>
+                <div class="section-content relative">
+                    <div class="row align-equal" id="row-810706521">
+                        <div id="col-2126157070" class="col small-12 large-12">
+                            <div class="col-inner">
+                                <div class="sub-title">Cách thức hoạt động</div>
+                                <h2 class="s-title">Hành trình vay vốn của bạn tại CatCredit</h2>
+                                <p><strong>Tại CatCredit.vn, quá trình vay tiền cá nhân đơn giản và nhanh chóng như một cuộc dạo chơi cùng Mèo. Chỉ trong khoảng 5 phút, bạn đã có thể hoàn tất toàn bộ các bước đăng ký. Chúng tôi giúp bạn tiếp cận các gói vay từ 500.000 VNĐ đến 30.000.000 VNĐ, để bạn dễ dàng chọn lựa phương án phù hợp nhất với nhu cầu của mình. Thời hạn vay linh hoạt, lên đến 6 tháng, mang đến sự thuận tiện tối đa cho bạn.</strong></p>
+                                <div class="sub-title">Điều kiện vay của CatCredit là gì?</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-small align-equal" id="row-1312435326">
+                        <div id="col-1124521714" class="col medium-4 small-12 large-4">
+                            <div class="col-inner" style="background-color:rgb(255,255,255);">
+                                <div class="how__block">
+                                    <div class="how__block-number number--1">1</div>
+                                    <p>Là công dân Việt Nam từ 18 tuổi trở lên</p>
+                                </div>
+                            </div>
+                            <style>#col-1124521714 > .col-inner { padding: 20px 20px 20px 20px; border-radius: 20px; }</style>
+                        </div>
+                        <div id="col-1184408623" class="col medium-3 small-12 large-3">
+                            <div class="col-inner" style="background-color:rgb(255,255,255);">
+                                <div class="how__block">
+                                    <div class="how__block-number number--2">2</div>
+                                    <p>Đang sinh sống tại Việt Nam</p>
+                                </div>
+                            </div>
+                            <style>#col-1184408623 > .col-inner { padding: 20px 20px 20px 20px; border-radius: 20px; }</style>
+                        </div>
+                        <div id="col-186401774" class="col medium-5 small-12 large-5">
+                            <div class="col-inner" style="background-color:rgb(255,255,255);">
+                                <div class="how__block">
+                                    <div class="how__block-number number--3">3</div>
+                                    <p>Có tài khoản ngân hàng hợp lệ</p>
+                                </div>
+                            </div>
+                            <style>#col-186401774 > .col-inner { padding: 20px 20px 20px 20px; border-radius: 20px; }</style>
+                        </div>
+                        <div id="col-172588085" class="col medium-8 small-12 large-8">
+                            <div class="col-inner" style="background-color:rgb(255,255,255);">
+                                <div class="how__block">
+                                    <div class="how__block-number number--4">4</div>
+                                    <p>Có Căn cước Công dân (CCCD) còn hiệu lực</p>
+                                </div>
+                            </div>
+                            <style>#col-172588085 > .col-inner { padding: 20px 20px 20px 20px; border-radius: 20px; }</style>
+                        </div>
+                        <div id="col-808027566" class="col medium-4 small-12 large-4">
+                            <div class="col-inner" style="background-color:rgb(255,255,255);">
+                                <div class="how__block">
+                                    <div class="how__block-number number--5">5</div>
+                                    <p>Có thu nhập ổn định (lương, kinh doanh, tự do…)</p>
+                                </div>
+                            </div>
+                            <style>#col-808027566 > .col-inner { padding: 20px 20px 20px 20px; border-radius: 20px; }</style>
+                        </div>
+                        <div id="col-1321673255" class="col small-12 large-12">
+                            <div class="col-inner" style="background-color:rgb(255,255,255);">
+                                <div class="how__block">
+                                    <div class="how__block-number number--6">6</div>
+                                    <p>Cung cấp số điện thoại và địa chỉ email hợp lệ để liên lạc</p>
+                                </div>
+                            </div>
+                            <style>#col-1321673255 > .col-inner { padding: 20px 20px 20px 20px; border-radius: 20px; }</style>
+                        </div>
+                        <div id="col-1941675906" class="col small-12 large-12">
+                            <div class="col-inner text-center">
+                                <div id="gap-133069634" class="gap-element clearfix" style="display:block; height:auto;">
+                                    <style>#gap-133069634 { padding-top: 30px; }</style>
+                                </div>
+                                <a href="/offers/" class="button primary lowercase btn-ct-1" style="border-radius:99px;padding:6px 80px 6px 80px;">
+                                    <span>Đáp ứng đủ điều kiện? Vay ngay!</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <style>#section_1598723547 { padding-top: 30px; padding-bottom: 30px; }</style>
+            </section>
+            
+            <span class="scroll-to" data-label="Scroll to: #faq" data-bullet="false" data-link="#faq" data-title="Change this"><a name="faq"></a></span>
+
+            <section class="section" id="section_692190780">
+                <div class="section-bg fill">
+                    <img decoding="async" src="https://catcredit.vn/wp-content/uploads/2025/11/line-2.svg" class="bg attachment-original size-original" alt="">
+                </div>
+                <div class="section-content relative">
+                    <div class="row row-large" id="row-1019080266">
+                        <div id="col-1779402761" class="col medium-6 small-12 large-6">
+                            <div class="col-inner">
+                                <div class="sub-title">FAQ</div>
+                                <h2 class="s-title">Giải đáp thắc mắc thường gặp từ CatCredit</h2>
+                                <a href="/offers/" class="button primary lowercase btn-ct-1" style="border-radius:99px;padding:6px 80px 6px 80px;">
+                                    <span>Vay tiền ngay với CatCredit!</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div id="col-157555569" class="col medium-6 small-12 large-6">
+                            <div class="col-inner">
+                                <div class="accordion">
+                                    <div id="accordion-2360065247" class="accordion-item">
+                                        <a id="accordion-2360065247-label" class="accordion-title plain active" href="#accordion-item-catcredit.vn-là-gì?" aria-expanded="true" aria-controls="accordion-2360065247-content">
+                                            <button class="toggle" aria-label="Chuyển đổi"><i class="icon-angle-down"></i></button>
+                                            <span>CatCredit.vn là gì?</span>
+                                        </a>
+                                        <div id="accordion-2360065247-content" class="accordion-inner" style="display: block;" aria-labelledby="accordion-2360065247-label">
+                                            <p>CatCredit là nền tảng hỗ trợ tìm kiếm – so sánh – kết nối khoản vay từ các đối tác uy tín. CatCredit không phải đơn vị cho vay trực tiếp.</p>
+                                        </div>
+                                    </div>
+                                    <div id="accordion-2752273973" class="accordion-item">
+                                        <a id="accordion-2752273973-label" class="accordion-title plain" href="#accordion-item-sử-dụng-catcredit.vn-có-tốn-phí-không?" aria-expanded="false" aria-controls="accordion-2752273973-content">
+                                            <button class="toggle" aria-label="Chuyển đổi"><i class="icon-angle-down"></i></button>
+                                            <span>Sử dụng CatCredit.vn có tốn phí không?</span>
+                                        </a>
+                                        <div id="accordion-2752273973-content" class="accordion-inner" aria-labelledby="accordion-2752273973-label">
+                                            <p>Không. Người dùng được sử dụng hoàn toàn miễn phí. Bạn không phải trả bất kỳ khoản phí nào cho CatCredit.</p>
+                                        </div>
+                                    </div>
+                                    <div id="accordion-1281834022" class="accordion-item">
+                                        <a id="accordion-1281834022-label" class="accordion-title plain" href="#accordion-item-tôi-có-thể-vay-bao-nhiêu-tiền?" aria-expanded="false" aria-controls="accordion-1281834022-content">
+                                            <button class="toggle" aria-label="Chuyển đổi"><i class="icon-angle-down"></i></button>
+                                            <span>Tôi có thể vay bao nhiêu tiền?</span>
+                                        </a>
+                                        <div id="accordion-1281834022-content" class="accordion-inner" aria-labelledby="accordion-1281834022-label">
+                                            <p>Tùy từng đối tác, hạn mức có thể từ: 1.000.000đ – 30.000.000đ hoặc hơn.</p>
+                                        </div>
+                                    </div>
+                                    <div id="accordion-228213447" class="accordion-item">
+                                        <a id="accordion-228213447-label" class="accordion-title plain" href="#accordion-item-ai-có-thể-đăng-ký-vay-tại-catcredit.vn?" aria-expanded="false" aria-controls="accordion-228213447-content">
+                                            <button class="toggle" aria-label="Chuyển đổi"><i class="icon-angle-down"></i></button>
+                                            <span>Ai có thể đăng ký vay tại CatCredit.vn?</span>
+                                        </a>
+                                        <div id="accordion-228213447-content" class="accordion-inner" aria-labelledby="accordion-228213447-label">
+                                            <p>Công dân Việt Nam từ 18 tuổi trở lên, hiện đang sinh sống tại Việt Nam và có Căn cước Công dân (CCCD) còn hiệu lực đều có thể đăng ký vay.</p>
+                                        </div>
+                                    </div>
+                                    <div id="accordion-558116419" class="accordion-item">
+                                        <a id="accordion-558116419-label" class="accordion-title plain" href="#accordion-item-tôi-có-nợ-xấu-(cic)-thì-có-vay-được-qua-catcredit.vn-không?" aria-expanded="false" aria-controls="accordion-558116419-content">
+                                            <button class="toggle" aria-label="Chuyển đổi"><i class="icon-angle-down"></i></button>
+                                            <span>Tôi có nợ xấu (CIC) thì có vay được qua CatCredit.vn không?</span>
+                                        </a>
+                                        <div id="accordion-558116419-content" class="accordion-inner" aria-labelledby="accordion-558116419-label">
+                                            <p>Một số đối tác hỗ trợ hồ sơ nợ xấu nhẹ. CatCredit sẽ gợi ý lựa chọn phù hợp.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <style>#section_692190780 { padding-top: 30px; padding-bottom: 30px; } #section_692190780 .section-bg img { object-position: 0% 21%; }</style>
+            </section>
+        </div>
+    </main>
+
+    <footer id="footer" class="footer-wrapper">
+        <section class="section pb-0" id="section_1854701608">
+            <div class="section-bg fill"></div>
+            <div class="section-content relative">
+                <div class="row row-small align-middle" id="row-1646668523">
+                    <div id="col-1086171052" class="col pb-0 medium-2 small-6 large-2">
+                        <div class="col-inner">
+                            <div class="ux-logo has-hover align-middle ux_logo inline-block" style="max-width: 100%!important; width: 176.34146341463px!important"><div class="ux-logo-link block image-" title="" href="" style="padding: 15px;"><img src="https://catcredit.vn/wp-content/uploads/2025/11/catcredit-logo.png" title="" alt="" class="ux-logo-image block" style="height:100px;"></div></div>
+                        </div>
+                    </div>
+                    <div id="col-2124036931" class="col pb-0 medium-10 small-6 large-10">
+                        <div class="col-inner text-right">
+                            <div class="ux-menu stack stack-col justify-start">
+                                <div class="ux-menu-link flex menu-item">
+                                    <a class="ux-menu-link__link flex" href="https://catcredit.vn">
+                                        <span class="ux-menu-link__text">Điều khoản sử dụng</span>
+                                    </a>
+                                </div>
+                                <div class="ux-menu-link flex menu-item">
+                                    <a class="ux-menu-link__link flex" href="https://catcredit.vn">
+                                        <span class="ux-menu-link__text">Chính sách bảo mật</span>
+                                    </a>
+                                </div>
+                                <div class="ux-menu-link flex menu-item">
+                                    <a class="ux-menu-link__link flex" href="https://catcredit.vn">
+                                        <span class="ux-menu-link__text">Chính sách cookie</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="col-2005299080" class="col pb-0 small-12 large-12">
+                        <div class="col-inner">
+                            <div class="is-divider divider clearfix" style="max-width:100%;height:1px;background-color:rgb(168, 168, 168);"></div>
+                        </div>
+                    </div>
+                    <div id="col-1645666494" class="col pb-0 medium-6 small-12 large-6">
+                        <div class="col-inner">
+                            <div id="text-2577678545" class="text">
+                                <p>Bản quyền © CatCredit.vn</p>
+                                <style>#text-2577678545 { text-align: left; }</style>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="col-1443633572" class="col pb-0 medium-6 small-12 large-6">
+                        <div class="col-inner">
+                            <div id="text-2380646811" class="text">
+                                <p>Địa chỉ: Tòa nhà Vietcomreal, 68 Nguyễn Huệ, P. Sài Gòn, TP. HCM</p>
+                                <style>#text-2380646811 { text-align: right; }</style>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="col-256503831" class="col small-12 large-12">
+                        <div class="col-inner">
+                            <div id="text-3742223333" class="text">
+                                <div class="footer__legal__policies__section">
+                                    <p class="footer__legal__policies__section__text"><strong>Thông Tin Quan Trọng từ CatCredit.vn</strong></p>
+                                    <p class="footer__legal__policies__section__text">CatCredit không phải là tổ chức cho vay và không trực tiếp cung cấp bất kỳ khoản tín dụng nào. Nền tảng CatCredit chỉ đóng vai trò hỗ trợ người dùng tìm kiếm, so sánh và kết nối với các đối tác cho vay uy tín phù hợp với từng nhu cầu tài chính cụ thể.</p>
+                                    <p class="footer__legal__policies__section__text">Các sản phẩm tài chính được giới thiệu thông qua CatCredit thường có thời hạn trả góp từ 91 ngày đến 180 ngày (ví dụ: 91–180 ngày). Mức lãi suất APR (Annual Percentage Rate – Lãi suất Phần Trăm Hàng Năm) có thể dao động từ 0% đến 20%, tùy theo quy định từng đơn vị cho vay và đã bao gồm các khoản phí liên quan nếu có. CatCredit không thu phí người dùng. Toàn bộ chi phí cuối cùng bạn cần thanh toán sẽ được trình bày minh bạch bởi đối tác cho vay trước khi ký hợp đồng.</p>
+                                </div>
+                                <div class="footer__legal__policies__section">
+                                    <h4 class="footer__legal__policies__section__title"><strong>Ví dụ minh họa khoản vay:</strong></h4>
+                                    <p class="footer__legal__policies__section__text">Giả sử bạn vay 10.000.000 VNĐ với thời hạn 6 tháng (180 ngày). Số tiền trả hàng tháng: 1.833.333,3 VNĐ. Tiền lãi mỗi tháng: 166.666,7 VNĐ (tương ứng APR 20%). Tổng số tiền cần thanh toán sau kỳ hạn: 11.000.000 VNĐ. Đây chỉ là ví dụ tham khảo, con số thực tế phụ thuộc vào từng tổ chức cho vay.</p>
+                                </div>
+                                <div class="footer__legal__policies__section">
+                                    <h4 class="footer__legal__policies__section__title"><strong>Cam kết cho vay có trách nhiệm:</strong></h4>
+                                    <p class="footer__legal__policies__section__text">CatCredit hoạt động như đơn vị trung gian, giúp kết nối người vay với các đơn vị cung cấp tín dụng. CatCredit không phải ngân hàng, công ty tài chính hay bất kỳ tổ chức cấp tín dụng nào; cũng không chịu trách nhiệm với các điều khoản hợp đồng đã ký giữa bạn và bên cho vay.<br>Mọi phép tính hiển thị trên trang CatCredit chỉ mang tính chất mô phỏng. Thông tin chính xác sẽ được nêu rõ trên website hoặc hợp đồng của đối tác cho vay..</p>
+                                </div>
+                                <div class="footer__legal__policies__section">
+                                    <h4 class="footer__legal__policies__section__title"><strong>Thanh toán khoản vay:</strong></h4>
+                                    <p class="footer__legal__policies__section__text">CatCredit không tiếp nhận thanh toán. Các khoản góp hàng tháng của bạn sẽ được thực hiện trực tiếp với đơn vị cho vay. Họ sẽ chủ động liên hệ qua email, điện thoại hoặc các kênh hỗ trợ khác để hướng dẫn lịch thanh toán chi tiết.</p>
+                                </div>
+                                <div class="footer__legal__policies__section">
+                                    <h4 class="footer__legal__policies__section__title"><strong>Thanh toán trễ hạn:</strong></h4>
+                                    <p class="footer__legal__policies__section__text">Nếu bạn dự kiến không thể trả đúng kỳ hạn, hãy liên hệ sớm với đối tác cho vay để được hỗ trợ. Một số đơn vị có thể xem xét kéo dài thời gian trả nợ tùy theo điều khoản hợp đồng. Việc thanh toán trễ hạn có thể dẫn đến:Phí phạt hoặc lãi suất bổ sung, Ảnh hưởng xấu tới lịch sử tín dụng (CIC), Hạn chế khả năng vay trong tương lai. Hãy luôn theo dõi lịch trả nợ để tránh phát sinh chi phí không mong muốn.</p>
+                                </div>
+                                <style>#text-3742223333 { font-size: 0.9rem; color: rgba(29, 33, 42, 0.541); } #text-3742223333 > * { color: rgba(29, 33, 42, 0.541); }</style>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <style>#section_1854701608 { padding-top: 30px; padding-bottom: 30px; background-color: rgb(255,255,255); }</style>
+        </section>
+        
+        <a href="#top" class="back-to-top button icon invert plain fixed bottom z-1 is-outline hide-for-medium circle" id="top-link" aria-label="Lên đầu trang"><i class="icon-angle-up"></i></a>
+    </footer>
+
+</div>
+
+<div id="main-menu" class="mobile-sidebar no-scrollbar mfp-hide">
+	<div class="sidebar-menu no-scrollbar text-center">
+        <ul class="nav nav-sidebar nav-vertical nav-uppercase nav-anim" data-tab="1">
+            <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-17"><a href="https://catcredit.vn/#vay-tien" aria-current="page">Vay tiền</a></li>
+            <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-18"><a href="https://catcredit.vn/#loai-hinh-vay" aria-current="page">Loại hình vay</a></li>
+            <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a href="https://catcredit.vn/#ve-vaymeo" aria-current="page">Về CatCredit</a></li>
+            <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-20"><a href="https://catcredit.vn/#quy-trinh" aria-current="page">Quy trình vay</a></li>
+            <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-21"><a href="https://catcredit.vn/#faq" aria-current="page">FAQ</a></li>
+            <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-22"><a href="https://catcredit.vn/blog/">Blog</a></li>
+        </ul>
+	</div>
+</div>
+
+<script type="text/javascript" src="https://catcredit.vn/wp-content/themes/flatsome/assets/js/flatsome.js?ver=e1ad26bd5672989785e1" id="flatsome-js-js"></script>
+
+</body>
+</html>
