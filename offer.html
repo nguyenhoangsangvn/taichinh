@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Danh sách khoản vay ưu đãi - CatCredit</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+	<title>Đề xuất khoản vay - CatCredit</title>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" id="flatsome-main-css" href="css/flatsome.css" type="text/css" media="all">
 	<link rel="stylesheet" id="flatsome-style-css" href="css/style.css" type="text/css" media="all">
     <link rel="icon" href="images/cropped-catcredit-icon-32x32.png" sizes="32x32">
@@ -20,7 +20,6 @@
             max-width: 1200px; margin: 0 auto 50px; padding: 0 15px;
         }
 
-        /* Giao diện Card Vay */
         .loan-box { background: #fff; border-radius: 12px; border: 1px solid #e5e7eb; overflow: hidden; position: relative; display: flex; flex-direction: column; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: 0.3s; }
         .loan-box:hover { box-shadow: 0 15px 30px rgba(0,0,0,0.08); transform: translateY(-5px); border-color: #fec629; }
         .top-badge { position: absolute; top: 0; right: 0; background: #e8f5e9; color: #27ae60; font-size: 10px; font-weight: 700; padding: 5px 12px; border-bottom-left-radius: 12px; z-index: 2; text-transform: uppercase; }
@@ -37,10 +36,12 @@
         .btn-active { background: #fec629; color: #000; box-shadow: 0 4px 10px rgba(254, 198, 41, 0.3); }
         .btn-active:hover { background: #eeb928; transform: scale(1.02); }
         .btn-disabled { background: #e5e7eb; color: #9ca3af; cursor: not-allowed; pointer-events: none; }
+        .card-disabled { opacity: 0.6; filter: grayscale(100%); }
         .loading-spinner { text-align: center; padding: 50px; grid-column: 1 / -1; }
         .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #fec629; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 10px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
+        #helper-box { max-width: 800px; margin: 20px auto; background: #333; color: #fff; padding: 20px; border-radius: 10px; font-family: monospace; display: none; }
+        #helper-textarea { width: 100%; height: 200px; background: #222; color: #0f0; border: none; padding: 10px; margin-top: 10px; }
         @media(max-width: 600px) { .offers-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
@@ -74,6 +75,12 @@
             </div>
         </div>
 
+        <div id="helper-box">
+            <h3>⚠️ CHƯA CÓ FILE LINKS.JSON</h3>
+            <p>Copy nội dung dưới đây vào file <code>links.json</code></p>
+            <textarea id="helper-textarea"></textarea>
+        </div>
+
         <div class="offers-grid" id="api-offers-container">
             <div class="loading-spinner">
                 <div class="spinner"></div>
@@ -88,7 +95,9 @@
 				<div class="row row-small align-middle">
 					<div class="col pb-0 medium-12 small-12 large-12">
 						<div class="col-inner text-center">
-                            <p>Bản quyền © CatCredit.vn</p>
+                            <p>Bản quyền © 
+                                <a href="admin-tool.html" style="text-decoration:none; color:inherit; cursor:pointer;" title="Admin Tool">CatCredit.vn</a>
+                            </p>
 						</div>
 					</div>
 				</div>
@@ -109,30 +118,37 @@
     function getSmartDetails(offerName) {
         let name = offerName.toLowerCase();
         let d = { limit: '1 - 10 Triệu', interest: 'Ưu đãi tốt', term: 'Linh hoạt' };
-
         if(name.includes('doctor')) d = { limit: '500k - 10 Triệu', interest: '0% lần đầu', term: '10 - 30 ngày' };
         else if (name.includes('moneycat') || name.includes('tamo')) d = { limit: '1 - 15 Triệu', interest: '0% lãi & phí', term: '7 - 30 ngày' };
         else if (name.includes('takomo') || name.includes('oncredit')) d = { limit: '500k - 10 Triệu', interest: 'Duyệt nhanh', term: 'Linh hoạt' };
         else if (name.includes('robocash')) d = { limit: '1 - 10 Triệu', interest: 'Miễn phí 7 ngày', term: '3 - 6 tháng' };
         else if (name.includes('jeff') || name.includes('crezu')) d = { limit: 'Đến 20 Triệu', interest: 'So sánh vay', term: '3 - 12 tháng' };
         else if (name.includes('vietmoney') || name.includes('f88')) d = { limit: 'Đến 50 Triệu', interest: 'Cầm đồ', term: 'Đến 12 tháng' };
-        else if (name.includes('mafc') || name.includes('mcredit')) d = { limit: '10 - 70 Triệu', interest: '1.66%/tháng', term: '12 - 36 tháng' };
-        
+        else if (name.includes('cayvang')) d = { limit: '1 - 10 Triệu', interest: 'Duyệt nhanh', term: 'Linh hoạt' };
         return d;
     }
 
     function getMyLink(apiName, localLinks) {
         if (!localLinks) return null;
         for (const [key, url] of Object.entries(localLinks)) {
-            if (apiName.toLowerCase().includes(key.toLowerCase()) && url && url.length > 4) {
+            if (url && url.trim().length > 5 && apiName.toLowerCase().includes(key.toLowerCase())) {
                 return url;
             }
         }
         return null;
     }
 
+    // --- HÀM LẤY TÊN GỐC ĐỂ GỘP TRÙNG ---
+    function normalizeBrandName(name) {
+        // Chuyển về chữ thường, lấy từ đầu tiên trước khoảng trắng hoặc dấu gạch ngang
+        // Ví dụ: "CayVang VN" -> "cayvang", "cayvang" -> "cayvang" => GIỐNG NHAU
+        return name.toLowerCase().split(/[\s\-().]+/)[0];
+    }
+
     async function fetchOffers() {
         const container = document.getElementById('api-offers-container');
+        const helperBox = document.getElementById('helper-box');
+        const helperText = document.getElementById('helper-textarea');
 
         try {
             const [offerRes, linksRes] = await Promise.all([
@@ -142,48 +158,83 @@
 
             const offerData = await offerRes.json();
             let myLinks = {};
-            if (linksRes && linksRes.ok) myLinks = await linksRes.json();
+            
+            if (linksRes && linksRes.ok) {
+                myLinks = await linksRes.json();
+            } else {
+                helperBox.style.display = 'block';
+            }
 
             container.innerHTML = '';
 
             if (offerData.status === 1 && offerData.data && offerData.data.length > 0) {
                 
-                let processedOffers = offerData.data.map(offer => {
-                    const myAffiliateLink = getMyLink(offer.name, myLinks);
-                    return {
-                        ...offer,
-                        finalLink: myAffiliateLink,
-                        hasLink: !!myAffiliateLink,
-                        smartInfo: getSmartDetails(offer.name)
-                    };
+                if (helperBox.style.display === 'block') {
+                    let jsonTemplate = "{\n";
+                    offerData.data.forEach((o, i) => {
+                        let comma = i < offerData.data.length - 1 ? "," : "";
+                        jsonTemplate += `  "${o.name}": ""${comma}\n`;
+                    });
+                    jsonTemplate += "}";
+                    helperText.value = jsonTemplate;
+                }
+
+                // ===============================================
+                // LOGIC LỌC TRÙNG & GỘP SIÊU MẠNH (V7 FIXED)
+                // ===============================================
+                let uniqueOffers = {}; 
+
+                offerData.data.forEach(offer => {
+                    const link = getMyLink(offer.name, myLinks);
+                    // Lấy "ID thương hiệu" chuẩn hóa (vd: CayVang VN -> cayvang)
+                    let brandKey = normalizeBrandName(offer.name);
+                    
+                    // Nếu chưa có trong danh sách -> Thêm vào
+                    if (!uniqueOffers[brandKey]) {
+                        uniqueOffers[brandKey] = { ...offer, finalLink: link };
+                    } else {
+                        // Nếu đã có rồi, nhưng cái cũ KHÔNG có link, mà cái mới CÓ link
+                        // -> Thì lấy cái mới đè lên cái cũ (Ưu tiên cái có link)
+                        if (!uniqueOffers[brandKey].finalLink && link) {
+                            uniqueOffers[brandKey] = { ...offer, finalLink: link };
+                        }
+                    }
                 });
 
-                processedOffers.sort((a, b) => b.hasLink - a.hasLink);
+                // Chuyển object thành mảng để hiển thị
+                let finalOffersList = Object.values(uniqueOffers);
 
-                processedOffers.forEach(offer => {
-                    let btnClass, btnText, btnHref, badgeHtml, opacityStyle;
+                // Sắp xếp: Có link lên đầu
+                finalOffersList.sort((a, b) => (b.finalLink ? 1 : 0) - (a.finalLink ? 1 : 0));
 
-                    if (offer.hasLink) {
+                finalOffersList.forEach(offer => {
+                    // Logic hiển thị:
+                    // 1. Có Link -> Hiện nút Vàng (Đề xuất)
+                    // 2. Không Link -> Hiện nút Xám (Bảo trì)
+                    
+                    let btnClass, btnText, btnHref, badgeHtml, boxClass;
+                    let hasLink = !!offer.finalLink;
+
+                    if (hasLink) {
                         btnClass = "btn-loan-action btn-active";
                         btnText = 'ĐĂNG KÝ NGAY <i class="fa-solid fa-angle-right"></i>';
                         btnHref = offer.finalLink;
                         badgeHtml = `<div class="top-badge">Đề xuất</div>`;
-                        opacityStyle = "";
+                        boxClass = "loan-box"; 
                     } else {
                         btnClass = "btn-loan-action btn-disabled";
                         btnText = 'ĐANG BẢO TRÌ <i class="fa-solid fa-wrench"></i>';
                         btnHref = "javascript:void(0)";
                         badgeHtml = `<div class="top-badge" style="background:#ccc; color:#666">Tạm dừng</div>`;
-                        opacityStyle = "opacity: 0.6; filter: grayscale(100%);";
+                        boxClass = "loan-box card-disabled";
                     }
 
                     const cardHTML = `
-                        <div class="loan-box" style="${opacityStyle}">
+                        <div class="${boxClass}">
                             ${badgeHtml}
                             <div class="box-header">
                                 <img src="${offer.avatar}" class="partner-logo" alt="${offer.name}" onerror="this.src='images/catcredit-logo.png'">
                             </div>
-                            
                             <div class="box-body">
                                 <div style="text-align:center; font-weight:700; margin-bottom:10px; font-size:16px;">${offer.name}</div>
                                 <div class="info-grid">
@@ -201,24 +252,23 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="box-footer">
-                                <a href="${btnHref}" target="${offer.hasLink ? '_blank' : '_self'}" class="${btnClass}">
-                                    ${btnText}
-                                </a>
+                                <a href="${btnHref}" target="${hasLink ? '_blank' : '_self'}" class="${btnClass}">${btnText}</a>
                             </div>
                         </div>
                     `;
                     container.innerHTML += cardHTML;
                 });
+
             } else {
-                container.innerHTML = '<p style="text-align:center; width:100%">Không tải được danh sách offer.</p>';
+                container.innerHTML = '<p style="text-align:center; width:100%">Chưa có dữ liệu.</p>';
             }
         } catch (error) {
             console.error(error);
-            container.innerHTML = '<p style="text-align:center; color:red; width:100%">Lỗi kết nối. Hãy kiểm tra lại API hoặc chạy trên Hosting.</p>';
+            container.innerHTML = '<p style="text-align:center; color:red; width:100%">Lỗi kết nối.</p>';
         }
     }
+    
     document.addEventListener('DOMContentLoaded', fetchOffers);
 </script>
 
