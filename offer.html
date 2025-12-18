@@ -22,13 +22,11 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-light); color: var(--text-dark); -webkit-font-smoothing: antialiased; }
 
-        /* HEADER */
         .site-header { background: var(--white); padding: 15px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
         .header-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; }
         .logo img { height: 35px; width: auto; }
         .nav-link { text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 14px; display: flex; align-items: center; gap: 5px; }
 
-        /* MAIN CONTENT */
         .main-container { max-width: 1200px; margin: 30px auto; padding: 0 15px; }
         
         .section-title { 
@@ -37,20 +35,13 @@
         }
         .section-title::before { content: ''; display: block; width: 4px; height: 24px; background: var(--primary); border-radius: 2px; }
 
-        /* GRID SYSTEM */
-        .offers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
+        .offers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 
-        /* CARD DESIGN */
         .offer-card {
             background: var(--white); border-radius: var(--radius);
             box-shadow: 0 2px 5px rgba(0,0,0,0.02); border: 1px solid #e5e7eb;
             overflow: hidden; transition: all 0.3s ease;
-            display: flex; flex-direction: column;
-            position: relative;
+            display: flex; flex-direction: column; position: relative;
         }
         .offer-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--primary); }
 
@@ -87,15 +78,15 @@
         #helper-box { background: #111827; color: #10b981; padding: 20px; border-radius: 8px; margin-bottom: 30px; display: none; font-family: monospace; }
         #helper-textarea { width: 100%; height: 150px; background: #000; color: #fff; border: 1px solid #374151; padding: 10px; margin-top: 10px; border-radius: 4px; }
         
-        /* FOOTER */
         .site-footer { background: var(--white); padding: 30px 0; margin-top: 50px; border-top: 1px solid #e5e7eb; text-align: center; }
         .footer-text { color: var(--text-gray); font-size: 13px; }
         .ip-address { font-size: 11px; color: #9ca3af; margin-top: 8px; font-family: monospace; }
+        .reset-btn { margin-top: 10px; font-size: 11px; color: #ef4444; cursor: pointer; text-decoration: underline; background: none; border: none; }
 
-        /* NÚT RESET (Dành cho đại ca test) */
-        .reset-btn {
-            margin-top: 10px; font-size: 11px; color: #ef4444; cursor: pointer; text-decoration: underline;
-            background: none; border: none;
+        /* NÚT BÁO CHẾ ĐỘ TEST */
+        .test-mode-alert {
+            background: #fee2e2; color: #b91c1c; padding: 10px; text-align: center; font-weight: bold; font-size: 13px;
+            border-bottom: 1px solid #fecaca;
         }
 
         @media (max-width: 600px) {
@@ -115,6 +106,10 @@
     </style>
 </head>
 <body>
+
+    <div id="test-alert" class="test-mode-alert" style="display:none;">
+        ⚠️ ĐANG CHẠY CHẾ ĐỘ TEST - BẤM THOẢI MÁI KHÔNG BỊ MẤT OFFER
+    </div>
 
     <header class="site-header">
         <div class="header-container">
@@ -146,13 +141,23 @@
         <p class="footer-text">© 2024 CatCredit.vn - Giải pháp tài chính thông minh</p>
         <p style="font-size: 11px; margin-top:5px;"><a href="admin-tool.html" style="color:#e5e7eb; text-decoration:none">Admin</a></p>
         <div id="user-ip" class="ip-address">Checking IP...</div>
-        
-        <button class="reset-btn" onclick="resetHistory()">[Xóa lịch sử đã vay để test]</button>
+        <button class="reset-btn" onclick="resetHistory()">[Xóa lịch sử đã vay]</button>
     </footer>
 
     <script>
+        // ============================================================
+        // CẤU HÌNH CHO ĐẠI CA (CHỈNH Ở ĐÂY)
+        // ============================================================
         const PUB_ID = "28janns";
         const TOKEN = "hpoRHLinw3JgcQaV6g6SaQ=="; 
+        
+        // --- CÔNG TẮC CHẾ ĐỘ TEST ---
+        // true = BẬT test (Bấm không bị mất, dùng để test link)
+        // false = TẮT test (Bấm là mất, dùng khi chạy quảng cáo thật)
+        const CHE_DO_TEST = true; 
+        // ============================================================
+
+
         const API_URL = `https://publisher-api.riofintech.net/offer/all?pub_id=${PUB_ID}&token=${encodeURIComponent(TOKEN)}`;
 
         async function checkUserIP() {
@@ -164,23 +169,25 @@
             } catch (e) { ipEl.innerText = ''; }
         }
 
-        // --- HÀM 1: LƯU VẾT KHÁCH HÀNG (QUAN TRỌNG) ---
+        // --- HÀM 1: LƯU VẾT (ĐÃ SỬA ĐỂ CHECK CHẾ ĐỘ TEST) ---
         function trackClick(brandKey) {
-            // Lấy danh sách đã lưu, nếu chưa có thì tạo mảng rỗng
+            // Nếu đang bật chế độ Test thì KHÔNG LƯU gì cả -> KHÔNG MẤT
+            if (CHE_DO_TEST) {
+                console.log("Đang ở chế độ Test: Không lưu lịch sử.");
+                return true;
+            }
+
+            // Nếu chạy thật thì lưu lại để ẩn đi
             let clickedOffers = JSON.parse(localStorage.getItem('catcredit_clicked') || '[]');
-            
-            // Nếu chưa có trong danh sách thì thêm vào
             if (!clickedOffers.includes(brandKey)) {
                 clickedOffers.push(brandKey);
                 localStorage.setItem('catcredit_clicked', JSON.stringify(clickedOffers));
             }
-            // Không chặn hành động mở link, chỉ lưu lại rồi để trình duyệt mở tab mới
             return true; 
         }
 
-        // --- HÀM 2: XÓA LỊCH SỬ (CHO ĐẠI CA TEST) ---
         function resetHistory() {
-            if(confirm('Bạn có chắc muốn xóa lịch sử để hiện lại tất cả gói vay?')) {
+            if(confirm('Xóa lịch sử?')) {
                 localStorage.removeItem('catcredit_clicked');
                 location.reload();
             }
@@ -229,6 +236,10 @@
 
         async function init() {
             checkUserIP();
+            
+            // Hiện thông báo nếu đang test
+            if (CHE_DO_TEST) document.getElementById('test-alert').style.display = 'block';
+
             const grid = document.getElementById('offers-grid');
             const helper = document.getElementById('helper-box');
             
@@ -254,15 +265,14 @@
                     document.getElementById('helper-textarea').value = txt;
                 }
 
-                // --- LẤY DANH SÁCH ĐÃ BẤM TỪ BỘ NHỚ ---
                 let clickedOffers = JSON.parse(localStorage.getItem('catcredit_clicked') || '[]');
 
                 let uniqueMap = {};
                 apiData.data.forEach(item => {
                     let brand = getBrandKey(item.name);
                     
-                    // NẾU ĐÃ BẤM RỒI -> BỎ QUA LUÔN (KHÔNG HIỆN NỮA)
-                    if (clickedOffers.includes(brand)) return; 
+                    // CHỈ ẨN KHI KHÔNG PHẢI CHẾ ĐỘ TEST
+                    if (!CHE_DO_TEST && clickedOffers.includes(brand)) return; 
 
                     let link = getMyLink(item.name, myLinks);
                     let clean = getCleanName(item.name);
@@ -290,7 +300,6 @@
                     let href = active ? o.link : "javascript:void(0)";
                     let target = active ? "_blank" : "_self";
                     
-                    // THÊM SỰ KIỆN ONCLICK ĐỂ LƯU VẾT
                     let onclickEvent = active ? `onclick="trackClick('${o.brandKey}')"` : "";
 
                     return `
