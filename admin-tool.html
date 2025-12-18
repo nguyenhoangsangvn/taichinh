@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Công cụ lấy Tên Offer</title>
+    <style>
+        body { font-family: monospace; background: #222; color: #fff; padding: 20px; }
+        textarea { width: 100%; height: 400px; background: #111; color: #0f0; padding: 10px; border: 1px solid #444; }
+        button { padding: 10px 20px; background: #fec629; border: none; font-weight: bold; cursor: pointer; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Công cụ tạo file links.json</h1>
+    <p>Bấm nút bên dưới để lấy danh sách tên Offer từ API:</p>
+    <button onclick="getNames()">LẤY DỮ LIỆU NGAY</button>
+    <br><br>
+    <textarea id="resultArea" placeholder="Kết quả sẽ hiện ở đây..."></textarea>
+
+    <script>
+        const PUB_ID = "28janns";
+        const TOKEN = "hpoRHLinw3JgcQaV6g6SaQ=="; 
+        const API_URL = `https://publisher-api.riofintech.net/offer/all?pub_id=${PUB_ID}&token=${encodeURIComponent(TOKEN)}`;
+
+        async function getNames() {
+            try {
+                const res = await fetch(API_URL);
+                const json = await res.json();
+                
+                let output = "{\n";
+                json.data.forEach((o, i) => {
+                    let comma = i < json.data.length - 1 ? "," : "";
+                    output += `  "${o.name}": ""${comma}\n`;
+                });
+                output += "}";
+
+                document.getElementById('resultArea').value = output;
+                alert("Đã lấy xong! Copy nội dung bên dưới dán vào file links.json");
+            } catch (e) {
+                alert("Lỗi gọi API: " + e.message);
+            }
+        }
+    </script>
+</body>
+</html>
