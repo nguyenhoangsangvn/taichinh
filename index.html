@@ -7,156 +7,117 @@
     <title>Vay Tiền Nhanh Trong Ngày 24h - Duyệt Tự Động | VayNhanh24h</title>
     <meta name="robots" content="index, follow">
     <meta name="description" content="VayNhanh24h - Nền tảng vay tiền online cấp tốc, chuyển khoản sau 15 phút. Chỉ cần CCCD, không thẩm định, lãi suất 0% lần đầu.">
+    <meta name="keywords" content="vay tiền nhanh, vay online, vay cấp tốc, vay tiền nóng, vay cmnd, vaynhanh24h">
     <link rel="canonical" href="https://vaynhanh24h.vn/">
-    
+    <meta name="author" content="VayNhanh24h">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="VayNhanh24h - Vay Tiền Online Cấp Tốc">
+    <meta property="og:image" content="images/vaynhanh24h-banner.jpg">
+    <meta property="og:url" content="https://vaynhanh24h.vn/">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "VayNhanh24h",
+      "priceRange": "500000VND-20000000VND",
+      "address": { "@type": "PostalAddress", "addressCountry": "VN" }
+    }
+    </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* === SYSTEM DESIGN (HỆ THỐNG THIẾT KẾ) === */
         :root {
-            --primary: #fec629;       /* Vàng thương hiệu */
-            --primary-dark: #e5b225;
-            --text-main: #111827;     /* Đen đậm */
-            --text-sub: #6b7280;      /* Xám nhạt */
-            --bg-body: #f8fafc;       /* Nền web hơi xám xanh nhẹ */
-            --white: #ffffff;
-            --radius-md: 12px;
-            --radius-lg: 20px;
+            --primary: #fec629; --primary-dark: #e5b225;
+            --text-main: #111827; --text-sub: #6b7280;
+            --bg-body: #f8fafc; --white: #ffffff;
+            --radius-md: 12px; --radius-lg: 20px;
             --shadow-card: 0 10px 40px -10px rgba(0,0,0,0.08);
             --shadow-hover: 0 20px 40px -10px rgba(0,0,0,0.15);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
         html { scroll-behavior: smooth; font-size: 16px; }
         body { font-family: 'Manrope', sans-serif; background: var(--bg-body); color: var(--text-main); line-height: 1.6; }
         a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-        img { max-width: 100%; display: block; }
-
+        ul { list-style: none; } img { max-width: 100%; display: block; }
         .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
 
-        /* === HEADER === */
-        .header { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); height: 70px; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; }
+        /* HEADER */
+        .header { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); height: 75px; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; }
         .header-wrap { display: flex; justify-content: space-between; align-items: center; width: 100%; }
         
-        .logo { font-weight: 800; font-size: 24px; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
-        .logo span { color: #d97706; }
-        .logo img { height: 35px; }
+        /* LOGO SVG STYLE */
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-text { line-height: 1.1; display: flex; flex-direction: column; }
+        .logo-main { font-weight: 800; font-size: 20px; color: var(--text-main); letter-spacing: -0.5px; }
+        .logo-sub { font-size: 10px; color: var(--text-sub); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
 
         .nav-menu { display: flex; gap: 30px; }
         .nav-menu a { font-weight: 600; color: var(--text-sub); transition: 0.3s; font-size: 15px; }
         .nav-menu a:hover { color: var(--text-main); }
-
-        .btn-cta { 
-            background: var(--primary); color: #000; font-weight: 700; 
-            padding: 10px 24px; border-radius: 50px; transition: 0.3s; 
-            box-shadow: 0 4px 15px rgba(254, 198, 41, 0.4);
-        }
+        .btn-cta { background: var(--primary); color: #000; font-weight: 700; padding: 10px 24px; border-radius: 50px; transition: 0.3s; box-shadow: 0 4px 15px rgba(254, 198, 41, 0.4); }
         .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(254, 198, 41, 0.5); }
 
-        /* === HERO SECTION (PHẦN TÍNH TIỀN) === */
+        /* HERO SECTION */
         .hero { padding: 60px 0 80px; position: relative; overflow: hidden; background: linear-gradient(180deg, #fff 0%, #f1f5f9 100%); }
         .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-
-        /* Text bên trái */
         .hero-content h1 { font-size: 48px; line-height: 1.15; font-weight: 800; margin-bottom: 20px; letter-spacing: -1px; }
         .hero-content h1 .mark { color: #d97706; position: relative; display: inline-block; }
         .hero-content h1 .mark::after { content: ''; position: absolute; bottom: 5px; left: 0; width: 100%; height: 12px; background: rgba(254, 198, 41, 0.3); z-index: -1; border-radius: 4px; }
         .hero-content p { font-size: 18px; color: var(--text-sub); margin-bottom: 30px; }
 
-        /* LIST CAM KẾT (TICK XANH) - STYLE MỚI */
+        /* LIST TICK XANH */
         .trust-list li { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-weight: 600; font-size: 16px; }
-        .trust-list li i { 
-            width: 24px; height: 24px; background: #dcfce7; color: #16a34a; 
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;
-        }
+        .trust-list li i { width: 24px; height: 24px; background: #dcfce7; color: #16a34a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; }
 
-        /* Widget Tính Tiền bên phải */
-        .loan-widget { 
-            background: var(--white); padding: 40px; border-radius: 30px; 
-            box-shadow: var(--shadow-card); border: 1px solid #fff;
-            position: relative; z-index: 2;
-        }
+        /* LOAN WIDGET */
+        .loan-widget { background: var(--white); padding: 40px; border-radius: 30px; box-shadow: var(--shadow-card); border: 1px solid #fff; position: relative; z-index: 2; }
         .loan-label { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-sub); font-weight: 700; text-align: center; margin-bottom: 10px; }
-        
         .amount-box { text-align: center; margin-bottom: 30px; }
         .amount-value { font-size: 48px; font-weight: 800; color: var(--text-main); line-height: 1; }
         .amount-unit { font-size: 20px; color: var(--text-sub); font-weight: 600; vertical-align: top; }
-
-        /* Custom Slider */
+        
         .range-wrapper { position: relative; padding: 10px 0; margin-bottom: 40px; }
-        input[type=range] {
-            -webkit-appearance: none; width: 100%; height: 12px; border-radius: 10px;
-            background: #e2e8f0; outline: none; cursor: pointer;
-        }
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none; width: 32px; height: 32px; border-radius: 50%;
-            background: var(--primary); border: 4px solid #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: 0.2s;
-        }
+        input[type=range] { -webkit-appearance: none; width: 100%; height: 12px; border-radius: 10px; background: #e2e8f0; outline: none; cursor: pointer; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 32px; height: 32px; border-radius: 50%; background: var(--primary); border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: 0.2s; }
         input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.1); }
         .range-minmax { display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; color: var(--text-sub); margin-top: 10px; }
 
-        .info-card { 
-            background: #f8fafc; border-radius: 16px; padding: 20px; 
-            display: flex; justify-content: space-between; margin-bottom: 25px;
-            border: 1px dashed #cbd5e1;
-        }
+        .info-card { background: #f8fafc; border-radius: 16px; padding: 20px; display: flex; justify-content: space-between; margin-bottom: 25px; border: 1px dashed #cbd5e1; }
         .info-col span { display: block; font-size: 13px; color: var(--text-sub); margin-bottom: 4px; }
         .info-col strong { display: block; font-size: 16px; color: var(--text-main); }
 
-        .btn-loan { 
-            display: flex; align-items: center; justify-content: center; width: 100%; 
-            padding: 18px; background: var(--primary); color: #000; 
-            font-size: 18px; font-weight: 800; border-radius: 16px; 
-            transition: 0.3s; text-transform: uppercase; letter-spacing: 0.5px;
-            box-shadow: 0 10px 25px -5px rgba(254, 198, 41, 0.5);
-        }
+        .btn-loan { display: flex; align-items: center; justify-content: center; width: 100%; padding: 18px; background: var(--primary); color: #000; font-size: 18px; font-weight: 800; border-radius: 16px; transition: 0.3s; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 10px 25px -5px rgba(254, 198, 41, 0.5); }
         .btn-loan:hover { background: var(--primary-dark); transform: translateY(-4px); }
 
-        /* === FEATURES GRID (LỢI ÍCH) === */
+        /* SECTIONS */
         .section { padding: 80px 0; }
         .sec-header { text-align: center; max-width: 700px; margin: 0 auto 60px; }
         .sec-title { font-size: 36px; font-weight: 800; margin-bottom: 15px; color: var(--text-main); }
         .sec-desc { color: var(--text-sub); font-size: 18px; }
-
         .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
-        
-        .feature-box { 
-            background: var(--white); padding: 30px; border-radius: var(--radius-lg); 
-            text-align: center; transition: 0.3s; border: 1px solid #f1f5f9;
-        }
+        .feature-box { background: var(--white); padding: 30px; border-radius: var(--radius-lg); text-align: center; transition: 0.3s; border: 1px solid #f1f5f9; }
         .feature-box:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); border-color: var(--primary); }
-        
-        .icon-circle { 
-            width: 80px; height: 80px; background: #fffbeb; border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; 
-            font-size: 32px; color: #d97706; margin: 0 auto 20px;
-        }
+        .icon-circle { width: 80px; height: 80px; background: #fffbeb; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; color: #d97706; margin: 0 auto 20px; }
         .feature-box h3 { font-size: 18px; margin-bottom: 10px; font-weight: 700; }
         .feature-box p { font-size: 14px; color: var(--text-sub); }
 
-        /* === STEPS (QUY TRÌNH) === */
+        /* STEPS */
         .step-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         .step-img img { border-radius: 30px; box-shadow: var(--shadow-card); }
-        
-        .step-row { display: flex; gap: 20px; margin-bottom: 40px; position: relative; }
-        .step-row:last-child { margin-bottom: 0; }
-        .step-idx { 
-            width: 50px; height: 50px; background: var(--primary); border-radius: 12px; 
-            display: flex; align-items: center; justify-content: center; 
-            font-weight: 800; font-size: 20px; flex-shrink: 0;
-        }
+        .step-row { display: flex; gap: 20px; margin-bottom: 40px; }
+        .step-idx { width: 50px; height: 50px; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 20px; flex-shrink: 0; }
         .step-info h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
         .step-info p { color: var(--text-sub); }
 
-        /* === FOOTER === */
+        /* FOOTER */
         .footer { background: var(--white); border-top: 1px solid #e2e8f0; padding: 60px 0 30px; text-align: center; margin-top: 60px; }
         .footer p { color: var(--text-sub); margin-bottom: 10px; font-size: 14px; }
         .footer a { color: #94a3b8; font-size: 12px; }
 
-        /* === MOBILE RESPONSIVE === */
         @media (max-width: 991px) {
             .hero-grid, .step-wrap { grid-template-columns: 1fr; text-align: center; gap: 40px; }
             .grid-4 { grid-template-columns: 1fr 1fr; }
@@ -164,14 +125,9 @@
             .step-row { text-align: left; }
             .nav-menu { display: none; }
             .hero { padding-top: 40px; }
-            .hero-content h1 { font-size: 36px; }
-            .step-img { display: none; } /* Ẩn ảnh quy trình trên mobile cho gọn */
+            .step-img { display: none; }
         }
-        @media (max-width: 500px) {
-            .grid-4 { grid-template-columns: 1fr; }
-            .amount-value { font-size: 40px; }
-            .loan-widget { padding: 25px; }
-        }
+        @media (max-width: 500px) { .grid-4 { grid-template-columns: 1fr; } .amount-value { font-size: 40px; } .loan-widget { padding: 25px; } }
     </style>
 </head>
 <body>
@@ -179,7 +135,14 @@
     <header class="header">
         <div class="container header-wrap">
             <a href="index.html" class="logo">
-                <img src="images/catcredit-logo.png" alt="VayNhanh24h" onerror="this.style.display='none';this.parentElement.innerText='VAYNHANH24H'">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="12" fill="#FEC629"/>
+                    <path d="M22 8L12 22H20L18 32L28 18H20L22 8Z" fill="white" stroke="#111827" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+                <div class="logo-text">
+                    <span class="logo-main">VAYNHANH<span style="color:#d97706">24H</span></span>
+                    <span class="logo-sub">Online 24/7</span>
+                </div>
             </a>
             <nav class="nav-menu">
                 <a href="#loi-ich">Lợi ích</a>
@@ -273,11 +236,10 @@
     <section class="section" id="quy-trinh" style="background: #fff;">
         <div class="container step-wrap">
             <div class="step-img">
-                <img src="images/quy-trinh-vay.svg" alt="Quy trình vay" onerror="this.src='https://via.placeholder.com/500x500?text=IMAGE+HERE'">
+                <img src="images/quy-trinh-vay.svg" alt="Quy trình vay" onerror="this.src='https://via.placeholder.com/500x500?text=Quy+Trinh+Vay'">
             </div>
             <div class="step-content">
                 <h2 class="sec-title" style="text-align: left; margin-bottom: 40px;">Quy Trình Vay Đơn Giản</h2>
-                
                 <div class="step-row">
                     <div class="step-idx">1</div>
                     <div class="step-info">
@@ -306,7 +268,14 @@
 
     <footer class="footer">
         <div class="container">
-            <img src="images/catcredit-logo.png" alt="VayNhanh24h" style="height:40px; margin:0 auto 20px; filter:grayscale(100%); opacity:0.6" onerror="this.style.display='none'">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px;">
+                <svg width="35" height="35" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="12" fill="#FEC629"/>
+                    <path d="M22 8L12 22H20L18 32L28 18H20L22 8Z" fill="white" stroke="#111827" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+                <span style="font-weight: 800; font-size: 20px; color: #111827;">VAYNHANH<span style="color:#d97706">24H</span></span>
+            </div>
+
             <p><strong>VayNhanh24h.vn</strong> - Giải pháp tài chính cá nhân thông minh.</p>
             <p>Địa chỉ: Tòa nhà Bitexco, Quận 1, TP.HCM | Email: hotro@vaynhanh24h.vn</p>
             <p style="font-size:12px; margin-top:20px; opacity: 0.8">Lưu ý: VayNhanh24h không phải là ngân hàng hay công ty tài chính. Chúng tôi là nền tảng công nghệ kết nối người vay và người cho vay.</p>
@@ -316,22 +285,16 @@
     </footer>
 
     <script>
-        // Xử lý thanh kéo tiền
         const slider = document.getElementById('loan-slider');
         const output = document.getElementById('amount-text');
 
-        function formatMoney(n) {
-            return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        }
+        function formatMoney(n) { return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
 
         slider.oninput = function() {
             output.innerHTML = formatMoney(this.value);
-            // Hiệu ứng thanh màu vàng chạy theo
             let value = (this.value - this.min) / (this.max - this.min) * 100;
             this.style.background = `linear-gradient(to right, #fec629 0%, #fec629 ${value}%, #e2e8f0 ${value}%, #e2e8f0 100%)`;
         }
-
-        // Kích hoạt màu thanh kéo ngay khi load
         slider.oninput();
     </script>
 
