@@ -2,12 +2,9 @@
 <html lang="vi" class="loading-site no-js">
 <head>
 	<meta charset="UTF-8">
-	<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Danh sách khoản vay - CatCredit</title>
-	<meta name="robots" content="noindex, nofollow">
-
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" id="flatsome-main-css" href="css/flatsome.css" type="text/css" media="all">
 	<link rel="stylesheet" id="flatsome-style-css" href="css/style.css" type="text/css" media="all">
     <link rel="icon" href="images/cropped-catcredit-icon-32x32.png" sizes="32x32">
@@ -15,69 +12,41 @@
 
     <style>
         body { font-family: 'Roboto', sans-serif; background-color: #f5f7fa; color: #333; }
-        
         .page-header-simple { background: #fff; padding: 30px 0; border-bottom: 1px solid #eaeaea; text-align: center; margin-bottom: 30px; }
         .page-header-simple h1 { font-size: 24px; font-weight: 800; color: #333; margin: 0; }
-
+        
         .offers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Card to hơn xíu */
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto 50px;
-            padding: 0 15px;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px;
+            max-width: 1200px; margin: 0 auto 50px; padding: 0 15px;
         }
 
-        .loan-box {
-            background: #fff; border-radius: 12px; border: 1px solid #e5e7eb; overflow: hidden; position: relative;
-            transition: all 0.3s ease; display: flex; flex-direction: column;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-        }
+        /* Giao diện Card Vay */
+        .loan-box { background: #fff; border-radius: 12px; border: 1px solid #e5e7eb; overflow: hidden; position: relative; display: flex; flex-direction: column; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: 0.3s; }
         .loan-box:hover { box-shadow: 0 15px 30px rgba(0,0,0,0.08); transform: translateY(-5px); border-color: #fec629; }
-
-        .top-badge {
-            position: absolute; top: 0; right: 0; background: #e8f5e9;
-            color: #27ae60; font-size: 10px; font-weight: 700; padding: 5px 12px; 
-            border-bottom-left-radius: 12px; z-index: 2; text-transform: uppercase;
-        }
-
-        /* Phần Logo */
+        .top-badge { position: absolute; top: 0; right: 0; background: #e8f5e9; color: #27ae60; font-size: 10px; font-weight: 700; padding: 5px 12px; border-bottom-left-radius: 12px; z-index: 2; text-transform: uppercase; }
         .box-header { padding: 20px; text-align: center; border-bottom: 1px dashed #eee; height: 90px; display: flex; align-items: center; justify-content: center; }
         .partner-logo { max-height: 45px; max-width: 70%; object-fit: contain; }
-
-        /* Phần 3 thông số quan trọng */
         .box-body { padding: 15px 20px; flex-grow: 1; }
-        
-        .info-grid {
-            display: flex;
-            justify-content: space-between;
-            text-align: center;
-        }
-        .info-item { width: 33%; border-right: 1px solid #f0f0f0; }
-        .info-item:last-child { border-right: none; }
-        
+        .info-grid { display: flex; justify-content: space-between; text-align: center; }
+        .info-item { width: 33%; border-right: 1px solid #f0f0f0; } .info-item:last-child { border-right: none; }
         .info-label { font-size: 11px; color: #888; display: block; margin-bottom: 4px; }
         .info-value { font-size: 14px; font-weight: 700; color: #111; display: block; }
         .info-value.highlight { color: #d26e4b; font-size: 15px; }
-
-        /* Nút bấm */
         .box-footer { padding: 15px 20px 20px; text-align: center; }
-        .btn-loan-action {
-            display: block; width: 100%; background: #fec629; color: #000; padding: 12px; border-radius: 50px;
-            font-weight: 700; font-size: 14px; text-transform: uppercase; text-decoration: none; transition: 0.2s;
-            box-shadow: 0 4px 10px rgba(254, 198, 41, 0.3);
-        }
-        .btn-loan-action:hover { background: #eeb928; transform: scale(1.02); }
-
+        .btn-loan-action { display: block; width: 100%; padding: 12px; border-radius: 50px; font-weight: 700; font-size: 14px; text-transform: uppercase; text-decoration: none; transition: 0.2s; border: none; cursor: pointer; }
+        .btn-active { background: #fec629; color: #000; box-shadow: 0 4px 10px rgba(254, 198, 41, 0.3); }
+        .btn-active:hover { background: #eeb928; transform: scale(1.02); }
+        .btn-disabled { background: #e5e7eb; color: #9ca3af; cursor: not-allowed; pointer-events: none; }
         .loading-spinner { text-align: center; padding: 50px; grid-column: 1 / -1; }
         .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #fec629; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 10px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        @media(max-width: 600px) {
-            .offers-grid { grid-template-columns: 1fr; }
-            .info-grid { flex-wrap: wrap; }
-            .info-item { width: 33%; margin-bottom: 0; }
+        /* Hộp hỗ trợ lấy tên (Chỉ hiện khi cần) */
+        #helper-box {
+            max-width: 800px; margin: 20px auto; background: #333; color: #fff; padding: 20px; border-radius: 10px; font-family: monospace; display: none;
         }
+        #helper-textarea { width: 100%; height: 200px; background: #222; color: #0f0; border: none; padding: 10px; margin-top: 10px; }
+        @media(max-width: 600px) { .offers-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 
@@ -85,7 +54,7 @@
 
 <div id="wrapper">
 	<header id="header" class="header">
-		<div class="header-wrapper">
+        <div class="header-wrapper">
 			<div id="masthead" class="header-main hide-for-sticky">
 				<div class="header-inner flex-row container logo-left medium-logo-left" role="navigation">
 					<div id="logo" class="flex-col logo">
@@ -110,10 +79,17 @@
             </div>
         </div>
 
+        <div id="helper-box">
+            <h3>⚠️ COPY ĐOẠN DƯỚI ĐÂY VÀO FILE <code>links.json</code></h3>
+            <p>Sau đó điền link Affiliate của đại ca vào giữa hai dấu ngoặc kép ""</p>
+            <textarea id="helper-textarea"></textarea>
+            <button onclick="this.parentElement.style.display='none'" style="margin-top:10px; padding:5px 10px; cursor:pointer;">Đã copy xong, ẩn bảng này đi</button>
+        </div>
+
         <div class="offers-grid" id="api-offers-container">
             <div class="loading-spinner">
                 <div class="spinner"></div>
-                <p>Đang tìm kiếm ưu đãi...</p>
+                <p>Đang tải dữ liệu...</p>
             </div>
         </div>
 	</main>
@@ -124,7 +100,7 @@
 				<div class="row row-small align-middle">
 					<div class="col pb-0 medium-12 small-12 large-12">
 						<div class="col-inner text-center">
-                            <p>Bản quyền © CatCredit.vn (Local Version)</p>
+                            <p>Bản quyền © CatCredit.vn</p>
 						</div>
 					</div>
 				</div>
@@ -142,114 +118,142 @@
     const ENCODED_TOKEN = encodeURIComponent(TOKEN); 
     const API_URL = `https://publisher-api.riofintech.net/offer/all?pub_id=${PUB_ID}&token=${ENCODED_TOKEN}`;
 
-    // --- HÀM THÔNG MINH: Tự điền thông tin nếu API không có ---
+    // Hàm đoán thông tin lãi suất/hạn mức (đại ca có thể sửa ở đây nếu muốn)
     function getSmartDetails(offerName) {
         let name = offerName.toLowerCase();
+        let d = { limit: '1 - 10 Triệu', interest: 'Ưu đãi tốt', term: 'Linh hoạt' };
+
+        if(name.includes('doctor')) d = { limit: '500k - 10 Triệu', interest: '0% lần đầu', term: '10 - 30 ngày' };
+        else if (name.includes('moneycat') || name.includes('tamo')) d = { limit: '1 - 15 Triệu', interest: '0% lãi & phí', term: '7 - 30 ngày' };
+        else if (name.includes('takomo') || name.includes('oncredit')) d = { limit: '500k - 10 Triệu', interest: 'Duyệt nhanh', term: 'Linh hoạt' };
+        else if (name.includes('robocash')) d = { limit: '1 - 10 Triệu', interest: 'Miễn phí 7 ngày', term: '3 - 6 tháng' };
+        else if (name.includes('jeff') || name.includes('crezu')) d = { limit: 'Đến 20 Triệu', interest: 'So sánh vay', term: '3 - 12 tháng' };
+        else if (name.includes('vietmoney') || name.includes('f88')) d = { limit: 'Đến 50 Triệu', interest: 'Cầm đồ', term: 'Đến 12 tháng' };
+        else if (name.includes('mafc') || name.includes('mcredit')) d = { limit: '10 - 70 Triệu', interest: '1.66%/tháng', term: '12 - 36 tháng' };
         
-        // Mặc định (Nếu không nhận diện được tên)
-        let details = {
-            limit: '1 - 10 Triệu',
-            interest: 'Ưu đãi tốt',
-            term: 'Linh hoạt'
-        };
+        return d;
+    }
 
-        // Logic nhận diện (Ní có thể thêm các đối tác khác vào đây)
-        if(name.includes('doctor')) {
-            details = { limit: '500k - 10 Triệu', interest: '0% lần đầu', term: '10 - 30 ngày' };
-        } else if (name.includes('moneycat') || name.includes('tamo') || name.includes('senmo')) {
-            details = { limit: '1 - 15 Triệu', interest: '0% lãi & phí', term: '7 - 30 ngày' };
-        } else if (name.includes('takomo') || name.includes('oncredit')) {
-            details = { limit: '500k - 10 Triệu', interest: 'Duyệt nhanh', term: 'Linh hoạt' };
-        } else if (name.includes('robocash')) {
-            details = { limit: '1 - 10 Triệu', interest: 'Miễn phí 7 ngày', term: '3 - 6 tháng' };
-        } else if (name.includes('jeff') || name.includes('crezu')) {
-            details = { limit: 'Đến 20 Triệu', interest: 'So sánh vay', term: '3 - 12 tháng' };
-        } else if (name.includes('vietmoney') || name.includes('f88')) {
-            details = { limit: 'Đến 50 Triệu', interest: 'Cầm đồ', term: 'Đến 12 tháng' };
-        } else if (name.includes('mafc') || name.includes('mcredit') || name.includes('fe')) {
-            details = { limit: '10 - 70 Triệu', interest: '1.66%/tháng', term: '12 - 36 tháng' };
-        } else if (name.includes('shinhan') || name.includes('vpbank')) {
-             details = { limit: 'Đến 100 Triệu', interest: 'Thấp nhất', term: '1 - 4 năm' };
+    function getMyLink(apiName, localLinks) {
+        if (!localLinks) return null;
+        // Tìm chính xác hoặc gần đúng
+        for (const [key, url] of Object.entries(localLinks)) {
+            if (apiName.toLowerCase().includes(key.toLowerCase()) && url && url.length > 4) {
+                return url;
+            }
         }
-
-        return details;
+        return null;
     }
 
     async function fetchOffers() {
         const container = document.getElementById('api-offers-container');
+        const helperBox = document.getElementById('helper-box');
+        const helperText = document.getElementById('helper-textarea');
+
         try {
-            const response = await fetch(API_URL);
-            if (!response.ok) throw new Error('Err');
-            const result = await response.json();
+            // Lấy dữ liệu API và File Link song song
+            const [offerRes, linksRes] = await Promise.all([
+                fetch(API_URL),
+                fetch('links.json').catch(() => null)
+            ]);
+
+            const offerData = await offerRes.json();
+            let myLinks = {};
+            
+            // Nếu file links.json tồn tại thì lấy dữ liệu, nếu không thì rỗng
+            if (linksRes && linksRes.ok) {
+                myLinks = await linksRes.json();
+            } else {
+                // Nếu chưa có file links.json -> Hiện hộp hỗ trợ Copy
+                helperBox.style.display = 'block';
+            }
+
             container.innerHTML = '';
 
-            if (result.status === 1 && result.data && result.data.length > 0) {
-                result.data.forEach(offer => {
-                    // Lấy link
-                    let trackingLink = offer.tracking_link || offer.domain || '#';
-                    if(trackingLink !== '#' && !trackingLink.startsWith('http')){ trackingLink = 'https://' + trackingLink; }
+            if (offerData.status === 1 && offerData.data && offerData.data.length > 0) {
+                
+                // --- TẠO DỮ LIỆU ĐỂ ĐẠI CA COPY ---
+                let jsonTemplate = "{\n";
+                offerData.data.forEach((o, index) => {
+                    let comma = index < offerData.data.length - 1 ? "," : "";
+                    jsonTemplate += `  "${o.name}": ""${comma}\n`;
+                });
+                jsonTemplate += "}";
+                helperText.value = jsonTemplate;
+                // ------------------------------------
 
-                    // Lấy thông tin thông minh
-                    const smartInfo = getSmartDetails(offer.name);
-                    
-                    // Xử lý loại hình (Product Type)
-                    let pType = offer.product_type || "Vay online";
-                    if(pType === "undefined") pType = "Tài chính";
+                // Xử lý hiển thị
+                let processedOffers = offerData.data.map(offer => {
+                    const myAffiliateLink = getMyLink(offer.name, myLinks);
+                    return {
+                        ...offer,
+                        finalLink: myAffiliateLink,
+                        hasLink: !!myAffiliateLink,
+                        smartInfo: getSmartDetails(offer.name)
+                    };
+                });
+
+                // Sắp xếp: Có link lên đầu
+                processedOffers.sort((a, b) => b.hasLink - a.hasLink);
+
+                processedOffers.forEach(offer => {
+                    let btnClass, btnText, btnHref, badgeHtml, opacityStyle;
+
+                    if (offer.hasLink) {
+                        btnClass = "btn-loan-action btn-active";
+                        btnText = 'ĐĂNG KÝ NGAY <i class="fa-solid fa-angle-right"></i>';
+                        btnHref = offer.finalLink;
+                        badgeHtml = `<div class="top-badge">Đề xuất</div>`;
+                        opacityStyle = "";
+                    } else {
+                        btnClass = "btn-loan-action btn-disabled";
+                        btnText = 'ĐANG BẢO TRÌ <i class="fa-solid fa-wrench"></i>';
+                        btnHref = "javascript:void(0)";
+                        badgeHtml = `<div class="top-badge" style="background:#ccc; color:#666">Tạm dừng</div>`;
+                        opacityStyle = "opacity: 0.6; filter: grayscale(100%);";
+                    }
 
                     const cardHTML = `
-                        <div class="loan-box">
-                            <div class="top-badge">${pType}</div>
+                        <div class="loan-box" style="${opacityStyle}">
+                            ${badgeHtml}
                             <div class="box-header">
                                 <img src="${offer.avatar}" class="partner-logo" alt="${offer.name}" onerror="this.src='images/catcredit-logo.png'">
                             </div>
                             
                             <div class="box-body">
+                                <div style="text-align:center; font-weight:700; margin-bottom:10px; font-size:16px;">${offer.name}</div>
                                 <div class="info-grid">
                                     <div class="info-item">
                                         <span class="info-label">Hạn mức</span>
-                                        <span class="info-value highlight">${smartInfo.limit}</span>
+                                        <span class="info-value highlight">${offer.smartInfo.limit}</span>
                                     </div>
                                     <div class="info-item">
                                         <span class="info-label">Lãi suất</span>
-                                        <span class="info-value">${smartInfo.interest}</span>
+                                        <span class="info-value">${offer.smartInfo.interest}</span>
                                     </div>
                                     <div class="info-item">
                                         <span class="info-label">Thời hạn</span>
-                                        <span class="info-value">${smartInfo.term}</span>
+                                        <span class="info-value">${offer.smartInfo.term}</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="box-footer">
-                                <a href="${trackingLink}" target="_blank" class="btn-loan-action">
-                                    Đăng ký ngay <i class="fa-solid fa-angle-right"></i>
+                                <a href="${btnHref}" target="${offer.hasLink ? '_blank' : '_self'}" class="${btnClass}">
+                                    ${btnText}
                                 </a>
                             </div>
                         </div>
                     `;
                     container.innerHTML += cardHTML;
                 });
+
             } else {
-                container.innerHTML = '<p style="text-align:center; width:100%">Chưa có ưu đãi nào.</p>';
+                container.innerHTML = '<p style="text-align:center; width:100%">Không tải được danh sách offer.</p>';
             }
         } catch (error) {
             console.error(error);
-            container.innerHTML = '<p style="text-align:center; color:red; width:100%">Lỗi tải dữ liệu. Vui lòng thử lại sau.</p>';
-            // Fallback data demo nếu lỗi
-            const demoInfo = getSmartDetails("DoctorDong");
-             container.innerHTML += `
-                <div class="loan-box">
-                    <div class="top-badge">Demo</div>
-                    <div class="box-header"><img src="images/catcredit-logo.png" class="partner-logo"></div>
-                    <div class="box-body">
-                        <div class="info-grid">
-                            <div class="info-item"><span class="info-label">Hạn mức</span><span class="info-value highlight">${demoInfo.limit}</span></div>
-                            <div class="info-item"><span class="info-label">Lãi suất</span><span class="info-value">${demoInfo.interest}</span></div>
-                            <div class="info-item"><span class="info-label">Thời hạn</span><span class="info-value">${demoInfo.term}</span></div>
-                        </div>
-                    </div>
-                    <div class="box-footer"><a href="#" class="btn-loan-action">Đăng ký ngay</a></div>
-                </div>`;
+            container.innerHTML = '<p style="text-align:center; color:red; width:100%">Lỗi kết nối. Hãy kiểm tra lại API hoặc chạy trên Hosting.</p>';
         }
     }
     document.addEventListener('DOMContentLoaded', fetchOffers);
