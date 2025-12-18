@@ -78,7 +78,7 @@
 
         <div id="helper-box">
             <h3>⚠️ CHƯA CÓ FILE LINKS.JSON</h3>
-            <p>Copy nội dung dưới đây vào file <code>links.json</code> để sử dụng.</p>
+            <p>Copy nội dung dưới đây vào file <code>links.json</code></p>
             <textarea id="helper-textarea"></textarea>
         </div>
 
@@ -116,7 +116,7 @@
     const ENCODED_TOKEN = encodeURIComponent(TOKEN); 
     const API_URL = `https://publisher-api.riofintech.net/offer/all?pub_id=${PUB_ID}&token=${ENCODED_TOKEN}`;
 
-    // Hàm đoán thông tin
+    // --- HÀM 1: ĐOÁN THÔNG TIN (Hạn mức, Lãi suất) ---
     function getSmartDetails(offerName) {
         let name = offerName.toLowerCase();
         let d = { limit: '1 - 10 Triệu', interest: 'Ưu đãi tốt', term: 'Linh hoạt' };
@@ -126,32 +126,59 @@
         else if (name.includes('robocash')) d = { limit: '1 - 10 Triệu', interest: 'Miễn phí 7 ngày', term: '3 - 6 tháng' };
         else if (name.includes('jeff') || name.includes('crezu')) d = { limit: 'Đến 20 Triệu', interest: 'So sánh vay', term: '3 - 12 tháng' };
         else if (name.includes('vietmoney') || name.includes('f88')) d = { limit: 'Đến 50 Triệu', interest: 'Cầm đồ', term: 'Đến 12 tháng' };
+        else if (name.includes('cayvang')) d = { limit: '1 - 10 Triệu', interest: 'Duyệt nhanh', term: 'Linh hoạt' };
         return d;
     }
 
-    // Hàm lấy link
+    // --- HÀM 2: LÀM SẠCH TÊN HIỂN THỊ (QUAN TRỌNG NHẤT) ---
+    // Hàm này sẽ đổi tên xấu xí từ API thành tên đẹp ngắn gọn
+    function getCleanDisplayName(apiName) {
+        let name = apiName.toLowerCase();
+        
+        // Danh sách tên đẹp (Mapping cứng)
+        if (name.includes('cayvang')) return 'Cây Vàng';
+        if (name.includes('doctor')) return 'DoctorDong';
+        if (name.includes('moneycat')) return 'MoneyCat';
+        if (name.includes('tamo')) return 'Tamo';
+        if (name.includes('senmo')) return 'Senmo';
+        if (name.includes('oncredit')) return 'OnCredit';
+        if (name.includes('robocash')) return 'Robocash';
+        if (name.includes('takomo')) return 'Takomo';
+        if (name.includes('vayvnd')) return 'VayVND';
+        if (name.includes('jeff')) return 'Jeff App';
+        if (name.includes('crezu')) return 'Crezu';
+        if (name.includes('dong247')) return 'Dong247';
+        if (name.includes('atm')) return 'ATM Online';
+        if (name.includes('findo')) return 'Findo';
+        if (name.includes('tieno')) return 'TienOi';
+        if (name.includes('kredivo')) return 'Kredivo';
+        if (name.includes('f88')) return 'F88';
+        if (name.includes('vietmoney')) return 'VietMoney';
+        if (name.includes('mafc')) return 'Mirae Asset';
+        if (name.includes('mcredit')) return 'MCredit';
+        if (name.includes('fe credit')) return 'FE Credit';
+        if (name.includes('shinhan')) return 'Shinhan Finance';
+        if (name.includes('vpbank')) return 'VPBank';
+        if (name.includes('tpbank')) return 'TPBank';
+
+        // Nếu không nằm trong danh sách trên thì cắt bỏ mấy từ rác
+        return apiName.replace(/\(.*\)/g, '') // Bỏ cái gì trong ngoặc ()
+                      .replace(/(VN|CP|CPL|CPS|CPI|Android|iOS|Web|App|APK)/gi, '')
+                      .trim();
+    }
+
     function getMyLink(apiName, localLinks) {
         if (!localLinks) return null;
         for (const [key, url] of Object.entries(localLinks)) {
-            if (apiName.toLowerCase().includes(key.toLowerCase()) && url && url.length > 5) {
+            if (url && url.trim().length > 5 && apiName.toLowerCase().includes(key.toLowerCase())) {
                 return url;
             }
         }
         return null;
     }
 
-    // Hàm chuẩn hóa ID để gộp trùng (Lấy chữ đầu)
     function getBrandKey(name) {
         return name.toLowerCase().trim().split(/[\s\-\.\(\)]+/)[0];
-    }
-
-    // --- HÀM TẨY TRANG (LÀM SẠCH TÊN HIỂN THỊ) ---
-    function cleanName(rawName) {
-        return rawName
-            .replace(/\s*\(?(CPL|CPS|CP|CPA|CPI)\)?/gi, '') // Xóa mấy cái CPL, CPS...
-            .replace(/\s+(Android|iOS|Web|APK)/gi, '')      // Xóa tên nền tảng
-            .replace('VN', '')                               // Xóa chữ VN nếu muốn
-            .trim();                                         // Cắt khoảng trắng thừa
     }
 
     async function fetchOffers() {
@@ -167,6 +194,7 @@
 
             const offerData = await offerRes.json();
             let myLinks = {};
+            
             if (linksRes && linksRes.ok) {
                 myLinks = await linksRes.json();
             } else {
@@ -177,7 +205,6 @@
 
             if (offerData.status === 1 && offerData.data && offerData.data.length > 0) {
                 
-                // Code hỗ trợ copy tên (hiện khi chưa có file)
                 if (helperBox.style.display === 'block') {
                     let jsonTemplate = "{\n";
                     offerData.data.forEach((o, i) => {
@@ -188,31 +215,29 @@
                     helperText.value = jsonTemplate;
                 }
 
-                // --- LỌC & GỘP & TẨY TÊN ---
+                // LỌC TRÙNG VÀ XỬ LÝ TÊN HIỂN THỊ
                 let uniqueOffersMap = {}; 
 
                 offerData.data.forEach(offer => {
                     const link = getMyLink(offer.name, myLinks);
                     const brandKey = getBrandKey(offer.name);
                     const hasLink = !!link;
-                    // TẠO TÊN SẠCH SẼ ĐỂ HIỂN THỊ
-                    const displayName = cleanName(offer.name);
+                    // Lấy tên đẹp
+                    const cleanName = getCleanDisplayName(offer.name);
 
-                    // Logic gộp trùng
                     if (!uniqueOffersMap[brandKey]) {
                         uniqueOffersMap[brandKey] = { 
                             ...offer, 
-                            displayName: displayName, // Lưu tên sạch
+                            displayName: cleanName, // Dùng tên đã làm sạch
                             finalLink: link, 
                             hasLink: hasLink,
                             smartInfo: getSmartDetails(offer.name)
                         };
                     } else {
-                        // Nếu cái mới có link, cái cũ không -> Đè lên
                         if (!uniqueOffersMap[brandKey].hasLink && hasLink) {
                             uniqueOffersMap[brandKey] = { 
                                 ...offer, 
-                                displayName: displayName,
+                                displayName: cleanName,
                                 finalLink: link, 
                                 hasLink: hasLink,
                                 smartInfo: getSmartDetails(offer.name)
@@ -241,13 +266,13 @@
                         opacityStyle = "opacity: 0.6; filter: grayscale(100%);";
                     }
 
-                    // DÙNG displayName (Tên đã tẩy) THAY VÌ offer.name (Tên gốc)
                     const cardHTML = `
                         <div class="loan-box" style="${opacityStyle}">
                             ${badgeHtml}
                             <div class="box-header">
                                 <img src="${offer.avatar}" class="partner-logo" alt="${offer.name}" onerror="this.src='images/catcredit-logo.png'">
                             </div>
+                            
                             <div class="box-body">
                                 <div style="text-align:center; font-weight:700; margin-bottom:10px; font-size:16px;">
                                     ${offer.displayName}
@@ -267,6 +292,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="box-footer">
                                 <a href="${btnHref}" target="${offer.hasLink ? '_blank' : '_self'}" class="${btnClass}">
                                     ${btnText}
