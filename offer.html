@@ -40,11 +40,11 @@
         /* GRID SYSTEM */
         .offers-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Card nhỏ gọn hơn */
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
         }
 
-        /* CARD DESIGN - MODERN */
+        /* CARD DESIGN */
         .offer-card {
             background: var(--white); border-radius: var(--radius);
             box-shadow: 0 2px 5px rgba(0,0,0,0.02); border: 1px solid #e5e7eb;
@@ -54,16 +54,12 @@
         }
         .offer-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--primary); }
 
-        /* Badge */
         .badge { position: absolute; top: 10px; right: 10px; padding: 4px 8px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
         .badge-hot { background: #ecfdf5; color: #059669; }
-        .badge-wait { background: #f3f4f6; color: #9ca3af; }
-
-        /* Card Header */
+        
         .card-header { padding: 20px 15px 10px; text-align: center; height: 70px; display: flex; align-items: center; justify-content: center; }
         .brand-logo { max-height: 40px; max-width: 140px; object-fit: contain; }
 
-        /* Card Body */
         .card-body { padding: 10px 20px; flex: 1; }
         .brand-name { text-align: center; font-weight: 700; font-size: 16px; margin-bottom: 15px; color: var(--text-dark); }
         
@@ -72,7 +68,6 @@
         .info-val { font-weight: 600; color: var(--text-dark); }
         .highlight { color: #d97706; }
 
-        /* Card Footer */
         .card-footer { padding: 15px 20px 20px; }
         .btn {
             display: flex; justify-content: center; align-items: center; gap: 8px;
@@ -83,10 +78,8 @@
         .btn-primary { background: var(--primary); color: #000; box-shadow: 0 2px 4px rgba(254, 198, 41, 0.3); }
         .btn-primary:hover { background: var(--primary-hover); }
         .btn-disabled { background: #e5e7eb; color: #9ca3af; cursor: not-allowed; }
-        
         .card-disabled { opacity: 0.6; filter: grayscale(100%); }
 
-        /* LOADING & HELPER */
         .loading { text-align: center; padding: 40px; width: 100%; }
         .spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px solid var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 10px; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
@@ -97,6 +90,13 @@
         /* FOOTER */
         .site-footer { background: var(--white); padding: 30px 0; margin-top: 50px; border-top: 1px solid #e5e7eb; text-align: center; }
         .footer-text { color: var(--text-gray); font-size: 13px; }
+        .ip-address { font-size: 11px; color: #9ca3af; margin-top: 8px; font-family: monospace; }
+
+        /* NÚT RESET (Dành cho đại ca test) */
+        .reset-btn {
+            margin-top: 10px; font-size: 11px; color: #ef4444; cursor: pointer; text-decoration: underline;
+            background: none; border: none;
+        }
 
         @media (max-width: 600px) {
             .header-container { padding: 0 15px; }
@@ -107,7 +107,7 @@
             .card-body { padding: 0 15px; }
             .brand-name { text-align: left; margin-bottom: 5px; font-size: 15px; }
             .info-row { margin-bottom: 2px; font-size: 12px; }
-            .info-row:not(:first-child) { display: none; } /* Mobile: Chỉ hiện dòng hạn mức */
+            .info-row:not(:first-child) { display: none; }
             .card-footer { padding: 0; min-width: 90px; }
             .btn { padding: 8px 10px; font-size: 12px; border-radius: 6px; }
             .badge { display: none; }
@@ -144,7 +144,10 @@
 
     <footer class="site-footer">
         <p class="footer-text">© 2024 CatCredit.vn - Giải pháp tài chính thông minh</p>
-        <p style="font-size: 11px; margin-top:5px;"><a href="admin-tool.html" style="color:#ccc; text-decoration:none">Admin Access</a></p>
+        <p style="font-size: 11px; margin-top:5px;"><a href="admin-tool.html" style="color:#e5e7eb; text-decoration:none">Admin</a></p>
+        <div id="user-ip" class="ip-address">Checking IP...</div>
+        
+        <button class="reset-btn" onclick="resetHistory()">[Xóa lịch sử đã vay để test]</button>
     </footer>
 
     <script>
@@ -152,19 +155,48 @@
         const TOKEN = "hpoRHLinw3JgcQaV6g6SaQ=="; 
         const API_URL = `https://publisher-api.riofintech.net/offer/all?pub_id=${PUB_ID}&token=${encodeURIComponent(TOKEN)}`;
 
-        // 1. DATA THÔNG MINH
+        async function checkUserIP() {
+            const ipEl = document.getElementById('user-ip');
+            try {
+                const res = await fetch('https://api.ipify.org?format=json');
+                const data = await res.json();
+                ipEl.innerText = `IP: ${data.ip}`;
+            } catch (e) { ipEl.innerText = ''; }
+        }
+
+        // --- HÀM 1: LƯU VẾT KHÁCH HÀNG (QUAN TRỌNG) ---
+        function trackClick(brandKey) {
+            // Lấy danh sách đã lưu, nếu chưa có thì tạo mảng rỗng
+            let clickedOffers = JSON.parse(localStorage.getItem('catcredit_clicked') || '[]');
+            
+            // Nếu chưa có trong danh sách thì thêm vào
+            if (!clickedOffers.includes(brandKey)) {
+                clickedOffers.push(brandKey);
+                localStorage.setItem('catcredit_clicked', JSON.stringify(clickedOffers));
+            }
+            // Không chặn hành động mở link, chỉ lưu lại rồi để trình duyệt mở tab mới
+            return true; 
+        }
+
+        // --- HÀM 2: XÓA LỊCH SỬ (CHO ĐẠI CA TEST) ---
+        function resetHistory() {
+            if(confirm('Bạn có chắc muốn xóa lịch sử để hiện lại tất cả gói vay?')) {
+                localStorage.removeItem('catcredit_clicked');
+                location.reload();
+            }
+        }
+
         function getSmartInfo(name) {
             let n = name.toLowerCase();
             if(n.includes('doctor')) return { limit: '10 Triệu', rate: '0% lần đầu', time: '30 ngày' };
             if(n.includes('moneycat')) return { limit: '15 Triệu', rate: '0% phí', time: '7 - 30 ngày' };
             if(n.includes('takomo')) return { limit: '10 Triệu', rate: 'Duyệt nhanh', time: 'Linh hoạt' };
-            if(n.includes('vayvnd')) return { limit: '15 Triệu', rate: '0% lãi', time: '30 ngày' }; // Fix VayVND
+            if(n.includes('vayvnd')) return { limit: '15 Triệu', rate: '0% lãi', time: '30 ngày' };
             if(n.includes('f88') || n.includes('vietmoney')) return { limit: '50 Triệu', rate: 'Cầm đồ', time: '12 tháng' };
             if(n.includes('mafc') || n.includes('mcredit')) return { limit: '70 Triệu', rate: '1.67%/tháng', time: '36 tháng' };
             return { limit: '1 - 10 Triệu', rate: 'Ưu đãi tốt', time: 'Linh hoạt' };
         }
 
-        // 2. LÀM SẠCH TÊN HIỂN THỊ (FIX CỨNG)
         function getCleanName(rawName) {
             let n = rawName.toLowerCase();
             if (n.includes('vayvnd')) return 'VayVND';
@@ -182,14 +214,9 @@
             if (n.includes('atm')) return 'ATM Online';
             if (n.includes('f88')) return 'F88';
             if (n.includes('mafc')) return 'Mirae Asset';
-            
-            // Nếu không có trong danh sách trên thì dọn rác
-            return rawName.replace(/\(.*\)/g, '')
-                          .replace(/(VN|CP|CPL|CPS|CPI|Android|iOS|Web|App|APK)/gi, '')
-                          .trim();
+            return rawName.replace(/\(.*\)/g, '').replace(/(VN|CP|CPL|CPS|CPI|Android|iOS|Web|App|APK)/gi, '').trim();
         }
 
-        // 3. LOGIC LẤY LINK & CHECK KEY
         function getMyLink(name, links) {
             if (!links) return null;
             for (const [key, url] of Object.entries(links)) {
@@ -197,10 +224,11 @@
             }
             return null;
         }
+        
         function getBrandKey(name) { return name.toLowerCase().trim().split(/[\s\-\.\(\)]+/)[0]; }
 
-        // MAIN FUNCTION
         async function init() {
+            checkUserIP();
             const grid = document.getElementById('offers-grid');
             const helper = document.getElementById('helper-box');
             
@@ -216,35 +244,43 @@
                 if (linkRes && linkRes.ok) {
                     myLinks = await linkRes.json();
                 } else {
-                    helper.style.display = 'block'; // Hiện bảng copy nếu chưa có file link
+                    helper.style.display = 'block';
                 }
 
                 if (apiData.status !== 1 || !apiData.data) throw new Error("No Data");
 
-                // TOOL COPY CHO ADMIN
                 if (helper.style.display === 'block') {
                     let txt = "{\n" + apiData.data.map((o,i) => `  "${o.name}": ""` + (i<apiData.data.length-1?",":"")).join("\n") + "\n}";
                     document.getElementById('helper-textarea').value = txt;
                 }
 
-                // XỬ LÝ DỮ LIỆU: GỘP TRÙNG & LỌC
+                // --- LẤY DANH SÁCH ĐÃ BẤM TỪ BỘ NHỚ ---
+                let clickedOffers = JSON.parse(localStorage.getItem('catcredit_clicked') || '[]');
+
                 let uniqueMap = {};
                 apiData.data.forEach(item => {
                     let brand = getBrandKey(item.name);
+                    
+                    // NẾU ĐÃ BẤM RỒI -> BỎ QUA LUÔN (KHÔNG HIỆN NỮA)
+                    if (clickedOffers.includes(brand)) return; 
+
                     let link = getMyLink(item.name, myLinks);
                     let clean = getCleanName(item.name);
                     let info = getSmartInfo(item.name);
                     let hasLink = !!link;
 
-                    // Logic gộp: Ưu tiên cái có Link
                     if (!uniqueMap[brand] || (!uniqueMap[brand].hasLink && hasLink)) {
-                        uniqueMap[brand] = { ...item, display: clean, link: link, hasLink: hasLink, info: info };
+                        uniqueMap[brand] = { ...item, display: clean, link: link, hasLink: hasLink, info: info, brandKey: brand };
                     }
                 });
 
                 let offers = Object.values(uniqueMap).sort((a,b) => b.hasLink - a.hasLink);
                 
-                // RENDER
+                if (offers.length === 0) {
+                    grid.innerHTML = '<p style="text-align:center;width:100%;padding:20px;">Bạn đã đăng ký hết các gói vay ưu đãi!<br>Vui lòng quay lại sau.</p>';
+                    return;
+                }
+
                 grid.innerHTML = offers.map(o => {
                     let active = o.hasLink;
                     let clsBox = active ? "offer-card" : "offer-card card-disabled";
@@ -253,6 +289,9 @@
                     let btnTxt = active ? 'ĐĂNG KÝ NGAY' : 'BẢO TRÌ';
                     let href = active ? o.link : "javascript:void(0)";
                     let target = active ? "_blank" : "_self";
+                    
+                    // THÊM SỰ KIỆN ONCLICK ĐỂ LƯU VẾT
+                    let onclickEvent = active ? `onclick="trackClick('${o.brandKey}')"` : "";
 
                     return `
                     <div class="${clsBox}">
@@ -272,7 +311,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a href="${href}" target="${target}" class="${btnCls}">
+                            <a href="${href}" target="${target}" class="${btnCls}" ${onclickEvent}>
                                 ${btnTxt} ${active ? '<i class="fa-solid fa-arrow-right"></i>' : ''}
                             </a>
                         </div>
