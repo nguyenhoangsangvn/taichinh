@@ -2,270 +2,251 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vay Tiền Online Cấp Tốc - Duyệt Tự Động | VayNhanh24h</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Vay Tiền Nhanh Trong Ngày 24h - Duyệt Tự Động | VayNhanh24h</title>
     <meta name="robots" content="index, follow">
+    <meta name="description" content="VayNhanh24h - Vay tiền online cấp tốc, chuyển khoản sau 15 phút. Chỉ cần CCCD, lãi suất 0% lần đầu. Duyệt tự động 24/7.">
     <link rel="canonical" href="https://vaynhanh24h.vn/">
     
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "VayNhanh24h",
+      "image": "https://vaynhanh24h.vn/images/logo.png",
+      "priceRange": "500000VND-20000000VND",
+      "address": { "@type": "PostalAddress", "addressCountry": "VN" }
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --primary: #FFB703; /* Vàng đậm */
-            --primary-hover: #FB8500;
-            --blue: #023047;    /* Xanh than uy tín */
-            --blue-light: #219EBC;
-            --text: #333;
-            --gray: #f3f4f6;
-            --radius: 12px;
+            --primary: #fec629; --primary-dark: #e5b225;
+            --text: #111827; --text-gray: #6b7280;
+            --bg: #f8fafc; --white: #ffffff;
+            --radius: 16px; --shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
         }
-        * { margin:0; padding:0; box-sizing:border-box; outline:none; }
-        body { font-family: 'Be Vietnam Pro', sans-serif; color: var(--text); line-height: 1.5; background: #fff; }
+        * { margin:0; padding:0; box-sizing:border-box; outline:none; -webkit-tap-highlight-color:transparent; }
+        body { font-family:'Manrope', sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
         a { text-decoration:none; color:inherit; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
-        
-        /* HEADER */
-        .header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 999; }
-        .head-wrap { display: flex; justify-content: space-between; align-items: center; height: 70px; }
-        .logo { font-size: 22px; font-weight: 900; color: var(--blue); display: flex; align-items: center; gap: 8px; }
-        .logo span { color: var(--primary-hover); }
-        .btn-main { background: linear-gradient(135deg, #FFB703, #FB8500); color: #fff; font-weight: 700; padding: 10px 25px; border-radius: 30px; box-shadow: 0 4px 15px rgba(251, 133, 0, 0.3); transition: 0.3s; }
-        .btn-main:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(251, 133, 0, 0.4); }
+        .container { max-width:1140px; margin:0 auto; padding:0 20px; }
 
-        /* HERO SECTION */
-        .hero { padding: 60px 0; background: #f8faff; position: relative; overflow: hidden; }
-        .hero::before { content:''; position:absolute; right:0; top:0; width:50%; height:100%; background: url('https://img.freepik.com/free-vector/gradient-white-monochrome-background_23-2149012354.jpg') center/cover; opacity: 0.5; z-index: 0; }
-        .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 50px; position: relative; z-index: 1; align-items: center; }
+        /* HEADER */
+        .header { background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); height:70px; position:sticky; top:0; z-index:100; border-bottom:1px solid #f1f5f9; display:flex; align-items:center; }
+        .header-inner { display:flex; justify-content:space-between; align-items:center; width:100%; }
         
-        .h-tag { display: inline-block; background: #e0f2fe; color: var(--blue-light); padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 15px; }
-        .h-title { font-size: 42px; font-weight: 800; color: var(--blue); line-height: 1.2; margin-bottom: 20px; }
-        .h-desc { font-size: 16px; color: #666; margin-bottom: 30px; }
+        .logo { display:flex; align-items:center; gap:8px; text-decoration:none; }
+        .logo span { font-weight:800; font-size:20px; color:var(--text); letter-spacing:-0.5px; }
+        .logo span b { color:#d97706; }
+
+        .nav { display:flex; gap:30px; }
+        .nav a { font-weight:600; color:var(--text-gray); font-size:15px; transition:0.3s; }
+        .nav a:hover { color:var(--text); }
+        .btn-sm { background:var(--primary); color:#000; padding:8px 20px; border-radius:50px; font-weight:700; font-size:14px; box-shadow:0 4px 10px rgba(254,198,41,0.3); transition:0.3s; }
+        .btn-sm:hover { transform:translateY(-2px); }
+
+        /* HERO */
+        .hero { padding:60px 0; background:linear-gradient(180deg, #fff 0%, #f1f5f9 100%); }
+        .hero-grid { display:grid; grid-template-columns:1.2fr 0.8fr; gap:50px; align-items:center; }
         
-        .feature-list li { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-weight: 600; }
-        .feature-list i { color: #10b981; background: #d1fae5; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+        .hero-title { font-size:46px; font-weight:800; line-height:1.15; margin-bottom:20px; letter-spacing:-1px; }
+        .hero-title span { color:#d97706; position:relative; display:inline-block; }
+        .hero-title span::after { content:''; position:absolute; bottom:5px; left:0; width:100%; height:10px; background:rgba(254,198,41,0.3); z-index:-1; }
+        
+        .hero-desc { font-size:18px; color:var(--text-gray); margin-bottom:30px; }
+
+        /* LIST CAM KẾT (ĐÚNG Ý ĐẠI CA) */
+        .check-list li { display:flex; align-items:center; gap:12px; margin-bottom:12px; font-weight:600; font-size:16px; }
+        .check-list i { width:24px; height:24px; background:#dcfce7; color:#16a34a; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; }
 
         /* CALCULATOR */
-        .calc-box { background: #fff; padding: 30px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); border: 1px solid #eee; }
-        .calc-head { text-align: center; margin-bottom: 20px; }
-        .calc-val { font-size: 36px; font-weight: 800; color: var(--blue); }
-        .calc-val small { font-size: 18px; color: #999; }
+        .calc-box { background:var(--white); padding:35px; border-radius:24px; box-shadow:var(--shadow); border:1px solid #fff; position:relative; }
+        .calc-label { text-align:center; font-size:13px; font-weight:700; color:#9ca3af; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
+        .money-display { text-align:center; font-size:42px; font-weight:800; color:var(--text); margin-bottom:10px; }
+        .money-display span { font-size:24px; color:#9ca3af; }
+
+        input[type=range] { width:100%; height:10px; background:#e2e8f0; border-radius:10px; -webkit-appearance:none; cursor:pointer; margin:20px 0 30px; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance:none; width:30px; height:30px; background:var(--primary); border:4px solid #fff; border-radius:50%; box-shadow:0 4px 10px rgba(0,0,0,0.15); transition:0.2s; }
+        input[type=range]::-webkit-slider-thumb:hover { transform:scale(1.1); }
+
+        .btn-main { display:flex; justify-content:center; align-items:center; width:100%; padding:16px; background:var(--primary); color:#000; font-weight:800; font-size:18px; border-radius:14px; text-transform:uppercase; box-shadow:0 10px 20px -5px rgba(254,198,41,0.4); transition:0.3s; }
+        .btn-main:hover { transform:translateY(-3px); background:var(--primary-dark); }
+
+        /* SECTIONS */
+        .section { padding:80px 0; }
+        .sec-head { text-align:center; max-width:700px; margin:0 auto 50px; }
+        .sec-head h2 { font-size:32px; font-weight:800; margin-bottom:10px; }
         
-        input[type=range] { width: 100%; height: 8px; background: #eee; border-radius: 5px; outline: none; -webkit-appearance: none; cursor: pointer; }
-        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; background: var(--primary); border: 3px solid #fff; border-radius: 50%; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-        
-        .calc-info { display: flex; justify-content: space-between; margin: 25px 0; background: #f9f9f9; padding: 15px; border-radius: 10px; }
-        .c-item strong { display: block; color: var(--blue); font-size: 15px; }
-        .c-item span { font-size: 12px; color: #777; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4, 1fr); gap:25px; }
+        .card { background:var(--white); padding:30px; border-radius:var(--radius); border:1px solid #f1f5f9; text-align:center; transition:0.3s; }
+        .card:hover { transform:translateY(-5px); border-color:var(--primary); box-shadow:var(--shadow); }
+        .icon-circle { width:70px; height:70px; background:#fffbeb; color:#d97706; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:28px; margin:0 auto 20px; }
+        .card h3 { font-size:18px; font-weight:700; margin-bottom:10px; }
+        .card p { font-size:14px; color:var(--text-gray); }
 
-        .btn-large { display: block; width: 100%; padding: 16px; background: var(--blue); color: #fff; text-align: center; font-weight: 700; border-radius: 12px; font-size: 16px; text-transform: uppercase; transition: 0.3s; }
-        .btn-large:hover { background: #023e5a; }
-
-        /* PARTNERS */
-        .partners { padding: 30px 0; border-bottom: 1px solid #eee; background: #fff; }
-        .p-grid { display: flex; gap: 30px; justify-content: center; opacity: 0.6; flex-wrap: wrap; }
-        .p-logo { font-weight: 700; color: #ccc; font-size: 18px; display: flex; align-items: center; gap: 5px; }
-
-        /* LOAN TABLE (THÔNG TIN ĐẠI CA CẦN) */
-        .loan-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 14px; }
-        .loan-table th { background: #f3f4f6; padding: 12px; text-align: left; color: var(--blue); border-radius: 8px 8px 0 0; }
-        .loan-table td { padding: 12px; border-bottom: 1px solid #eee; }
-        .loan-table tr:last-child td { border: none; }
-
-        /* FEATURES GRID */
-        .section { padding: 70px 0; }
-        .sec-title { text-align: center; font-size: 30px; font-weight: 800; color: var(--blue); margin-bottom: 50px; }
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .card { background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); border-color: var(--primary); }
-        .icon-box { width: 60px; height: 60px; background: #fff8e1; color: var(--primary-hover); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; }
-        .card h3 { font-size: 18px; margin-bottom: 10px; font-weight: 700; }
-        .card p { font-size: 14px; color: #666; }
-
-        /* FAQ */
-        .faq-item { border: 1px solid #eee; border-radius: 10px; margin-bottom: 15px; overflow: hidden; }
-        .faq-q { padding: 15px 20px; background: #fff; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; }
-        .faq-a { padding: 0 20px 15px; color: #666; display: none; font-size: 14px; line-height: 1.6; }
-        .faq-item.active .faq-a { display: block; }
-        .faq-item.active .faq-q { background: #f8faff; color: var(--blue); }
+        /* STEPS */
+        .step-wrap { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+        .step-row { display:flex; gap:20px; margin-bottom:30px; }
+        .step-num { width:50px; height:50px; background:var(--primary); border-radius:14px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:20px; flex-shrink:0; }
+        .step-info h3 { font-size:18px; font-weight:700; margin-bottom:5px; }
+        .step-info p { font-size:15px; color:var(--text-gray); }
 
         /* FOOTER */
-        .footer { background: var(--blue); color: #fff; padding: 50px 0 20px; text-align: center; font-size: 14px; margin-top: 50px; }
-        .footer p { opacity: 0.7; margin-bottom: 10px; }
-        .footer a { color: var(--primary); }
+        .footer { background:var(--white); border-top:1px solid #e5e7eb; padding:50px 0 20px; text-align:center; margin-top:50px; }
+        .footer p { color:var(--text-gray); font-size:14px; margin-bottom:8px; }
 
-        @media(max-width:768px) {
-            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-            .h-title { font-size: 32px; text-align: center; }
-            .h-desc { text-align: center; }
-            .grid-3 { grid-template-columns: 1fr; }
-            .head-wrap nav { display: none; }
+        @media (max-width: 991px) {
+            .nav { display:none; }
+            .hero-grid, .step-wrap { grid-template-columns:1fr; gap:40px; text-align:center; }
+            .hero-title { font-size:36px; }
+            .check-list { display:inline-block; text-align:left; }
+            .grid-4 { grid-template-columns:1fr 1fr; }
+            .step-row { text-align:left; }
+            .step-img { display:none; }
         }
+        @media (max-width: 500px) { .grid-4 { grid-template-columns:1fr; } .calc-box { padding:25px; } .money-display { font-size:36px; } }
     </style>
 </head>
 <body>
 
-<header class="header">
-    <div class="container head-wrap">
-        <a href="index.html" class="logo">
-            <i class="fa-solid fa-coins"></i> VAYNHANH<span>24H</span>
-        </a>
-        <a href="offer.html" class="btn-main">Đăng Ký Ngay</a>
-    </div>
-</header>
-
-<main>
-    <section class="hero">
-        <div class="container hero-grid">
-            <div>
-                <span class="h-tag">🔥 Duyệt tự động 24/7</span>
-                <h1 class="h-title">Giải Pháp Tài Chính Thông Minh & Cấp Tốc</h1>
-                <p class="h-desc">Hỗ trợ vay từ 500k - 20 triệu đồng chỉ với CMND/CCCD. Tiền về tài khoản ngay trong ngày.</p>
-                
-                <ul class="feature-list">
-                    <li><i class="fa-solid fa-check"></i> 0% Lãi suất cho khoản vay đầu tiên</li>
-                    <li><i class="fa-solid fa-check"></i> Tỷ lệ duyệt hồ sơ lên đến 98%</li>
-                    <li><i class="fa-solid fa-check"></i> Không gọi thẩm định người thân</li>
-                </ul>
-            </div>
-
-            <div class="calc-box">
-                <div class="calc-head">
-                    <p style="font-size:12px; font-weight:700; color:#999; text-transform:uppercase;">Số tiền cần vay</p>
-                    <div class="calc-val" id="money">10.000.000 <small>đ</small></div>
-                </div>
-                <input type="range" min="500000" max="20000000" step="500000" value="10000000" id="range">
-                
-                <div class="calc-info">
-                    <div class="c-item">
-                        <span>Thời hạn</span>
-                        <strong>3 - 6 Tháng</strong>
-                    </div>
-                    <div class="c-item" style="text-align:right">
-                        <span>Lãi suất</span>
-                        <strong style="color:var(--primary-hover)">0% Ưu đãi</strong>
-                    </div>
-                </div>
-
-                <div style="background:#fff8e1; padding:10px; border-radius:8px; font-size:12px; color:#555; margin-bottom:20px; border:1px dashed #eec55d;">
-                    <i class="fa-solid fa-info-circle"></i> <strong>Ví dụ:</strong> Vay 2tr, trả trong 3 tháng. Tổng tiền phải trả: 2.000.000đ (0% lãi).
-                </div>
-
-                <a href="offer.html" class="btn-large">NHẬN KHOẢN VAY <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <svg width="35" height="35" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="12" fill="#FEC629"/><path d="M22 8L12 22H20L18 32L28 18H20L22 8Z" fill="white" stroke="#111827" stroke-width="2"/></svg>
+                <span>VAYNHANH<b>24H</b></span>
+            </a>
+            <nav class="nav">
+                <a href="#loiich">Lợi ích</a>
+                <a href="#quytrinh">Quy trình</a>
+                <a href="#faq">Hỏi đáp</a>
+            </nav>
+            <a href="offer.html" class="btn-sm">Vay Ngay</a>
         </div>
-    </section>
+    </header>
 
-    <div class="partners">
-        <div class="container p-grid">
-            <div class="p-logo"><i class="fa-solid fa-building-columns"></i> TPBank</div>
-            <div class="p-logo"><i class="fa-solid fa-building-columns"></i> VPBank</div>
-            <div class="p-logo"><i class="fa-solid fa-building-columns"></i> Shinhan</div>
-            <div class="p-logo"><i class="fa-solid fa-building-columns"></i> FeCredit</div>
-            <div class="p-logo"><i class="fa-solid fa-building-columns"></i> HomeCredit</div>
-        </div>
-    </div>
+    <main>
+        <section class="hero">
+            <div class="container hero-grid">
+                <div>
+                    <h1 class="hero-title">Vay Tiền Online<br><span>Chuyển Khoản 24/7</span></h1>
+                    <p class="hero-desc">Giải pháp tài chính thông minh, duyệt hồ sơ tự động bằng AI. Tiền về tài khoản chỉ sau 15 phút.</p>
+                    
+                    <ul class="check-list">
+                        <li><i class="fa-solid fa-check"></i> Lãi suất 0% cho khoản vay đầu tiên</li>
+                        <li><i class="fa-solid fa-check"></i> Không gọi điện thẩm định người thân</li>
+                        <li><i class="fa-solid fa-check"></i> Chỉ cần CCCD - Giải ngân ngay</li>
+                    </ul>
+                </div>
 
-    <section class="section">
+                <div class="calc-box">
+                    <div class="calc-label">Bạn cần vay bao nhiêu?</div>
+                    <div class="money-display" id="amount">10.000.000 <span>đ</span></div>
+                    <input type="range" min="500000" max="20000000" step="500000" value="10000000" id="slider">
+                    
+                    <div style="background:#f8fafc; padding:15px; border-radius:12px; border:1px dashed #cbd5e1; display:flex; justify-content:space-between; margin-bottom:20px;">
+                        <div><span style="font-size:12px; color:#6b7280">Kỳ hạn vay</span><br><strong>3 - 12 Tháng</strong></div>
+                        <div style="text-align:right"><span style="font-size:12px; color:#6b7280">Lãi suất</span><br><strong style="color:#16a34a">0% Lần đầu</strong></div>
+                    </div>
+
+                    <a href="offer.html" class="btn-main">ĐĂNG KÝ VAY NGAY <i class="fa-solid fa-arrow-right" style="margin-left:10px"></i></a>
+                    <p style="text-align:center; font-size:12px; color:#9ca3af; margin-top:15px;"><i class="fa-solid fa-shield-halved"></i> Thông tin bảo mật tuyệt đối</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="loiich">
+            <div class="container">
+                <div class="sec-head">
+                    <h2>Tại sao chọn VayNhanh24h?</h2>
+                    <p>Kết nối bạn với các đơn vị tài chính uy tín nhất Việt Nam.</p>
+                </div>
+                <div class="grid-4">
+                    <div class="card">
+                        <div class="icon-circle"><i class="fa-solid fa-bolt"></i></div>
+                        <h3>Duyệt siêu tốc</h3>
+                        <p>Hệ thống AI xử lý hồ sơ tự động, trả kết quả sau 5 phút.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-circle"><i class="fa-solid fa-percent"></i></div>
+                        <h3>Lãi suất 0%</h3>
+                        <p>Miễn phí lãi suất và phí hồ sơ cho khách hàng mới.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-circle"><i class="fa-solid fa-user-shield"></i></div>
+                        <h3>Bảo mật 100%</h3>
+                        <p>Thông tin cá nhân được mã hóa SSL an toàn tuyệt đối.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon-circle"><i class="fa-solid fa-clock"></i></div>
+                        <h3>Hỗ trợ 24/7</h3>
+                        <p>Đăng ký bất cứ lúc nào, kể cả cuối tuần và Lễ Tết.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="quytrinh" style="background:#fff">
+            <div class="container step-wrap">
+                <div class="step-img">
+                    <img src="images/quy-trinh-vay.svg" alt="Quy trình vay" onerror="this.src='https://via.placeholder.com/500x400?text=Quy+Trinh'">
+                </div>
+                <div>
+                    <div class="sec-head" style="text-align:left; margin:0 0 40px">
+                        <h2>3 Bước Vay Đơn Giản</h2>
+                        <p>Không thủ tục rườm rà, nhận tiền ngay tại nhà.</p>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-num">1</div>
+                        <div class="step-info">
+                            <h3>Đăng ký hồ sơ</h3>
+                            <p>Chọn khoản vay và điền thông tin cá nhân cơ bản (Họ tên, SĐT, CCCD).</p>
+                        </div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-num">2</div>
+                        <div class="step-info">
+                            <h3>Chờ xét duyệt</h3>
+                            <p>Hệ thống tự động tìm kiếm đối tác phù hợp và phê duyệt trong tích tắc.</p>
+                        </div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-num">3</div>
+                        <div class="step-info">
+                            <h3>Nhận tiền</h3>
+                            <p>Tiền được chuyển thẳng vào tài khoản ngân hàng chính chủ của bạn.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
         <div class="container">
-            <h2 class="sec-title">Tại Sao 50.000+ Khách Hàng Tin Dùng?</h2>
-            <div class="grid-3">
-                <div class="card">
-                    <div class="icon-box"><i class="fa-solid fa-bolt"></i></div>
-                    <h3>Duyệt Siêu Tốc</h3>
-                    <p>Hệ thống AI xử lý dữ liệu tự động, trả kết quả phê duyệt chỉ sau 5 phút đăng ký.</p>
-                </div>
-                <div class="card">
-                    <div class="icon-box"><i class="fa-solid fa-user-shield"></i></div>
-                    <h3>Bảo Mật 100%</h3>
-                    <p>Thông tin cá nhân và khoản vay của bạn được bảo mật tuyệt đối theo tiêu chuẩn quốc tế.</p>
-                </div>
-                <div class="card">
-                    <div class="icon-box"><i class="fa-solid fa-hand-holding-dollar"></i></div>
-                    <h3>Giải Ngân 24/7</h3>
-                    <p>Hỗ trợ chuyển khoản vào tài khoản ngân hàng bất kể ngày đêm, Lễ Tết hay Chủ Nhật.</p>
-                </div>
+            <div style="display:flex; justify-content:center; align-items:center; gap:8px; margin-bottom:20px;">
+                <svg width="35" height="35" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="12" fill="#FEC629"/><path d="M22 8L12 22H20L18 32L28 18H20L22 8Z" fill="white" stroke="#111827" stroke-width="2"/></svg>
+                <span style="font-weight:800; font-size:22px; color:var(--text);">VAYNHANH<b style="color:#d97706">24H</b></span>
             </div>
+            <p><strong>VayNhanh24h.vn</strong> - Giải pháp tài chính cá nhân thông minh.</p>
+            <p>Địa chỉ: Tòa nhà Bitexco, Q.1, TP.HCM | Email: hotro@vaynhanh24h.vn</p>
+            <div style="margin-top:20px;"><a href="admin-tool.html" style="font-size:12px; color:#ccc;">Admin</a></div>
         </div>
-    </section>
+    </footer>
 
-    <section class="section" style="background:#f8faff;">
-        <div class="container" style="max-width:800px;">
-            <h2 class="sec-title">Thông Tin Chi Tiết Khoản Vay</h2>
-            <div class="card">
-                <table class="loan-table">
-                    <tr>
-                        <td width="40%"><strong>Hạn mức vay</strong></td>
-                        <td>500.000đ - 20.000.000đ</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Kỳ hạn vay</strong></td>
-                        <td>90 - 180 ngày (Có thể gia hạn)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Lãi suất (APR)</strong></td>
-                        <td>12% - 20%/năm (0% cho 7-30 ngày đầu)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Phí dịch vụ</strong></td>
-                        <td>Không thu phí hồ sơ</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Điều kiện</strong></td>
-                        <td>Công dân Việt Nam 18-60 tuổi, có CCCD</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container" style="max-width:800px;">
-            <h2 class="sec-title">Câu Hỏi Thường Gặp</h2>
-            <div class="faq-item active">
-                <div class="faq-q">Nợ xấu có vay được không? <i class="fa-solid fa-chevron-down"></i></div>
-                <div class="faq-a">Có. Chúng tôi liên kết với nhiều đối tác chấp nhận hỗ trợ nợ xấu nhóm 1, 2, 3. Hãy đăng ký để được tư vấn.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-q">Bao lâu thì nhận được tiền? <i class="fa-solid fa-chevron-down"></i></div>
-                <div class="faq-a">Thông thường tiền sẽ về tài khoản của bạn trong vòng 15 - 30 phút sau khi hồ sơ được duyệt.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-q">Tôi có cần chứng minh thu nhập không? <i class="fa-solid fa-chevron-down"></i></div>
-                <div class="faq-a">Không. Hầu hết các gói vay dưới 10 triệu chỉ yêu cầu CMND/CCCD, không cần sao kê lương.</div>
-            </div>
-        </div>
-    </section>
-
-</main>
-
-<footer class="footer">
-    <div class="container">
-        <div style="font-size:24px; font-weight:800; margin-bottom:20px;">
-            <i class="fa-solid fa-coins"></i> VAYNHANH24H
-        </div>
-        <p>Địa chỉ: Tòa nhà Bitexco, Số 2 Hải Triều, Q.1, TP.HCM</p>
-        <p>Email: hotro@vaynhanh24h.vn | Hotline: 1900 1234</p>
-        <p style="font-size:12px; opacity:0.5; margin-top:20px;">Lưu ý: VayNhanh24h là nền tảng so sánh tài chính, không phải ngân hàng. <br>Hãy cân nhắc khả năng tài chính trước khi vay.</p>
-        
-        <div style="margin-top:20px;">
-            <a href="admin-tool.html" style="color:#fff; opacity:0.3; font-size:11px;">Admin Access</a>
-        </div>
-    </div>
-</footer>
-
-<script>
-    const r = document.getElementById('range');
-    const m = document.getElementById('money');
-    function fmt(n){ return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
-    r.oninput = function() { m.innerHTML = fmt(this.value) + ' <small>đ</small>'; }
-    
-    document.querySelectorAll('.faq-q').forEach(q => {
-        q.addEventListener('click', () => {
-            q.parentElement.classList.toggle('active');
-        })
-    })
-</script>
-
+    <script>
+        const slider = document.getElementById('slider');
+        const display = document.getElementById('amount');
+        function format(n) { return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+        slider.oninput = function() {
+            display.innerHTML = format(this.value) + ' <span>đ</span>';
+            let v = (this.value - this.min) / (this.max - this.min) * 100;
+            this.style.background = `linear-gradient(to right, #fec629 0%, #fec629 ${v}%, #e2e8f0 ${v}%, #e2e8f0 100%)`;
+        }
+        slider.oninput();
+    </script>
 </body>
 </html>
