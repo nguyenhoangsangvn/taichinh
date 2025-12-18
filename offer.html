@@ -1,437 +1,324 @@
 <!DOCTYPE html>
-<html lang="vi" class="no-js">
+<html lang="vi" class="loading-site no-js">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-	<title>Kết quả duyệt vay - CatCredit</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Danh sách đối tác vay uy tín - CatCredit</title>
 	
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <link rel="icon" href="images/cropped-catcredit-icon-32x32.png">
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+	
+	<link rel="stylesheet" id="flatsome-main-css" href="css/flatsome.css" type="text/css" media="all">
+	<link rel="stylesheet" id="flatsome-style-css" href="css/style.css" type="text/css" media="all">
+    <link rel="icon" href="images/cropped-catcredit-icon-32x32.png" sizes="32x32">
+	
     <style>
-        :root {
-            --primary: #fec629;
-            --primary-dark: #eeb928;
-            --text-dark: #1f2937;
-            --text-gray: #6b7280;
-            --success: #10b981;
-            --bg-gray: #f3f4f6;
-            --white: #ffffff;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --radius: 12px;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg-gray); color: var(--text-dark); font-size: 14px; line-height: 1.5; }
-        a { text-decoration: none; color: inherit; }
+        body { font-family: 'Roboto', sans-serif; background-color: #f5f7fa; color: #333; }
         
-        /* --- HEADER & STEPPER --- */
-        .app-header {
-            background: var(--white);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        .header-inner {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px;
-        }
-        .header-logo img { height: 35px; }
-        .back-btn { font-size: 16px; color: var(--text-dark); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
-
-        /* Stepper Process */
-        .stepper-container {
-            background: var(--white);
-            padding: 10px 15px 20px;
-            margin-bottom: 10px;
-        }
-        .stepper {
-            display: flex;
-            justify-content: space-between;
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-        }
-        .stepper::before {
-            content: ''; position: absolute; top: 14px; left: 0; right: 0;
-            height: 2px; background: #e5e7eb; z-index: 1;
-        }
-        .step { position: relative; z-index: 2; text-align: center; width: 33.33%; }
-        .step-circle {
-            width: 30px; height: 30px; border-radius: 50%; background: #e5e7eb;
-            margin: 0 auto 5px; display: flex; align-items: center; justify-content: center;
-            font-size: 12px; font-weight: 600; color: #9ca3af; border: 2px solid var(--white);
-        }
-        .step.active .step-circle { background: var(--primary); color: var(--text-dark); border-color: var(--primary); }
-        .step.completed .step-circle { background: var(--success); color: white; }
-        .step-label { font-size: 11px; color: #9ca3af; font-weight: 500; }
-        .step.active .step-label { color: var(--text-dark); font-weight: 700; }
-
-        /* --- INFO BAR --- */
-        .info-bar {
-            max-width: 600px;
-            margin: 0 auto 20px;
-            padding: 0 15px;
-        }
-        .greeting-card {
-            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-            color: white;
-            padding: 20px;
-            border-radius: var(--radius);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: var(--shadow);
-        }
-        .greeting-text h2 { font-size: 18px; margin-bottom: 5px; }
-        .greeting-text p { font-size: 13px; opacity: 0.8; }
-        .greeting-score {
+        /* Hero Section nhỏ gọn */
+        .page-header-simple {
+            background: #fff;
+            padding: 30px 0;
+            border-bottom: 1px solid #eaeaea;
             text-align: center;
-            background: rgba(255,255,255,0.1);
-            padding: 8px 12px;
-            border-radius: 8px;
+            margin-bottom: 30px;
         }
-        .score-val { display: block; font-size: 20px; font-weight: 700; color: var(--success); }
-        .score-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .page-header-simple h1 { font-size: 24px; font-weight: 800; color: #333; margin: 0; }
+        .page-header-simple p { font-size: 14px; color: #777; margin-top: 5px; }
 
-        /* --- FILTER TABS --- */
-        .filter-tabs {
-            max-width: 600px;
-            margin: 0 auto 15px;
+        /* Offer Card Grid System */
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto 50px;
             padding: 0 15px;
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            scrollbar-width: none; /* Hide scrollbar */
-        }
-        .filter-tabs::-webkit-scrollbar { display: none; }
-        .f-tab {
-            white-space: nowrap;
-            padding: 8px 16px;
-            background: var(--white);
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-gray);
-            border: 1px solid transparent;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .f-tab.active {
-            background: #fffbeb;
-            color: #b45309;
-            border-color: var(--primary);
-            font-weight: 600;
         }
 
-        /* --- LOAN LIST --- */
-        .offer-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 0 15px 80px; /* Padding bottom for footer */
-        }
-
-        .loan-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-            border: 1px solid #f3f4f6;
-            position: relative;
+        /* Card Design */
+        .loan-box {
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
             overflow: hidden;
-            transition: transform 0.2s;
-        }
-        .loan-card:active { transform: scale(0.98); }
-
-        /* Badge Logic */
-        .card-badge {
-            position: absolute;
-            top: 0; right: 0;
-            background: #ffe4e6;
-            color: #e11d48;
-            font-size: 10px;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-bottom-left-radius: 10px;
-            text-transform: uppercase;
-        }
-        .badge-best { background: #dcfce7; color: #15803d; }
-        .badge-zero { background: var(--primary); color: #000; }
-
-        .card-header {
+            position: relative;
+            transition: all 0.3s ease;
             display: flex;
-            align-items: center;
-            margin-bottom: 15px;
+            flex-direction: column;
+        }
+        .loan-box:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            transform: translateY(-5px);
+            border-color: #fec629;
+        }
+
+        /* Badge (Nhãn) */
+        .top-badge {
+            position: absolute;
+            top: 0; left: 0;
+            background: linear-gradient(90deg, #fec629, #f59e0b);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-bottom-right-radius: 12px;
+            z-index: 2;
+        }
+
+        /* Logo Area */
+        .box-header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px dashed #eee;
+            background: #fff;
         }
         .partner-logo {
-            width: 100px;
-            height: 40px;
+            height: 45px;
             object-fit: contain;
-            object-position: left;
+            margin-bottom: 5px;
+        }
+        .star-rating { color: #fbbf24; font-size: 13px; font-weight: 500; }
+
+        /* Info Body */
+        .box-body {
+            padding: 20px;
+            flex-grow: 1;
         }
         
-        .card-body {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-        }
-        .info-col { flex: 1; }
-        .info-col:last-child { text-align: right; }
-        .info-label { font-size: 12px; color: var(--text-gray); margin-bottom: 4px; display: block; }
-        .info-value { font-size: 16px; font-weight: 700; color: var(--text-dark); display: block; }
-        .text-primary { color: #d97706; } /* Màu số tiền */
-
-        .card-tags {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-        .tag {
-            font-size: 11px;
-            padding: 4px 8px;
-            background: #f3f4f6;
-            border-radius: 4px;
-            color: #4b5563;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .tag i { font-size: 10px; }
-
-        .card-action {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .btn-loan {
-            flex: 1;
-            background: var(--primary);
-            color: #000;
-            font-weight: 600;
+        .main-figure {
             text-align: center;
-            padding: 12px;
-            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .figure-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+        .figure-value { font-size: 24px; font-weight: 800; color: #111; display: block; margin-top: 5px; }
+        .figure-sub { font-size: 13px; color: #27ae60; font-weight: 500; background: #e8f5e9; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-top: 5px; }
+
+        .details-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
             font-size: 14px;
-            box-shadow: 0 2px 4px rgba(254, 198, 41, 0.3);
+            color: #555;
         }
-        .btn-loan:hover { background: var(--primary-dark); }
-        
-        .card-footer-note {
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px dashed #e5e7eb;
-            font-size: 11px;
-            color: #6b7280;
+        .details-list li {
+            margin-bottom: 10px;
             display: flex;
-            justify-content: space-between;
+            align-items: center;
+        }
+        .details-list li i {
+            color: #fec629;
+            margin-right: 10px;
+            font-size: 12px;
         }
 
-        /* --- BOTTOM NAV (Giống App) --- */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0; left: 0; right: 0;
-            background: var(--white);
-            border-top: 1px solid #e5e7eb;
-            display: flex;
-            justify-content: space-around;
-            padding: 10px 0;
-            z-index: 999;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-        }
-        .nav-item {
+        /* Footer & Button */
+        .box-footer {
+            padding: 15px 20px 20px;
+            background: #fff;
             text-align: center;
-            color: #9ca3af;
-            font-size: 10px;
-            flex: 1;
         }
-        .nav-item i { font-size: 18px; margin-bottom: 4px; display: block; }
-        .nav-item.active { color: #d97706; }
+        .btn-loan-action {
+            display: block;
+            width: 100%;
+            background: #111;
+            color: #fff;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+            transition: 0.2s;
+            border: none;
+        }
+        .btn-loan-action:hover {
+            background: #fec629;
+            color: #000;
+            box-shadow: 0 4px 12px rgba(254, 198, 41, 0.4);
+        }
+        .bottom-note {
+            font-size: 11px;
+            color: #999;
+            margin-top: 10px;
+            display: block;
+        }
 
-        /* Animation */
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .loan-card { animation: fadeIn 0.4s ease-out forwards; }
-        .loan-card:nth-child(1) { animation-delay: 0.1s; }
-        .loan-card:nth-child(2) { animation-delay: 0.2s; }
-        .loan-card:nth-child(3) { animation-delay: 0.3s; }
-
+        /* Responsive Fix */
+        @media(max-width: 600px) {
+            .offers-grid { grid-template-columns: 1fr; padding: 0 10px; }
+            .loan-box { flex-direction: row; flex-wrap: wrap; padding: 15px; }
+            .box-header { width: 30%; padding: 0; border: none; text-align: left; display: flex; flex-direction: column; justify-content: center; }
+            .partner-logo { height: 35px; align-self: flex-start; }
+            .box-body { width: 70%; padding: 0 0 0 15px; }
+            .main-figure { text-align: left; margin-bottom: 5px; }
+            .figure-value { font-size: 18px; }
+            .details-list { display: none; /* Ẩn chi tiết trên mobile cho gọn */ }
+            .box-footer { width: 100%; padding: 15px 0 0 0; }
+            .top-badge { border-radius: 4px; font-size: 9px; padding: 3px 8px; left: auto; right: 10px; top: 10px; }
+        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
 
-    <div class="app-header">
-        <div class="header-inner">
-            <a href="index.html" class="back-btn"><i class="fas fa-chevron-left"></i></a>
-            <div class="header-logo">
-                <img src="images/catcredit-logo.png" alt="CatCredit">
-            </div>
-            <div class="back-btn" style="opacity: 0"><i class="fas fa-bell"></i></div>
-        </div>
-    </div>
+<body class="page-template-default page page-id-99 wp-theme-flatsome wp-child-theme-vaymeo lightbox nav-dropdown-has-arrow">
 
-    <div class="stepper-container">
-        <div class="stepper">
-            <div class="step completed">
-                <div class="step-circle"><i class="fas fa-check"></i></div>
-                <div class="step-label">Đăng ký</div>
-            </div>
-            <div class="step active">
-                <div class="step-circle">2</div>
-                <div class="step-label">Chọn khoản vay</div>
-            </div>
-            <div class="step">
-                <div class="step-circle">3</div>
-                <div class="step-label">Nhận tiền</div>
-            </div>
-        </div>
-    </div>
+<div id="wrapper">
 
-    <div class="info-bar">
-        <div class="greeting-card">
-            <div class="greeting-text">
-                <h2>Hồ sơ đã được duyệt! 🎉</h2>
-                <p>Dựa trên CCCD của bạn, đây là các gói vay có tỷ lệ giải ngân cao nhất.</p>
-            </div>
-            <div class="greeting-score">
-                <span class="score-val">98%</span>
-                <span class="score-lbl">Tỷ lệ duyệt</span>
+	<header id="header" class="header">
+		<div class="header-wrapper">
+			<div id="masthead" class="header-main hide-for-sticky">
+				<div class="header-inner flex-row container logo-left medium-logo-left" role="navigation">
+					<div id="logo" class="flex-col logo">
+						<a href="index.html" title="CatCredit" rel="home">
+							<img width="300" height="205" src="images/catcredit-logo.png" class="header_logo header-logo" alt="CatCredit">
+						</a>
+					</div>
+                    <div class="flex-col hide-for-medium flex-right">
+                        <ul class="header-nav header-nav-main nav nav-right nav-size-large nav-spacing-xlarge">
+                            <li><a href="index.html" class="nav-top-link"><i class="fa-solid fa-arrow-left"></i> Trang chủ</a></li>
+                        </ul>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<main id="main">
+        
+        <div class="page-header-simple">
+            <div class="container">
+                <h1>Kết quả tìm kiếm</h1>
+                <p>Tìm thấy 4 khoản vay phù hợp nhất với hồ sơ của bạn</p>
             </div>
         </div>
-    </div>
 
-    <div class="filter-tabs">
-        <div class="f-tab active">Tất cả</div>
-        <div class="f-tab">0% Lãi suất</div>
-        <div class="f-tab">Giải ngân 24/7</div>
-        <div class="f-tab">Vay trả góp</div>
-    </div>
+        <div class="offers-grid">
 
-    <div class="offer-container">
-
-        <div class="loan-card">
-            <div class="card-badge badge-zero">0% Lãi suất 30 ngày</div>
-            <div class="card-header">
-                <img src="images/catcredit-logo.png" class="partner-logo" alt="Partner Logo"> 
+            <div class="loan-box">
+                <div class="top-badge">Tốt nhất hôm nay</div>
+                <div class="box-header">
+                    <img src="images/catcredit-logo.png" class="partner-logo" alt="DoctorDong">
+                    <div class="star-rating"><i class="fa-solid fa-star"></i> 4.9</div>
                 </div>
-            <div class="card-body">
-                <div class="info-col">
-                    <span class="info-label">Hạn mức tối đa</span>
-                    <span class="info-value text-primary">10.000.000₫</span>
+                <div class="box-body">
+                    <div class="main-figure">
+                        <span class="figure-label">Khoản vay tối đa</span>
+                        <span class="figure-value">10.000.000₫</span>
+                        <span class="figure-sub">0% lãi suất lần đầu</span>
+                    </div>
+                    <ul class="details-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Duyệt hồ sơ tự động 5 phút</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Chỉ cần CMND/CCCD gốc</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Giải ngân ngay trong ngày</li>
+                    </ul>
                 </div>
-                <div class="info-col">
-                    <span class="info-label">Kỳ hạn</span>
-                    <span class="info-value">1 - 6 tháng</span>
+                <div class="box-footer">
+                    <a href="#" class="btn-loan-action">Đăng ký ngay <i class="fa-solid fa-arrow-right"></i></a>
+                    <span class="bottom-note">Đã có 1.542 người vay hôm nay</span>
                 </div>
             </div>
-            <div class="card-tags">
-                <span class="tag"><i class="fas fa-bolt text-primary"></i> Duyệt tự động</span>
-                <span class="tag"><i class="fas fa-id-card"></i> Chỉ cần CCCD</span>
-            </div>
-            <div class="card-action">
-                <a href="https://link-affiliate-cua-ban.com" class="btn-loan">ĐĂNG KÝ VAY NGAY</a>
-            </div>
-            <div class="card-footer-note">
-                <span><i class="fas fa-users"></i> 1,203 người đã đăng ký hôm nay</span>
-            </div>
-        </div>
 
-        <div class="loan-card">
-            <div class="card-badge badge-best">TỶ LỆ DUYỆT 99%</div>
-            <div class="card-header">
-                <img src="images/catcredit-logo.png" class="partner-logo" alt="Partner Logo">
-            </div>
-            <div class="card-body">
-                <div class="info-col">
-                    <span class="info-label">Hạn mức tối đa</span>
-                    <span class="info-value text-primary">15.000.000₫</span>
+            <div class="loan-box">
+                <div class="top-badge" style="background:#27ae60; color: white;">Duyệt nhanh</div>
+                <div class="box-header">
+                    <img src="images/catcredit-logo.png" class="partner-logo" alt="MoneyCat">
+                    <div class="star-rating"><i class="fa-solid fa-star"></i> 4.8</div>
                 </div>
-                <div class="info-col">
-                    <span class="info-label">Lãi suất</span>
-                    <span class="info-value">Ưu đãi 0%</span>
+                <div class="box-body">
+                    <div class="main-figure">
+                        <span class="figure-label">Khoản vay tối đa</span>
+                        <span class="figure-value">15.000.000₫</span>
+                        <span class="figure-sub">Miễn phí 0% lãi & phí</span>
+                    </div>
+                    <ul class="details-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Không gọi thẩm định người thân</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Hỗ trợ nợ xấu nhóm nhẹ</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Tuổi từ 18 - 60</li>
+                    </ul>
+                </div>
+                <div class="box-footer">
+                    <a href="#" class="btn-loan-action">Nhận tiền ngay <i class="fa-solid fa-arrow-right"></i></a>
+                    <span class="bottom-note">Tỷ lệ duyệt: 95%</span>
                 </div>
             </div>
-            <div class="card-tags">
-                <span class="tag"><i class="fas fa-clock"></i> Tiền về sau 5 phút</span>
-                <span class="tag"><i class="fas fa-ban"></i> Không gọi người thân</span>
-            </div>
-            <div class="card-action">
-                <a href="https://link-affiliate-cua-ban.com" class="btn-loan">ĐĂNG KÝ VAY NGAY</a>
-            </div>
-        </div>
 
-        <div class="loan-card">
-            <div class="card-header">
-                <img src="images/catcredit-logo.png" class="partner-logo" alt="Partner Logo">
-            </div>
-            <div class="card-body">
-                <div class="info-col">
-                    <span class="info-label">Hạn mức tối đa</span>
-                    <span class="info-value text-primary">20.000.000₫</span>
+             <div class="loan-box">
+                <div class="box-header">
+                    <img src="images/catcredit-logo.png" class="partner-logo" alt="Tamo">
+                    <div class="star-rating"><i class="fa-solid fa-star"></i> 4.5</div>
                 </div>
-                <div class="info-col">
-                    <span class="info-label">Giải ngân</span>
-                    <span class="info-value">Trong ngày</span>
+                <div class="box-body">
+                    <div class="main-figure">
+                        <span class="figure-label">Khoản vay tối đa</span>
+                        <span class="figure-value">20.000.000₫</span>
+                        <span class="figure-sub" style="background:#fff3e0; color:#e67e22">Trả góp 6 tháng</span>
+                    </div>
+                    <ul class="details-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Gia hạn khoản vay dễ dàng</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Thủ tục online 100%</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Nhận tiền qua ATM</li>
+                    </ul>
+                </div>
+                <div class="box-footer">
+                    <a href="#" class="btn-loan-action" style="background-color:#fff; color:#111; border: 1px solid #111;">Xem chi tiết</a>
+                    <span class="bottom-note">Duyệt nhanh 24/7</span>
                 </div>
             </div>
-            <div class="card-tags">
-                <span class="tag"><i class="fas fa-gift"></i> Gia hạn linh hoạt</span>
+
+             <div class="loan-box">
+                <div class="box-header">
+                    <img src="images/catcredit-logo.png" class="partner-logo" alt="Jeff App">
+                    <div class="star-rating"><i class="fa-solid fa-star"></i> 4.2</div>
+                </div>
+                <div class="box-body">
+                    <div class="main-figure">
+                        <span class="figure-label">Khoản vay tối đa</span>
+                        <span class="figure-value">5.000.000₫</span>
+                        <span class="figure-sub" style="background:#f3f4f6; color:#666">Gói vay sinh viên</span>
+                    </div>
+                    <ul class="details-list">
+                        <li><i class="fa-solid fa-circle-check"></i> So sánh nhiều gói vay</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Lãi suất thấp từ 1.5%</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Phạm vi toàn quốc</li>
+                    </ul>
+                </div>
+                <div class="box-footer">
+                    <a href="#" class="btn-loan-action">Đăng ký ngay <i class="fa-solid fa-arrow-right"></i></a>
+                    <span class="bottom-note">Dễ vay nhất</span>
+                </div>
             </div>
-            <div class="card-action">
-                <a href="https://link-affiliate-cua-ban.com" class="btn-loan" style="background: #fff; border: 1px solid var(--primary);">XEM CHI TIẾT</a>
-                <a href="https://link-affiliate-cua-ban.com" class="btn-loan">ĐĂNG KÝ</a>
-            </div>
+
         </div>
 
-        <div class="loan-card" style="opacity: 0.8; background: #f9fafb;">
-            <div class="card-header">
-                <span style="font-weight: 700; color: #666;">Các gói vay khác</span>
-            </div>
-            <div class="card-body">
-                <p style="font-size: 13px; color: #666;">Chúng tôi còn 5+ đối tác khác đang chờ duyệt hồ sơ của bạn.</p>
-            </div>
-            <div class="card-action">
-                <a href="#" class="btn-loan" style="background: #e5e7eb; color: #666;">Xem thêm</a>
-            </div>
-        </div>
+	</main>
 
-    </div>
+	<footer id="footer" class="footer-wrapper">
+		<section class="section pb-0" style="background-color: #fff; padding-top:30px;">
+			<div class="section-content relative">
+				<div class="row row-small align-middle">
+					<div class="col pb-0 medium-12 small-12 large-12">
+						<div class="col-inner text-center">
+                            <p>Bản quyền © CatCredit.vn (Local Version)</p>
+                            <p style="font-size:12px; color:#999; margin-top:5px;">Lưu ý: CatCredit là nền tảng so sánh, không trực tiếp cho vay.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</footer>
 
-    <div class="bottom-nav">
-        <a href="index.html" class="nav-item">
-            <i class="fas fa-home"></i>
-            Trang chủ
-        </a>
-        <div class="nav-item active">
-            <i class="fas fa-wallet"></i>
-            Khoản vay
-        </div>
-        <div class="nav-item">
-            <i class="fas fa-user"></i>
-            Tài khoản
-        </div>
-    </div>
+</div>
 
-    <script>
-        const tabs = document.querySelectorAll('.f-tab');
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                // Ở đây ní có thể thêm logic lọc thật nếu muốn
-            });
-        });
-    </script>
+<script type="text/javascript">
+var flatsomeVars = {
+    "theme": {"version":"3.19.8"},
+    "ajaxurl": "", 
+    "rtl": "",
+    "sticky_height": "70",
+    "assets_url": "", 
+    "lightbox": { "close_markup": "", "close_btn_inside": false }
+};
+</script>
+<script type="text/javascript" src="js/flatsome.js"></script>
 
 </body>
 </html>
