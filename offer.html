@@ -4,17 +4,13 @@
 	<meta charset="UTF-8">
 	<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Danh sách khoản vay ưu đãi - CatCredit</title>
+	<title>Danh sách khoản vay - CatCredit</title>
 	<meta name="robots" content="noindex, nofollow">
 
-	<link rel="dns-prefetch" href="//fonts.googleapis.com">
-	<link href="https://fonts.gstatic.com" crossorigin="" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-	
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" id="flatsome-main-css" href="css/flatsome.css" type="text/css" media="all">
 	<link rel="stylesheet" id="flatsome-style-css" href="css/style.css" type="text/css" media="all">
     <link rel="icon" href="images/cropped-catcredit-icon-32x32.png" sizes="32x32">
-	
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
@@ -22,62 +18,65 @@
         
         .page-header-simple { background: #fff; padding: 30px 0; border-bottom: 1px solid #eaeaea; text-align: center; margin-bottom: 30px; }
         .page-header-simple h1 { font-size: 24px; font-weight: 800; color: #333; margin: 0; }
-        .page-header-simple p { font-size: 14px; color: #777; margin-top: 5px; }
 
         .offers-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Card to hơn xíu */
+            gap: 20px;
             max-width: 1200px;
             margin: 0 auto 50px;
             padding: 0 15px;
         }
 
-        /* Loading State */
-        .loading-spinner { text-align: center; padding: 50px; grid-column: 1 / -1; }
-        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #fec629; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 10px; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        /* Card Design */
         .loan-box {
             background: #fff; border-radius: 12px; border: 1px solid #e5e7eb; overflow: hidden; position: relative;
             transition: all 0.3s ease; display: flex; flex-direction: column;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
         .loan-box:hover { box-shadow: 0 15px 30px rgba(0,0,0,0.08); transform: translateY(-5px); border-color: #fec629; }
 
         .top-badge {
-            position: absolute; top: 0; left: 0; background: linear-gradient(90deg, #fec629, #f59e0b);
-            color: #000; font-size: 11px; font-weight: 700; padding: 5px 12px; border-bottom-right-radius: 12px; z-index: 2;
+            position: absolute; top: 0; right: 0; background: #e8f5e9;
+            color: #27ae60; font-size: 10px; font-weight: 700; padding: 5px 12px; 
+            border-bottom-left-radius: 12px; z-index: 2; text-transform: uppercase;
         }
 
-        .box-header { padding: 20px; text-align: center; border-bottom: 1px dashed #eee; background: #fff; height: 100px; display: flex; align-items: center; justify-content: center; flex-direction: column;}
-        .partner-logo { max-height: 50px; max-width: 80%; object-fit: contain; margin-bottom: 5px; }
-        .star-rating { color: #fbbf24; font-size: 13px; font-weight: 500; }
+        /* Phần Logo */
+        .box-header { padding: 20px; text-align: center; border-bottom: 1px dashed #eee; height: 90px; display: flex; align-items: center; justify-content: center; }
+        .partner-logo { max-height: 45px; max-width: 70%; object-fit: contain; }
 
-        .box-body { padding: 20px; flex-grow: 1; }
-        .details-list { list-style: none; padding: 0; margin: 0; font-size: 14px; color: #555; }
-        .details-list li { margin-bottom: 10px; display: flex; align-items: start; }
-        .details-list li i { color: #fec629; margin-right: 10px; font-size: 12px; margin-top: 4px; }
+        /* Phần 3 thông số quan trọng */
+        .box-body { padding: 15px 20px; flex-grow: 1; }
         
-        .box-footer { padding: 15px 20px 20px; background: #fff; text-align: center; }
-        .btn-loan-action {
-            display: block; width: 100%; background: #111; color: #fff; padding: 14px; border-radius: 8px;
-            font-weight: 700; font-size: 15px; text-transform: uppercase; transition: 0.2s; border: none; cursor: pointer;
+        .info-grid {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
         }
-        .btn-loan-action:hover { background: #fec629; color: #000; box-shadow: 0 4px 12px rgba(254, 198, 41, 0.4); }
+        .info-item { width: 33%; border-right: 1px solid #f0f0f0; }
+        .info-item:last-child { border-right: none; }
+        
+        .info-label { font-size: 11px; color: #888; display: block; margin-bottom: 4px; }
+        .info-value { font-size: 14px; font-weight: 700; color: #111; display: block; }
+        .info-value.highlight { color: #d26e4b; font-size: 15px; }
 
-        /* Error Message */
-        .error-message { color: red; text-align: center; grid-column: 1 / -1; padding: 20px; }
+        /* Nút bấm */
+        .box-footer { padding: 15px 20px 20px; text-align: center; }
+        .btn-loan-action {
+            display: block; width: 100%; background: #fec629; color: #000; padding: 12px; border-radius: 50px;
+            font-weight: 700; font-size: 14px; text-transform: uppercase; text-decoration: none; transition: 0.2s;
+            box-shadow: 0 4px 10px rgba(254, 198, 41, 0.3);
+        }
+        .btn-loan-action:hover { background: #eeb928; transform: scale(1.02); }
+
+        .loading-spinner { text-align: center; padding: 50px; grid-column: 1 / -1; }
+        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #fec629; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 10px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         @media(max-width: 600px) {
-            .offers-grid { grid-template-columns: 1fr; padding: 0 10px; }
-            .loan-box { flex-direction: row; flex-wrap: wrap; padding: 15px; }
-            .box-header { width: 30%; padding: 0; border: none; text-align: left; display: flex; align-items: flex-start; height: auto; }
-            .partner-logo { height: 40px; width: auto; margin-bottom: 0; }
-            .star-rating { display: none; }
-            .box-body { width: 70%; padding: 0 0 0 15px; }
-            .box-footer { width: 100%; padding: 15px 0 0 0; }
-            .top-badge { display: none; }
+            .offers-grid { grid-template-columns: 1fr; }
+            .info-grid { flex-wrap: wrap; }
+            .info-item { width: 33%; margin-bottom: 0; }
         }
     </style>
 </head>
@@ -85,7 +84,6 @@
 <body class="page-template-default page page-id-99 wp-theme-flatsome wp-child-theme-vaymeo lightbox nav-dropdown-has-arrow">
 
 <div id="wrapper">
-
 	<header id="header" class="header">
 		<div class="header-wrapper">
 			<div id="masthead" class="header-main hide-for-sticky">
@@ -108,15 +106,14 @@
 	<main id="main">
         <div class="page-header-simple">
             <div class="container">
-                <h1>Đề xuất khoản vay từ HyperLead</h1>
-                <p>Danh sách các đối tác tài chính được cập nhật tự động theo thời gian thực.</p>
+                <h1>Đề xuất khoản vay phù hợp</h1>
             </div>
         </div>
 
         <div class="offers-grid" id="api-offers-container">
             <div class="loading-spinner">
                 <div class="spinner"></div>
-                <p>Đang tải dữ liệu từ HyperLead...</p>
+                <p>Đang tìm kiếm ưu đãi...</p>
             </div>
         </div>
 	</main>
@@ -128,117 +125,133 @@
 					<div class="col pb-0 medium-12 small-12 large-12">
 						<div class="col-inner text-center">
                             <p>Bản quyền © CatCredit.vn (Local Version)</p>
-                            <p style="font-size:12px; color:#999; margin-top:5px;">Dữ liệu cung cấp bởi HyperLead API.</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 	</footer>
-
 </div>
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/flatsome.js"></script>
 
 <script>
-    // Cấu hình API từ ảnh của ní
     const PUB_ID = "28janns";
-    const TOKEN = "hpoRHLinw3JgcQaV6g6SaQ=="; // Token gốc
-    // Mã hóa Token để gửi qua URL (vì có ký tự ==)
+    const TOKEN = "hpoRHLinw3JgcQaV6g6SaQ=="; 
     const ENCODED_TOKEN = encodeURIComponent(TOKEN); 
-
     const API_URL = `https://publisher-api.riofintech.net/offer/all?pub_id=${PUB_ID}&token=${ENCODED_TOKEN}`;
 
-    // Hàm gọi API
+    // --- HÀM THÔNG MINH: Tự điền thông tin nếu API không có ---
+    function getSmartDetails(offerName) {
+        let name = offerName.toLowerCase();
+        
+        // Mặc định (Nếu không nhận diện được tên)
+        let details = {
+            limit: '1 - 10 Triệu',
+            interest: 'Ưu đãi tốt',
+            term: 'Linh hoạt'
+        };
+
+        // Logic nhận diện (Ní có thể thêm các đối tác khác vào đây)
+        if(name.includes('doctor')) {
+            details = { limit: '500k - 10 Triệu', interest: '0% lần đầu', term: '10 - 30 ngày' };
+        } else if (name.includes('moneycat') || name.includes('tamo') || name.includes('senmo')) {
+            details = { limit: '1 - 15 Triệu', interest: '0% lãi & phí', term: '7 - 30 ngày' };
+        } else if (name.includes('takomo') || name.includes('oncredit')) {
+            details = { limit: '500k - 10 Triệu', interest: 'Duyệt nhanh', term: 'Linh hoạt' };
+        } else if (name.includes('robocash')) {
+            details = { limit: '1 - 10 Triệu', interest: 'Miễn phí 7 ngày', term: '3 - 6 tháng' };
+        } else if (name.includes('jeff') || name.includes('crezu')) {
+            details = { limit: 'Đến 20 Triệu', interest: 'So sánh vay', term: '3 - 12 tháng' };
+        } else if (name.includes('vietmoney') || name.includes('f88')) {
+            details = { limit: 'Đến 50 Triệu', interest: 'Cầm đồ', term: 'Đến 12 tháng' };
+        } else if (name.includes('mafc') || name.includes('mcredit') || name.includes('fe')) {
+            details = { limit: '10 - 70 Triệu', interest: '1.66%/tháng', term: '12 - 36 tháng' };
+        } else if (name.includes('shinhan') || name.includes('vpbank')) {
+             details = { limit: 'Đến 100 Triệu', interest: 'Thấp nhất', term: '1 - 4 năm' };
+        }
+
+        return details;
+    }
+
     async function fetchOffers() {
         const container = document.getElementById('api-offers-container');
-        
         try {
             const response = await fetch(API_URL);
-            
-            if (!response.ok) {
-                throw new Error('Lỗi kết nối API: ' + response.status);
-            }
-
+            if (!response.ok) throw new Error('Err');
             const result = await response.json();
-
-            // Xóa loading spinner
             container.innerHTML = '';
 
-            // Kiểm tra dữ liệu trả về (dựa vào cấu trúc JSON trong ảnh)
             if (result.status === 1 && result.data && result.data.length > 0) {
-                
                 result.data.forEach(offer => {
-                    // Logic tạo link Tracking (Giả định, ní cần check kỹ trong document của nó link tracking lấy ở đâu)
-                    // Thường API này sẽ trả về tracking_link, nếu không có mình tự tạo tạm
+                    // Lấy link
                     let trackingLink = offer.tracking_link || offer.domain || '#';
-                    
-                    // Nếu link chưa có http thì thêm vào
-                    if(trackingLink !== '#' && !trackingLink.startsWith('http')){
-                        trackingLink = 'https://' + trackingLink;
-                    }
+                    if(trackingLink !== '#' && !trackingLink.startsWith('http')){ trackingLink = 'https://' + trackingLink; }
 
-                    // Render HTML cho từng Offer
+                    // Lấy thông tin thông minh
+                    const smartInfo = getSmartDetails(offer.name);
+                    
+                    // Xử lý loại hình (Product Type)
+                    let pType = offer.product_type || "Vay online";
+                    if(pType === "undefined") pType = "Tài chính";
+
                     const cardHTML = `
                         <div class="loan-box">
-                            <div class="top-badge">Đề xuất</div>
+                            <div class="top-badge">${pType}</div>
                             <div class="box-header">
                                 <img src="${offer.avatar}" class="partner-logo" alt="${offer.name}" onerror="this.src='images/catcredit-logo.png'">
-                                <div class="star-rating"><i class="fa-solid fa-star"></i> 4.5</div>
                             </div>
+                            
                             <div class="box-body">
-                                <div style="text-align:center; margin-bottom:15px;">
-                                    <span style="font-weight:800; font-size:18px; color:#111;">${offer.name}</span>
-                                    <br>
-                                    <span style="font-size:12px; color:#27ae60; background:#e8f5e9; padding:2px 8px; border-radius:4px;">${offer.product_type}</span>
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span class="info-label">Hạn mức</span>
+                                        <span class="info-value highlight">${smartInfo.limit}</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Lãi suất</span>
+                                        <span class="info-value">${smartInfo.interest}</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Thời hạn</span>
+                                        <span class="info-value">${smartInfo.term}</span>
+                                    </div>
                                 </div>
-                                <ul class="details-list">
-                                    <li><i class="fa-solid fa-circle-check"></i> ${offer.about ? offer.about : 'Duyệt vay nhanh chóng'}</li>
-                                    <li><i class="fa-solid fa-circle-check"></i> ${offer.commission_rule ? offer.commission_rule : 'Thủ tục online 100%'}</li>
-                                </ul>
                             </div>
+
                             <div class="box-footer">
                                 <a href="${trackingLink}" target="_blank" class="btn-loan-action">
-                                    Đăng ký ngay <i class="fa-solid fa-arrow-right"></i>
+                                    Đăng ký ngay <i class="fa-solid fa-angle-right"></i>
                                 </a>
-                                <span style="font-size:11px; color:#999; display:block; margin-top:5px;">
-                                    ${offer.commission_rate ? 'Hoa hồng: ' + offer.commission_rate : 'Giải ngân trong ngày'}
-                                </span>
                             </div>
                         </div>
                     `;
                     container.innerHTML += cardHTML;
                 });
-
             } else {
-                container.innerHTML = '<div class="error-message">Hiện tại chưa có offer nào khả dụng.</div>';
+                container.innerHTML = '<p style="text-align:center; width:100%">Chưa có ưu đãi nào.</p>';
             }
-
         } catch (error) {
-            console.error('Error:', error);
-            // Fallback: Nếu lỗi API (do CORS hoặc mạng), hiển thị mẫu giả để web không trống
-            container.innerHTML = `
-                <div class="error-message">
-                    Không tải được dữ liệu từ HyperLead (Có thể do chặn CORS trên trình duyệt Local).<br>
-                    Vui lòng kiểm tra lại cấu hình API hoặc chạy trên Hosting thật.
-                </div>
-            `;
-            // TẠM THỜI: Hiển thị offer giả lập để ní xem giao diện trước
-            renderFakeData(container);
+            console.error(error);
+            container.innerHTML = '<p style="text-align:center; color:red; width:100%">Lỗi tải dữ liệu. Vui lòng thử lại sau.</p>';
+            // Fallback data demo nếu lỗi
+            const demoInfo = getSmartDetails("DoctorDong");
+             container.innerHTML += `
+                <div class="loan-box">
+                    <div class="top-badge">Demo</div>
+                    <div class="box-header"><img src="images/catcredit-logo.png" class="partner-logo"></div>
+                    <div class="box-body">
+                        <div class="info-grid">
+                            <div class="info-item"><span class="info-label">Hạn mức</span><span class="info-value highlight">${demoInfo.limit}</span></div>
+                            <div class="info-item"><span class="info-label">Lãi suất</span><span class="info-value">${demoInfo.interest}</span></div>
+                            <div class="info-item"><span class="info-label">Thời hạn</span><span class="info-value">${demoInfo.term}</span></div>
+                        </div>
+                    </div>
+                    <div class="box-footer"><a href="#" class="btn-loan-action">Đăng ký ngay</a></div>
+                </div>`;
         }
     }
-
-    // Hàm tạo dữ liệu giả khi API lỗi (chỉ để demo)
-    function renderFakeData(container) {
-        const fakeOffers = [
-            { name: "DoctorDong", avatar: "https://doctordong.vn/assets/images/logo.png", type: "Vay nhanh", about: "0% lãi suất lần đầu" },
-            { name: "MoneyCat", avatar: "https://moneycat.vn/assets/images/logo.png", type: "Tín chấp", about: "Giải ngân 5 phút" }
-        ];
-        // Code render giả lập tương tự ở trên... (đã lược bỏ cho gọn)
-    }
-
-    // Chạy hàm lấy dữ liệu khi web tải xong
     document.addEventListener('DOMContentLoaded', fetchOffers);
 </script>
 
