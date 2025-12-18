@@ -3,236 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Đề Xuất Vay Tốt Nhất | VayNhanh24h</title>
+    <title>Danh Sách Gói Vay Tốt Nhất | VayNhanh24h</title>
     <meta name="robots" content="noindex, nofollow">
     
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* === DÙNG CHUNG STYLE VỚI INDEX (ĐỒNG BỘ 100%) === */
-        :root {
-            --primary: #0f4c81; --accent: #f59e0b;
-            --text-main: #1e293b; --text-sub: #64748b;
-            --bg-light: #f1f5f9; --white: #ffffff;
-            --radius: 12px; --shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-        }
-        * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-light); color: var(--text-main); line-height: 1.6; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        :root { --primary: #FFB703; --blue: #023047; --text: #333; --bg: #f3f6fa; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: 'Be Vietnam Pro', sans-serif; background: var(--bg); color: var(--text); padding-bottom: 50px; }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 15px; }
 
         /* HEADER */
-        .header { background: rgba(255,255,255,0.9); backdrop-filter: blur(12px); height: 80px; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .header-wrap { display: flex; justify-content: space-between; align-items: center; height: 100%; }
-        .logo { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 24px; color: var(--primary); text-decoration: none; }
-        .logo i { color: var(--accent); font-size: 28px; }
-        .btn-back { background: #e2e8f0; color: var(--text-main); padding: 10px 20px; border-radius: 50px; font-weight: 600; text-decoration: none; font-size: 14px; }
+        .header { background: #fff; padding: 15px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 99; }
+        .head-wrap { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 900; color: var(--blue); font-size: 18px; text-decoration: none; display: flex; align-items: center; gap: 5px; }
+        .btn-back { font-size: 14px; font-weight: 600; color: #666; text-decoration: none; display: flex; align-items: center; gap: 5px; }
 
-        /* CONTENT */
-        .page-head { text-align: center; padding: 40px 0 30px; }
-        .page-head h1 { font-size: 28px; font-weight: 800; color: var(--primary); margin-bottom: 5px; }
-        .page-head p { color: var(--text-sub); font-size: 15px; }
+        /* FILTER BAR */
+        .filter-bar { display: flex; gap: 10px; overflow-x: auto; padding: 20px 0; scrollbar-width: none; }
+        .tag { white-space: nowrap; background: #fff; padding: 8px 15px; border-radius: 20px; font-size: 13px; font-weight: 600; color: #666; border: 1px solid #ddd; }
+        .tag.active { background: var(--blue); color: #fff; border-color: var(--blue); }
 
-        .grid-offer { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; padding-bottom: 60px; }
-
-        /* CARD STYLE MỚI - SIÊU SẠCH */
-        .card { background: #fff; border-radius: 16px; overflow: hidden; border: 1px solid #fff; box-shadow: var(--shadow); transition: 0.3s; position: relative; display: flex; flex-direction: column; height: 100%; }
-        .card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+        /* OFFERS */
+        .offers-list { display: flex; flex-direction: column; gap: 20px; }
         
-        .badge { position: absolute; top: 15px; right: 15px; background: #ecfdf5; color: #059669; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; text-transform: uppercase; z-index: 2; }
-
-        .card-head { padding: 25px 20px 15px; text-align: center; border-bottom: 1px dashed #f1f5f9; height: 90px; display: flex; align-items: center; justify-content: center; }
-        .card-logo { max-height: 45px; max-width: 160px; object-fit: contain; }
-
-        .card-body { padding: 20px; flex: 1; }
-        .info-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; }
-        .info-label { color: var(--text-sub); }
-        .info-val { font-weight: 700; color: var(--text-main); }
-        .hl { color: var(--accent); }
-
-        .card-foot { padding: 0 20px 25px; }
-        .btn-apply { display: flex; align-items: center; justify-content: center; width: 100%; padding: 14px; background: var(--primary); color: #fff; font-weight: 700; border-radius: 10px; text-decoration: none; transition: 0.2s; }
-        .btn-apply:hover { background: #0a355c; }
+        .card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #fff; position: relative; }
+        .badge { position: absolute; top: 0; right: 0; background: #dcfce7; color: #16a34a; font-size: 10px; font-weight: 700; padding: 5px 10px; border-radius: 0 0 0 10px; text-transform: uppercase; }
         
-        .disabled { opacity: 0.6; filter: grayscale(100%); pointer-events: none; }
-        .btn-dis { background: #cbd5e1; color: #fff; cursor: not-allowed; }
+        .card-main { display: flex; padding: 20px; align-items: center; gap: 15px; }
+        .c-logo { width: 80px; height: 80px; object-fit: contain; flex-shrink: 0; border: 1px solid #eee; border-radius: 10px; padding: 5px; }
+        .c-content { flex: 1; }
+        .c-name { font-weight: 800; font-size: 16px; margin-bottom: 5px; color: var(--blue); }
+        .c-desc { font-size: 12px; color: #666; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        
+        .c-info { display: flex; border-top: 1px dashed #eee; padding: 15px 20px; justify-content: space-between; background: #fafafa; }
+        .info-col { text-align: center; }
+        .info-col span { display: block; font-size: 11px; color: #999; margin-bottom: 2px; }
+        .info-col strong { display: block; font-size: 14px; color: #333; font-weight: 700; }
 
-        /* FOOTER */
-        .footer { background: #fff; border-top: 1px solid #e2e8f0; padding: 40px 0; text-align: center; font-size: 14px; color: var(--text-sub); margin-top: auto; }
+        .c-action { padding: 0 20px 20px; }
+        .btn-apply { display: flex; justify-content: center; align-items: center; width: 100%; padding: 12px; background: var(--blue); color: #fff; font-weight: 700; border-radius: 10px; text-decoration: none; font-size: 15px; }
+        .btn-disabled { background: #eee; color: #aaa; pointer-events: none; }
 
         /* HELPER */
-        #helper-box { background: #1e293b; color: #4ade80; padding: 20px; border-radius: 12px; margin: 20px auto; display: none; font-family: monospace; }
-        #helper-textarea { width: 100%; height: 100px; background: #0f172a; color: #fff; border: 1px solid #334155; padding: 10px; margin-top: 10px; }
-        .test-alert { background: #fffbeb; color: #b45309; padding: 8px; text-align: center; font-size: 13px; font-weight: 600; border-bottom: 1px solid #fcd34d; }
-        .reset-btn { margin-top: 10px; font-size: 12px; color: #ef4444; background: none; border: none; cursor: pointer; text-decoration: underline; }
+        #helper { background: #333; color: #0f0; padding: 15px; border-radius: 10px; margin-bottom: 20px; display: none; font-family: monospace; font-size: 12px; }
+        #helper textarea { width: 100%; background: #000; color: #fff; border: none; padding: 5px; }
 
-        @media (max-width: 768px) {
-            .grid-offer { grid-template-columns: 1fr; gap: 20px; }
-            .card { flex-direction: column; height: auto; }
-            /* Mobile vẫn giữ layout dọc, đầy đủ thông tin */
+        @media(max-width: 400px) {
+            .card-main { flex-direction: column; text-align: center; }
+            .c-logo { width: 60px; height: 60px; }
         }
     </style>
 </head>
 <body>
 
-    <div id="test-alert" class="test-alert" style="display:none;">⚠️ ĐANG CHẠY TEST (Không ẩn Offer)</div>
-
     <header class="header">
-        <div class="container header-wrap">
-            <a href="index.html" class="logo"><i class="fa-solid fa-layer-group"></i> VAYNHANH24H</a>
-            <a href="index.html" class="btn-back"><i class="fa-solid fa-arrow-left"></i> Trang chủ</a>
+        <div class="container head-wrap">
+            <a href="index.html" class="logo"><i class="fa-solid fa-coins"></i> VAYNHANH24H</a>
+            <a href="index.html" class="btn-back"><i class="fa-solid fa-chevron-left"></i> Trở về</a>
         </div>
     </header>
 
     <div class="container">
-        <div class="page-head">
-            <h1>Đề Xuất Tốt Nhất</h1>
-            <p>Dựa trên hồ sơ của bạn, đây là các gói vay có tỷ lệ duyệt 98%.</p>
+        <div class="filter-bar">
+            <div class="tag active">Tất cả</div>
+            <div class="tag">Lãi suất 0%</div>
+            <div class="tag">Duyệt nhanh</div>
+            <div class="tag">Nợ xấu</div>
+            <div class="tag">Hạn mức cao</div>
         </div>
 
-        <div id="helper-box">
-            <h3>⚠️ COPY VÀO LINKS.JSON</h3>
-            <textarea id="helper-textarea"></textarea>
+        <div id="helper">
+            <p>COPY VÀO LINKS.JSON:</p>
+            <textarea id="h-txt"></textarea>
         </div>
 
-        <div id="offers-grid" class="grid-offer">
-            <div style="text-align:center; padding:50px; grid-column:1/-1;">
-                <i class="fa-solid fa-circle-notch fa-spin" style="font-size:30px; color:var(--primary);"></i>
-                <p style="margin-top:15px; color:var(--text-sub);">Đang tải dữ liệu...</p>
+        <div id="list" class="offers-list">
+            <div style="text-align:center; padding: 50px;">
+                <i class="fa-solid fa-circle-notch fa-spin" style="color:var(--blue); font-size:24px;"></i>
+                <p style="font-size:12px; color:#999; margin-top:10px;">Đang tìm kiếm gói vay tốt nhất...</p>
             </div>
         </div>
+        
+        <p style="text-align:center; font-size:12px; color:#999; margin-top:30px;">Hệ thống tự động cập nhật sau mỗi 15 phút.</p>
     </div>
-
-    <footer class="footer">
-        <div class="container">
-            <p>Bản quyền © 2024 VayNhanh24h.vn</p>
-            <div id="user-ip" style="font-size:12px; margin-top:10px;">Checking IP...</div>
-            <button class="reset-btn" onclick="resetHistory()">[Xóa lịch sử Test]</button>
-            <div style="margin-top:10px;"><a href="admin-tool.html" style="color:#cbd5e1; font-size:11px; text-decoration:none">Admin</a></div>
-        </div>
-    </footer>
 
     <script>
         const PUB_ID = "28janns";
         const TOKEN = "hpoRHLinw3JgcQaV6g6SaQ=="; 
-        const CHE_DO_TEST = true; // SỬA THÀNH FALSE KHI CHẠY THẬT
-        const API_URL = `https://publisher-api.riofintech.net/offer/all?pub_id=${PUB_ID}&token=${encodeURIComponent(TOKEN)}`;
+        const TEST_MODE = true; // Sửa thành false khi chạy thật
+        const API = `https://publisher-api.riofintech.net/offer/all?pub_id=${PUB_ID}&token=${encodeURIComponent(TOKEN)}`;
 
-        async function checkUserIP() {
-            const el = document.getElementById('user-ip');
-            try { const res = await fetch('https://api.ipify.org?format=json'); const data = await res.json(); el.innerText = `IP: ${data.ip}`; } catch (e) { el.innerText = ''; }
+        function track(key) {
+            if(TEST_MODE) return;
+            let h = JSON.parse(localStorage.getItem('vn24h_history') || '[]');
+            if(!h.includes(key)) { h.push(key); localStorage.setItem('vn24h_history', JSON.stringify(h)); }
         }
 
-        function trackClick(brandKey) {
-            if (CHE_DO_TEST) return true;
-            let clicked = JSON.parse(localStorage.getItem('vaynhanh_clicked') || '[]');
-            if (!clicked.includes(brandKey)) { clicked.push(brandKey); localStorage.setItem('vaynhanh_clicked', JSON.stringify(clicked)); }
-            return true;
-        }
-
-        function resetHistory() {
-            if(confirm('Xóa lịch sử?')) { localStorage.removeItem('vaynhanh_clicked'); location.reload(); }
-        }
-
-        function getInfo(name) {
+        function getMeta(name) {
             let n = name.toLowerCase();
-            if(n.includes('doctor')) return { limit: '10 Triệu', rate: '0% Lần đầu', time: '30 ngày' };
-            if(n.includes('moneycat')) return { limit: '15 Triệu', rate: '0% Phí', time: '7 - 30 ngày' };
-            if(n.includes('takomo')) return { limit: '10 Triệu', rate: 'Duyệt nhanh', time: 'Linh hoạt' };
-            if(n.includes('vayvnd')) return { limit: '15 Triệu', rate: '0% Lãi', time: '30 ngày' };
-            if(n.includes('f88') || n.includes('vietmoney')) return { limit: '50 Triệu', rate: 'Cầm đồ', time: '12 tháng' };
-            if(n.includes('mafc') || n.includes('mcredit')) return { limit: '70 Triệu', rate: '1.67%', time: '36 tháng' };
-            return { limit: '10 Triệu', rate: 'Ưu đãi tốt', time: 'Linh hoạt' };
+            if(n.includes('doctor')) return { l:'10 Triệu', r:'0% Lần đầu', t:'30 Ngày', d:'Duyệt tự động, không gọi thẩm định.' };
+            if(n.includes('moneycat')) return { l:'15 Triệu', r:'0% Phí', t:'180 Ngày', d:'Ưu đãi 0% lãi suất cho khách hàng mới.' };
+            if(n.includes('takomo')) return { l:'10 Triệu', r:'Duyệt nhanh', t:'90 Ngày', d:'Giải ngân siêu tốc trong 10 phút.' };
+            if(n.includes('vayvnd')) return { l:'15 Triệu', r:'0% Lãi', t:'30 Ngày', d:'Thủ tục đơn giản chỉ cần CMND/CCCD.' };
+            if(n.includes('f88')) return { l:'50 Triệu', r:'Cầm đồ', t:'12 Tháng', d:'Vay bằng đăng ký xe máy/ô tô.' };
+            return { l:'20 Triệu', r:'Ưu đãi tốt', t:'Linh hoạt', d:'Khoản vay phù hợp với mọi nhu cầu.' };
         }
 
-        function cleanName(name) {
+        function clean(name) {
             return name.replace(/\(.*\)/g, '').replace(/(VN|CP|CPL|CPS|CPI|Android|iOS|Web|App|APK)/gi, '').trim();
         }
 
-        function getKey(name) { return name.toLowerCase().trim().split(/[\s\-\.\(\)]+/)[0]; }
+        function getKey(name) { return name.toLowerCase().split(/[\s\-\.]+/)[0]; }
 
-        function getLink(name, links) {
-            if (!links) return null;
-            for (const [key, url] of Object.entries(links)) {
-                if (url && url.length > 5 && name.toLowerCase().includes(key.toLowerCase())) return url;
-            }
-            return null;
-        }
-
-        async function init() {
-            checkUserIP();
-            if (CHE_DO_TEST) document.getElementById('test-alert').style.display = 'block';
-            
-            const grid = document.getElementById('offers-grid');
-            const helper = document.getElementById('helper-box');
-
+        async function run() {
             try {
-                const [apiRes, linkRes] = await Promise.all([ fetch(API_URL), fetch('links.json').catch(() => null) ]);
-                const apiData = await apiRes.json();
-                let myLinks = {};
-                if (linkRes && linkRes.ok) { myLinks = await linkRes.json(); } else { helper.style.display = 'block'; }
-
-                if (apiData.status !== 1 || !apiData.data) throw new Error("No Data");
-
-                if (helper.style.display === 'block') {
-                    let txt = "{\n" + apiData.data.map((o,i) => `  "${o.name}": ""` + (i<apiData.data.length-1?",":"")).join("\n") + "\n}";
-                    document.getElementById('helper-textarea').value = txt;
+                const [res1, res2] = await Promise.all([fetch(API), fetch('links.json').catch(()=>null)]);
+                const data = await res1.json();
+                const links = res2 && res2.ok ? await res2.json() : {};
+                
+                if(!links || Object.keys(links).length === 0) document.getElementById('helper').style.display='block';
+                if(document.getElementById('helper').style.display === 'block') {
+                    let t = "{\n" + data.data.map((o,i)=>`  "${o.name}": ""` + (i<data.data.length-1?",":"")).join("\n") + "\n}";
+                    document.getElementById('h-txt').value = t;
                 }
 
-                let clicked = JSON.parse(localStorage.getItem('vaynhanh_clicked') || '[]');
-                let uniqueMap = {};
+                const list = document.getElementById('list');
+                const history = JSON.parse(localStorage.getItem('vn24h_history') || '[]');
+                
+                let html = '';
+                let count = 0;
 
-                apiData.data.forEach(item => {
-                    let brand = getKey(item.name);
-                    if (!CHE_DO_TEST && clicked.includes(brand)) return;
+                data.data.forEach(item => {
+                    const key = getKey(item.name);
+                    if(!TEST_MODE && history.includes(key)) return;
 
-                    let link = getLink(item.name, myLinks);
-                    let hasLink = !!link;
-
-                    if (!uniqueMap[brand] || (!uniqueMap[brand].hasLink && hasLink)) {
-                        uniqueMap[brand] = { ...item, display: cleanName(item.name), link: link, hasLink: hasLink, info: getInfo(item.name), brandKey: brand };
+                    let url = null;
+                    for(const [k, v] of Object.entries(links)) {
+                        if(v && v.length > 5 && item.name.toLowerCase().includes(k.toLowerCase())) url = v;
                     }
-                });
 
-                let offers = Object.values(uniqueMap).sort((a,b) => b.hasLink - a.hasLink);
+                    // Logic hiển thị: Nếu có link thì hiện, không có thì hiện mờ (hoặc ẩn luôn tùy đại ca)
+                    // Ở đây em để hiện tất cả, cái nào ko có link thì disable
+                    const hasLink = !!url;
+                    if(!hasLink && !TEST_MODE) return; // Nếu chạy thật mà ko có link thì ẩn luôn cho đẹp
 
-                if (offers.length === 0) {
-                    grid.innerHTML = '<div style="text-align:center; padding:40px; background:#fff; border-radius:12px; grid-column:1/-1;"><h3>Bạn đã đăng ký hết các gói vay!</h3><p>Vui lòng quay lại sau 24h.</p></div>';
-                    return;
-                }
-
-                grid.innerHTML = offers.map(o => {
-                    let active = o.hasLink;
-                    let clsBox = active ? "card" : "card disabled";
-                    let badge = active ? `<div class="badge">Đề xuất</div>` : ``;
-                    let btnCls = active ? "btn-apply" : "btn-apply btn-dis";
-                    let btnTxt = active ? 'ĐĂNG KÝ NGAY' : 'BẢO TRÌ';
-                    let href = active ? o.link : "javascript:void(0)";
-                    let target = active ? "_blank" : "_self";
-                    let onclick = active ? `onclick="trackClick('${o.brandKey}')"` : "";
-
-                    return `
-                    <div class="${clsBox}">
-                        ${badge}
-                        <div class="card-head">
-                            <img src="${o.avatar}" class="card-logo" alt="${o.display}" onerror="this.style.display='none'">
+                    const meta = getMeta(item.name);
+                    const name = clean(item.name);
+                    
+                    html += `
+                    <div class="card ${hasLink ? '' : 'disabled'}">
+                        ${hasLink ? '<div class="badge">Đề xuất</div>' : ''}
+                        <div class="card-main">
+                            <img src="${item.avatar}" class="c-logo" onerror="this.style.display='none'">
+                            <div class="c-content">
+                                <div class="c-name">${name}</div>
+                                <div class="c-desc">${meta.d}</div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h3 style="text-align:center; margin-bottom:15px;">${o.display}</h3>
-                            <div class="info-row"><span class="info-label">Hạn mức</span><span class="info-val hl" style="font-size:16px">${o.info.limit}</span></div>
-                            <div class="info-row"><span class="info-label">Lãi suất</span><span class="info-val">${o.info.rate}</span></div>
-                            <div class="info-row"><span class="info-label">Thời hạn</span><span class="info-val">${o.info.time}</span></div>
+                        <div class="c-info">
+                            <div class="info-col"><span>Hạn mức</span><strong>${meta.l}</strong></div>
+                            <div class="info-col"><span>Lãi suất</span><strong style="color:#eab308">${meta.r}</strong></div>
+                            <div class="info-col"><span>Thời hạn</span><strong>${meta.t}</strong></div>
                         </div>
-                        <div class="card-foot">
-                            <a href="${href}" target="${target}" class="${btnCls}" ${onclick}>${btnTxt}</a>
+                        <div class="c-action">
+                            <a href="${hasLink ? url : '#'}" target="${hasLink ? '_blank' : '_self'}" 
+                               class="${hasLink ? 'btn-apply' : 'btn-apply btn-disabled'}"
+                               onclick="track('${key}')">
+                               ${hasLink ? 'ĐĂNG KÝ VAY NGAY' : 'TẠM HẾT HẠN MỨC'}
+                            </a>
                         </div>
                     </div>`;
-                }).join('');
+                    count++;
+                });
 
-            } catch (e) { console.error(e); grid.innerHTML = `<p style="text-align:center;width:100%;color:red">Lỗi kết nối.</p>`; }
+                if(count === 0) list.innerHTML = '<p style="text-align:center">Bạn đã đăng ký hết các gói vay. Vui lòng quay lại sau.</p>';
+                else list.innerHTML = html;
+
+            } catch(e) {
+                console.log(e);
+                document.getElementById('list').innerHTML = '<p style="text-align:center;color:red">Lỗi tải dữ liệu.</p>';
+            }
         }
-
-        init();
+        run();
     </script>
+
 </body>
 </html>
