@@ -5,146 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <title>Danh Sách Gói Vay Tốt Nhất | VayNhanh24h</title>
-    <meta name="robots" content="index, follow">
-    <meta name="description" content="Danh sách các đơn vị cho vay tiền online uy tín, duyệt tự động 24/7. Lãi suất 0%, giải ngân về tài khoản ngay lập tức.">
-    <link rel="canonical" href="https://vaynhanh24h.vn/offer.html">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="description" content="Danh sách các đơn vị cho vay tiền online uy tín nhất. Lãi suất 0%, giải ngân trong ngày.">
+    <meta name="robots" content="noindex, nofollow"> <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "VayNhanh24h",
+      "address": { "@type": "PostalAddress", "addressCountry": "VN" }
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* === SYSTEM DESIGN === */
+        /* === SYSTEM DESIGN (GIỐNG INDEX 100%) === */
         :root {
-            --primary: #fec629;
-            --primary-hover: #e5b225;
-            --text-dark: #111827;
-            --text-gray: #4b5563;
-            --bg-light: #f9fafb;
-            --white: #ffffff;
-            --radius: 16px;
-            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --primary: #fec629; --primary-dark: #e5b225;
+            --text: #1f2937; --text-light: #6b7280;
+            --bg: #f8fafc; --white: #ffffff;
+            --radius: 16px; --shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
         }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
-        a { text-decoration: none; color: inherit; }
-        
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Manrope', sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+        .container { max-width:1140px; margin:0 auto; padding:0 20px; }
 
         /* HEADER */
-        .header { background: var(--white); padding: 15px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
-        .header-inner { display: flex; justify-content: space-between; align-items: center; }
-        .logo img { height: 40px; }
-        .nav { display: flex; gap: 25px; }
-        .nav a { font-weight: 600; font-size: 15px; color: var(--text-dark); transition: 0.3s; }
-        .nav a:hover { color: #d97706; }
-        .btn-header { background: var(--primary); padding: 10px 20px; border-radius: 50px; font-weight: 700; color: #000; box-shadow: 0 4px 6px rgba(254, 198, 41, 0.2); }
+        .header { background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); height:70px; position:sticky; top:0; z-index:999; border-bottom:1px solid #f1f5f9; display:flex; align-items:center; }
+        .header-wrap { display:flex; justify-content:space-between; align-items:center; width:100%; }
+        .logo { display:flex; align-items:center; gap:8px; font-weight:800; font-size:20px; color:var(--text); text-decoration:none; }
+        .btn-back { background:#f1f5f9; color:var(--text); padding:8px 20px; border-radius:50px; font-weight:700; font-size:14px; text-decoration:none; transition:0.3s; }
+        .btn-back:hover { background:#e2e8f0; }
 
-        /* PAGE TITLE */
-        .page-header { text-align: center; padding: 40px 0 20px; }
-        .page-header h1 { font-size: 32px; font-weight: 800; color: #111; margin-bottom: 10px; }
-        .page-header p { color: var(--text-gray); font-size: 16px; }
+        /* CONTENT */
+        .page-head { text-align:center; padding:40px 0 30px; }
+        .page-head h1 { font-size:32px; font-weight:800; margin-bottom:10px; }
+        .page-head p { color:var(--text-light); }
 
-        /* OFFERS GRID */
-        .offers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; padding-bottom: 50px; }
+        .offers-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:25px; padding-bottom:60px; }
         
-        .offer-card { 
-            background: var(--white); border-radius: var(--radius); border: 1px solid #e5e7eb;
-            overflow: hidden; transition: 0.3s; position: relative; display: flex; flex-direction: column;
-            /* Đảm bảo chiều cao đồng đều */
-            height: 100%; 
-        }
-        .offer-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--primary); }
+        /* CARD DESIGN */
+        .card { background:var(--white); border-radius:var(--radius); border:1px solid #e5e7eb; overflow:hidden; position:relative; display:flex; flex-direction:column; box-shadow:var(--shadow); transition:0.3s; height:100%; }
+        .card:hover { transform:translateY(-5px); border-color:var(--primary); box-shadow:0 10px 15px -3px rgba(0,0,0,0.1); }
         
-        .badge { position: absolute; top: 15px; right: 15px; background: #ecfdf5; color: #059669; padding: 5px 10px; border-radius: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; z-index: 2; }
+        .badge { position:absolute; top:15px; right:15px; background:#dcfce7; color:#16a34a; padding:4px 10px; border-radius:6px; font-size:11px; font-weight:700; text-transform:uppercase; z-index:2; }
         
-        .card-header { padding: 25px 20px 10px; text-align: center; height: 80px; display: flex; align-items: center; justify-content: center; }
-        .brand-logo { max-height: 45px; max-width: 140px; object-fit: contain; }
+        .card-head { padding:20px; height:80px; display:flex; align-items:center; justify-content:center; border-bottom:1px solid #f8fafc; }
+        .card-logo { max-height:40px; max-width:140px; object-fit:contain; }
         
-        .card-body { padding: 10px 25px 20px; flex: 1; }
-        .brand-name { text-align: center; font-size: 18px; font-weight: 800; margin-bottom: 15px; color: #111; }
-        
-        .info-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; border-bottom: 1px dashed #f3f4f6; padding-bottom: 8px; }
-        .info-row:last-child { border-bottom: none; }
-        .info-label { color: #6b7280; }
-        .info-val { font-weight: 700; color: #111; }
-        .highlight { color: #d97706; }
+        .card-body { padding:20px; flex:1; }
+        .brand-name { text-align:center; font-weight:800; font-size:18px; margin-bottom:15px; }
+        .info-row { display:flex; justify-content:space-between; font-size:14px; margin-bottom:10px; border-bottom:1px dashed #f1f5f9; padding-bottom:8px; }
+        .info-row:last-child { border:none; }
+        .info-val { font-weight:700; }
+        .hl { color:#d97706; }
 
-        .card-footer { padding: 0 25px 25px; }
-        .btn-loan { 
-            display: flex; justify-content: center; align-items: center; gap: 10px;
-            width: 100%; padding: 14px; background: var(--primary); color: #000; 
-            font-weight: 800; font-size: 15px; border-radius: 12px; 
-            transition: 0.2s; text-transform: uppercase;
-        }
-        .btn-loan:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(254, 198, 41, 0.4); }
+        .card-foot { padding:0 20px 25px; }
+        .btn-loan { display:flex; justify-content:center; align-items:center; width:100%; padding:14px; background:var(--primary); color:#000; font-weight:800; border-radius:12px; text-decoration:none; transition:0.2s; }
+        .btn-loan:hover { background:var(--primary-dark); transform:translateY(-2px); }
         
-        .card-disabled { opacity: 0.6; filter: grayscale(100%); pointer-events: none; }
-        .btn-disabled { background: #e5e7eb; color: #9ca3af; box-shadow: none; cursor: not-allowed; }
+        .disabled { opacity:0.5; pointer-events:none; filter:grayscale(100%); }
 
-        /* SEO & FOOTER */
-        .seo-box { background: #fff; padding: 40px; border-radius: 20px; border: 1px solid #e5e7eb; margin-bottom: 50px; }
-        .footer { background: var(--white); border-top: 1px solid #e5e7eb; padding: 40px 0 20px; text-align: center; margin-top: auto; }
-        
-        #helper-box { background: #111827; color: #10b981; padding: 20px; border-radius: 8px; margin: 20px auto; max-width: 800px; display: none; font-family: monospace; }
-        #helper-textarea { width: 100%; height: 150px; background: #000; color: #fff; border: 1px solid #374151; padding: 10px; }
-        .test-alert { background: #fee2e2; color: #b91c1c; padding: 10px; text-align: center; font-weight: bold; font-size: 13px; border-bottom: 1px solid #fecaca; }
-        .reset-btn { margin-top: 10px; font-size: 11px; color: #ef4444; cursor: pointer; text-decoration: underline; background: none; border: none; }
+        /* SEO TEXT & FOOTER */
+        .seo-text { background:#fff; padding:30px; border-radius:20px; border:1px solid #e5e7eb; margin-bottom:50px; }
+        .footer { background:var(--white); border-top:1px solid #e5e7eb; padding:40px 0 20px; text-align:center; margin-top:auto; font-size:14px; color:var(--text-light); }
 
-        /* === MOBILE RESPONSIVE (ĐÃ SỬA ĐỂ GIỐNG DESKTOP) === */
+        /* HELPERS */
+        #helper-box { background:#111827; color:#10b981; padding:20px; border-radius:12px; margin:20px auto; display:none; font-family:monospace; }
+        #helper-textarea { width:100%; height:150px; background:#000; color:#fff; border:1px solid #374151; padding:10px; margin-top:10px; }
+        .test-alert { background:#fee2e2; color:#b91c1c; padding:10px; text-align:center; font-weight:bold; font-size:13px; }
+        .reset-btn { margin-top:10px; font-size:11px; color:#ef4444; cursor:pointer; background:none; border:none; text-decoration:underline; }
+
         @media (max-width: 768px) {
-            .nav { display: none; }
-            .page-header { padding: 30px 0 15px; }
-            .page-header h1 { font-size: 24px; }
-            
-            /* GIỮ NGUYÊN GRID 1 CỘT NHƯNG THẺ VAY PHẢI TO ĐẸP */
-            .offers-grid { grid-template-columns: 1fr; gap: 20px; padding: 0 10px 40px; }
-            
-            /* RESET LẠI CARD CHO GIỐNG DESKTOP */
-            .offer-card { 
-                flex-direction: column; /* Vẫn là dọc, không chuyển sang ngang */
-                height: auto; 
-                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            }
-            .card-header { width: 100%; height: 70px; border-right: none; border-bottom: 1px solid #f3f4f6; }
-            .card-body { padding: 15px 20px; width: 100%; }
-            .brand-name { text-align: center; margin-bottom: 10px; font-size: 16px; }
-            
-            /* HIỆN LẠI TẤT CẢ THÔNG TIN */
-            .info-row { display: flex; padding-bottom: 8px; margin-bottom: 8px; border-bottom: 1px dashed #f3f4f6; }
-            .info-row:not(:first-child) { display: flex; } /* QUAN TRỌNG: Hiện lại lãi suất, thời hạn */
-            
-            .card-footer { padding: 0 20px 20px; width: 100%; }
-            .btn-loan { width: 100%; font-size: 14px; padding: 12px; }
-            .badge { display: block; right: 10px; top: 10px; font-size: 10px; }
+            .offers-grid { grid-template-columns:1fr; gap:20px; }
+            .card-head { height:70px; border-bottom:1px solid #f1f5f9; }
+            /* Mobile vẫn hiện thẻ dọc cho đẹp */
         }
     </style>
 </head>
 <body>
 
-    <div id="test-alert" class="test-alert" style="display:none;">
-        ⚠️ CHẾ ĐỘ TEST: ĐANG BẬT (Bấm thoải mái không mất Offer)
-    </div>
+    <div id="test-alert" class="test-alert" style="display:none;">⚠️ CHẾ ĐỘ TEST: ĐANG BẬT (Không ẩn gói vay)</div>
 
     <header class="header">
-        <div class="container header-inner">
+        <div class="container header-wrap">
             <a href="index.html" class="logo">
-                <img src="images/catcredit-logo.png" alt="VayNhanh24h" onerror="this.style.display='none';this.parentElement.innerText='VAYNHANH24H'">
+                <svg width="32" height="32" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="12" fill="#FEC629"/><path d="M22 8L12 22H20L18 32L28 18H20L22 8Z" fill="white" stroke="#111827" stroke-width="2"/></svg>
+                VAYNHANH<span>24H</span>
             </a>
-            <nav class="nav">
-                <a href="index.html">Trang chủ</a>
-                <a href="index.html#loi-ich">Lợi ích</a>
-                <a href="index.html#faq">Hỏi đáp</a>
-            </nav>
-            <a href="index.html" class="btn-header" style="background:#f3f4f6; color:#111; box-shadow:none;"><i class="fa-solid fa-arrow-left"></i> Trang chủ</a>
+            <a href="index.html" class="btn-back"><i class="fa-solid fa-arrow-left"></i> Trang chủ</a>
         </div>
     </header>
 
     <div class="container">
-        
-        <div class="page-header">
-            <h1>Đề Xuất Vay Tốt Nhất</h1>
-            <p>Dựa trên hồ sơ của bạn, đây là các gói vay ưu đãi nhất.</p>
+        <div class="page-head">
+            <h1>Đề Xuất Tốt Nhất</h1>
+            <p>Dựa trên hồ sơ của bạn, đây là các gói vay có tỷ lệ duyệt cao nhất.</p>
         </div>
 
         <div id="helper-box">
@@ -159,28 +115,22 @@
             </div>
         </div>
 
-        <div class="seo-box">
-            <h2>Lưu ý khi đăng ký vay online</h2>
-            <p>Để tăng tỷ lệ duyệt hồ sơ lên đến 99%, bạn vui lòng lưu ý:</p>
-            <ul>
-                <li>✅ Điền chính xác thông tin cá nhân và số điện thoại chính chủ.</li>
-                <li>✅ Chuẩn bị sẵn CCCD/CMND để chụp ảnh xác minh (eKYC).</li>
-                <li>✅ Có thể đăng ký cùng lúc 2-3 đơn vị để nhận được khoản vay tốt nhất.</li>
+        <div class="seo-text">
+            <h2 style="font-size:20px; margin-bottom:10px;">Lưu ý quan trọng:</h2>
+            <ul style="list-style:disc; padding-left:20px; color:#4b5563;">
+                <li>Điền chính xác thông tin cá nhân và số điện thoại chính chủ.</li>
+                <li>Chuẩn bị sẵn CCCD để chụp ảnh xác minh (eKYC).</li>
+                <li>Nên đăng ký 2-3 đơn vị để tăng tỷ lệ duyệt vay.</li>
             </ul>
         </div>
-
     </div>
 
     <footer class="footer">
         <div class="container">
-            <img src="images/catcredit-logo.png" alt="VayNhanh24h" style="height:30px; margin-bottom:15px; filter:grayscale(100%); opacity:0.7" onerror="this.style.display='none'">
-            <p><strong>VayNhanh24h.vn</strong> - Giải pháp tài chính cá nhân thông minh.</p>
-            <p>Địa chỉ: Tòa nhà Bitexco, Quận 1, TP.HCM | Email: hotro@vaynhanh24h.vn</p>
-            
-            <div id="user-ip" style="font-size:11px; color:#ccc; margin-top:10px;">Checking IP...</div>
+            <p>Bản quyền © 2024 VayNhanh24h.vn</p>
+            <div id="user-ip" style="font-size:11px; margin-top:10px; color:#9ca3af">Checking IP...</div>
             <button class="reset-btn" onclick="resetHistory()">[Xóa lịch sử Test]</button>
-            <br>
-            <a href="admin-tool.html" style="font-size:11px; color:#eee;">Admin Access</a>
+            <br><a href="admin-tool.html" style="font-size:11px; color:#e5e7eb;">Admin</a>
         </div>
     </footer>
 
@@ -196,11 +146,7 @@
 
         async function checkUserIP() {
             const ipEl = document.getElementById('user-ip');
-            try {
-                const res = await fetch('https://api.ipify.org?format=json');
-                const data = await res.json();
-                ipEl.innerText = `IP: ${data.ip}`;
-            } catch (e) { ipEl.innerText = ''; }
+            try { const res = await fetch('https://api.ipify.org?format=json'); const data = await res.json(); ipEl.innerText = `IP: ${data.ip}`; } catch (e) { ipEl.innerText = ''; }
         }
 
         function trackClick(brandKey) {
@@ -214,10 +160,7 @@
         }
 
         function resetHistory() {
-            if(confirm('Xóa lịch sử click để hiện lại tất cả?')) {
-                localStorage.removeItem('vaynhanh24h_clicked');
-                location.reload();
-            }
+            if(confirm('Xóa lịch sử click?')) { localStorage.removeItem('vaynhanh24h_clicked'); location.reload(); }
         }
 
         function getSmartInfo(name) {
@@ -258,33 +201,21 @@
             }
             return null;
         }
-        
         function getBrandKey(name) { return name.toLowerCase().trim().split(/[\s\-\.\(\)]+/)[0]; }
 
         async function init() {
             checkUserIP();
             if (CHE_DO_TEST) document.getElementById('test-alert').style.display = 'block';
-
             const grid = document.getElementById('offers-grid');
             const helper = document.getElementById('helper-box');
-            
             try {
-                const [apiRes, linkRes] = await Promise.all([
-                    fetch(API_URL),
-                    fetch('links.json').catch(() => null)
-                ]);
-
+                const [apiRes, linkRes] = await Promise.all([ fetch(API_URL), fetch('links.json').catch(() => null) ]);
                 const apiData = await apiRes.json();
                 let myLinks = {};
-
-                if (linkRes && linkRes.ok) {
-                    myLinks = await linkRes.json();
-                } else {
-                    helper.style.display = 'block';
-                }
-
+                if (linkRes && linkRes.ok) { myLinks = await linkRes.json(); } else { helper.style.display = 'block'; }
+                
                 if (apiData.status !== 1 || !apiData.data) throw new Error("No Data");
-
+                
                 if (helper.style.display === 'block') {
                     let txt = "{\n" + apiData.data.map((o,i) => `  "${o.name}": ""` + (i<apiData.data.length-1?",":"")).join("\n") + "\n}";
                     document.getElementById('helper-textarea').value = txt;
@@ -292,16 +223,13 @@
 
                 let clickedOffers = JSON.parse(localStorage.getItem('vaynhanh24h_clicked') || '[]');
                 let uniqueMap = {};
-
                 apiData.data.forEach(item => {
                     let brand = getBrandKey(item.name);
                     if (!CHE_DO_TEST && clickedOffers.includes(brand)) return; 
-
                     let link = getMyLink(item.name, myLinks);
                     let clean = getCleanName(item.name);
                     let info = getSmartInfo(item.name);
                     let hasLink = !!link;
-
                     if (!uniqueMap[brand] || (!uniqueMap[brand].hasLink && hasLink)) {
                         uniqueMap[brand] = { ...item, display: clean, link: link, hasLink: hasLink, info: info, brandKey: brand };
                     }
@@ -310,57 +238,37 @@
                 let offers = Object.values(uniqueMap).sort((a,b) => b.hasLink - a.hasLink);
                 
                 if (offers.length === 0) {
-                    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;background:#fff;border-radius:12px;"><h3>Bạn đã đăng ký hết các ưu đãi!</h3><p>Vui lòng quay lại sau 24h để nhận gói vay mới.</p></div>';
+                    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;background:#fff;border-radius:12px;"><h3>Bạn đã đăng ký hết các ưu đãi!</h3><p>Vui lòng quay lại sau 24h.</p></div>';
                     return;
                 }
 
                 grid.innerHTML = offers.map(o => {
                     let active = o.hasLink;
-                    let clsBox = active ? "offer-card" : "offer-card card-disabled";
+                    let clsBox = active ? "card" : "card disabled";
                     let badge = active ? `<div class="badge">Đề xuất</div>` : ``;
-                    let btnCls = active ? "btn-loan" : "btn-loan btn-disabled";
-                    let btnTxt = active ? 'ĐĂNG KÝ VAY NGAY <i class="fa-solid fa-arrow-right"></i>' : 'TẠM DỪNG';
+                    let btnCls = active ? "btn-loan" : "btn-loan disabled";
+                    let btnTxt = active ? 'ĐĂNG KÝ NGAY' : 'TẠM DỪNG';
                     let href = active ? o.link : "javascript:void(0)";
                     let target = active ? "_blank" : "_self";
                     let onclickEvent = active ? `onclick="trackClick('${o.brandKey}')"` : "";
                     
-                    let altText = `Vay tiền online nhanh ${o.display}`;
-
                     return `
                     <div class="${clsBox}">
                         ${badge}
-                        <div class="card-header">
-                            <img src="${o.avatar}" class="brand-logo" alt="${altText}" title="${altText}" onerror="this.style.display='none'">
-                        </div>
+                        <div class="card-head"><img src="${o.avatar}" class="card-logo" onerror="this.style.display='none'"></div>
                         <div class="card-body">
                             <h3 class="brand-name">${o.display}</h3>
-                            <div class="info-row">
-                                <span class="info-label">Hạn mức</span>
-                                <span class="info-val highlight" style="font-size:16px">${o.info.limit}</span>
-                            </div>
-                            <div class="info-row">
-                                <span class="info-label">Lãi suất</span>
-                                <span class="info-val">${o.info.rate}</span>
-                            </div>
-                            <div class="info-row">
-                                <span class="info-label">Thời hạn</span>
-                                <span class="info-val">${o.info.time}</span>
-                            </div>
+                            <div class="info-row"><span>Hạn mức</span><span class="info-val hl" style="font-size:16px">${o.info.limit}</span></div>
+                            <div class="info-row"><span>Lãi suất</span><span class="info-val">${o.info.rate}</span></div>
+                            <div class="info-row"><span>Thời hạn</span><span class="info-val">${o.info.time}</span></div>
                         </div>
-                        <div class="card-footer">
-                            <a href="${href}" target="${target}" class="${btnCls}" ${onclickEvent} rel="nofollow">
-                                ${btnTxt}
-                            </a>
+                        <div class="card-foot">
+                            <a href="${href}" target="${target}" class="${btnCls}" ${onclickEvent}>${btnTxt}</a>
                         </div>
                     </div>`;
                 }).join('');
-
-            } catch (e) {
-                console.error(e);
-                grid.innerHTML = `<p style="text-align:center;width:100%;color:red">Lỗi kết nối máy chủ.</p>`;
-            }
+            } catch (e) { console.error(e); grid.innerHTML = `<p style="text-align:center;width:100%;color:red">Lỗi kết nối.</p>`; }
         }
-
         init();
     </script>
 </body>
