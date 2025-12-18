@@ -116,29 +116,26 @@
     const ENCODED_TOKEN = encodeURIComponent(TOKEN); 
     const API_URL = `https://publisher-api.riofintech.net/offer/all?pub_id=${PUB_ID}&token=${ENCODED_TOKEN}`;
 
+    // Hàm thông minh đoán hạn mức
     function getSmartDetails(offerName) {
         let name = offerName.toLowerCase();
         let d = { limit: '1 - 10 Triệu', interest: 'Ưu đãi tốt', term: 'Linh hoạt' };
-
         if(name.includes('doctor')) d = { limit: '500k - 10 Triệu', interest: '0% lần đầu', term: '10 - 30 ngày' };
         else if (name.includes('moneycat') || name.includes('tamo')) d = { limit: '1 - 15 Triệu', interest: '0% lãi & phí', term: '7 - 30 ngày' };
         else if (name.includes('takomo') || name.includes('oncredit')) d = { limit: '500k - 10 Triệu', interest: 'Duyệt nhanh', term: 'Linh hoạt' };
         else if (name.includes('robocash')) d = { limit: '1 - 10 Triệu', interest: 'Miễn phí 7 ngày', term: '3 - 6 tháng' };
-        // FIX VAYVND: Cho nó cái thông tin riêng cho đẹp
-        else if (name.includes('vayvnd')) d = { limit: '500k - 15 Triệu', interest: '0% lần đầu', term: '14 - 30 ngày' };
         else if (name.includes('jeff') || name.includes('crezu')) d = { limit: 'Đến 20 Triệu', interest: 'So sánh vay', term: '3 - 12 tháng' };
         else if (name.includes('vietmoney') || name.includes('f88')) d = { limit: 'Đến 50 Triệu', interest: 'Cầm đồ', term: 'Đến 12 tháng' };
-        else if (name.includes('mafc') || name.includes('mcredit')) d = { limit: '10 - 70 Triệu', interest: '1.66%/tháng', term: '12 - 36 tháng' };
-        
+        else if (name.includes('vayvnd')) d = { limit: '500k - 15 Triệu', interest: '0% lần đầu', term: '14 - 30 ngày' };
         return d;
     }
 
-    // --- HÀM 2: LÀM SẠCH TÊN (ĐÃ FIX LỖI VAYVND) ---
+    // --- SỬA CHỮA: Hàm tên hiển thị ---
     function getCleanDisplayName(apiName) {
         let name = apiName.toLowerCase();
         
-        // Mapping cứng các tên phổ biến
-        if (name.includes('vayvnd')) return 'VayVND'; // FIX LỖI Ở ĐÂY
+        // 1. Ưu tiên trả về tên cứng (Đúng chính tả)
+        if (name.includes('vayvnd')) return 'VayVND'; // Trả về ngay, không chạy tiếp
         if (name.includes('cayvang')) return 'Cây Vàng';
         if (name.includes('doctor')) return 'DoctorDong';
         if (name.includes('moneycat')) return 'MoneyCat';
@@ -163,9 +160,17 @@
         if (name.includes('vpbank')) return 'VPBank';
         if (name.includes('tpbank')) return 'TPBank';
 
-        return apiName.replace(/\(.*\)/g, '')
-                      .replace(/(VN|CP|CPL|CPS|CPI|Android|iOS|Web|App|APK)/gi, '')
-                      .trim();
+        // 2. Nếu không thuộc danh sách trên mới bắt đầu cắt gọt
+        // Loại bỏ các từ khóa rác nhưng KHÔNG được xóa chữ VN nếu nó dính liền (như VayVND)
+        let clean = apiName.replace(/\(.*\)/g, '') // Bỏ ngoặc
+                           .replace(/\s(CP|CPL|CPS|CPI|Android|iOS|Web|App|APK)\b/gi, '') // Bỏ đuôi nền tảng
+                           .trim();
+        
+        // Chỉ xóa chữ VN nếu nó đứng một mình (ví dụ: "CayVang VN")
+        // chứ không xóa nếu nó nằm trong từ (ví dụ: "VayVND")
+        clean = clean.replace(/\sVN\b/g, ''); 
+
+        return clean;
     }
 
     function getMyLink(apiName, localLinks) {
@@ -216,14 +221,12 @@
                     helperText.value = jsonTemplate;
                 }
 
-                // LỌC TRÙNG VÀ XỬ LÝ TÊN HIỂN THỊ
                 let uniqueOffersMap = {}; 
 
                 offerData.data.forEach(offer => {
                     const link = getMyLink(offer.name, myLinks);
                     const brandKey = getBrandKey(offer.name);
                     const hasLink = !!link;
-                    // Lấy tên đẹp
                     const cleanName = getCleanDisplayName(offer.name);
 
                     if (!uniqueOffersMap[brandKey]) {
@@ -273,7 +276,6 @@
                             <div class="box-header">
                                 <img src="${offer.avatar}" class="partner-logo" alt="${offer.name}" onerror="this.src='images/catcredit-logo.png'">
                             </div>
-                            
                             <div class="box-body">
                                 <div style="text-align:center; font-weight:700; margin-bottom:10px; font-size:16px;">
                                     ${offer.displayName}
@@ -293,7 +295,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="box-footer">
                                 <a href="${btnHref}" target="${offer.hasLink ? '_blank' : '_self'}" class="${btnClass}">
                                     ${btnText}
