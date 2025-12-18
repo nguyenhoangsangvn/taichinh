@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Đề xuất tài chính - CatCredit</title>
+    
+    <title>Vay Tiền Online Nhanh Trong Ngày - Lãi Suất 0% | CatCredit</title>
+    <meta name="description" content="Tổng hợp các gói vay tiền online chuyển khoản ngay, chỉ cần CMND/CCCD. Duyệt vay siêu tốc, lãi suất 0% cho lần đầu. Không thẩm định, nhận tiền sau 15 phút.">
+    <meta name="keywords" content="vay tiền online, vay tiền nhanh, vay tín chấp, vay online cmnd, catcredit, vay tiền nóng">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://catcredit.vn/"> <meta property="og:type" content="website">
+    <meta property="og:title" content="Vay Tiền Online Nhanh - Duyệt Tự Động 24/7">
+    <meta property="og:description" content="Hỗ trợ vay từ 1 - 20 triệu chỉ cần CCCD. Giải ngân cấp tốc về tài khoản.">
+    <meta property="og:image" content="images/catcredit-banner-seo.jpg"> <meta property="og:url" content="https://catcredit.vn/">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -34,6 +42,13 @@
             display: flex; align-items: center; gap: 10px;
         }
         .section-title::before { content: ''; display: block; width: 4px; height: 24px; background: var(--primary); border-radius: 2px; }
+        
+        /* SEO CONTENT BOX (Để Google đọc) */
+        .seo-content {
+            background: #fff; padding: 20px; border-radius: 8px; margin-top: 40px; border: 1px solid #e5e7eb;
+            font-size: 14px; line-height: 1.6; color: #4b5563;
+        }
+        .seo-content h2 { font-size: 16px; margin-bottom: 10px; color: #111; }
 
         .offers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 
@@ -83,7 +98,6 @@
         .ip-address { font-size: 11px; color: #9ca3af; margin-top: 8px; font-family: monospace; }
         .reset-btn { margin-top: 10px; font-size: 11px; color: #ef4444; cursor: pointer; text-decoration: underline; background: none; border: none; }
 
-        /* NÚT BÁO CHẾ ĐỘ TEST */
         .test-mode-alert {
             background: #fee2e2; color: #b91c1c; padding: 10px; text-align: center; font-weight: bold; font-size: 13px;
             border-bottom: 1px solid #fecaca;
@@ -108,7 +122,7 @@
 <body>
 
     <div id="test-alert" class="test-mode-alert" style="display:none;">
-        ⚠️ ĐANG CHẠY CHẾ ĐỘ TEST - BẤM THOẢI MÁI KHÔNG BỊ MẤT OFFER
+        ⚠️ CHẾ ĐỘ TEST: ĐANG BẬT (BẤM KHÔNG MẤT OFFER)
     </div>
 
     <header class="site-header">
@@ -127,7 +141,7 @@
             <textarea id="helper-textarea"></textarea>
         </div>
 
-        <div class="section-title">Gói vay đề xuất tốt nhất</div>
+        <h1 class="section-title">Vay tiền online nhanh trong ngày</h1>
 
         <div id="offers-grid" class="offers-grid">
             <div class="loading">
@@ -135,25 +149,33 @@
                 <p>Đang tìm ưu đãi tốt nhất...</p>
             </div>
         </div>
+
+        <div class="seo-content">
+            <h2>Tại sao nên chọn CatCredit?</h2>
+            <p>CatCredit là nền tảng so sánh và đề xuất các gói <strong>vay tiền online nhanh</strong> uy tín nhất hiện nay. Chúng tôi tổng hợp các đơn vị cho vay tín chấp lãi suất thấp, giải ngân trong ngày chỉ cần CMND/CCCD.</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Duyệt hồ sơ tự động 24/7.</li>
+                <li>Không cần thế chấp tài sản.</li>
+                <li>Nhận tiền về tài khoản ngân hàng sau 15 phút.</li>
+                <li>Thông tin minh bạch, rõ ràng.</li>
+            </ul>
+        </div>
     </div>
 
     <footer class="site-footer">
         <p class="footer-text">© 2024 CatCredit.vn - Giải pháp tài chính thông minh</p>
         <p style="font-size: 11px; margin-top:5px;"><a href="admin-tool.html" style="color:#e5e7eb; text-decoration:none">Admin</a></p>
         <div id="user-ip" class="ip-address">Checking IP...</div>
-        <button class="reset-btn" onclick="resetHistory()">[Xóa lịch sử đã vay]</button>
+        <button class="reset-btn" onclick="resetHistory()">[Reset Test]</button>
     </footer>
 
     <script>
         // ============================================================
         // CẤU HÌNH CHO ĐẠI CA (CHỈNH Ở ĐÂY)
-        // ============================================================
         const PUB_ID = "28janns";
         const TOKEN = "hpoRHLinw3JgcQaV6g6SaQ=="; 
         
-        // --- CÔNG TẮC CHẾ ĐỘ TEST ---
-        // true = BẬT test (Bấm không bị mất, dùng để test link)
-        // false = TẮT test (Bấm là mất, dùng khi chạy quảng cáo thật)
+        // true = TEST (Không mất offer) | false = CHẠY THẬT (Mất offer sau khi bấm)
         const CHE_DO_TEST = true; 
         // ============================================================
 
@@ -169,15 +191,8 @@
             } catch (e) { ipEl.innerText = ''; }
         }
 
-        // --- HÀM 1: LƯU VẾT (ĐÃ SỬA ĐỂ CHECK CHẾ ĐỘ TEST) ---
         function trackClick(brandKey) {
-            // Nếu đang bật chế độ Test thì KHÔNG LƯU gì cả -> KHÔNG MẤT
-            if (CHE_DO_TEST) {
-                console.log("Đang ở chế độ Test: Không lưu lịch sử.");
-                return true;
-            }
-
-            // Nếu chạy thật thì lưu lại để ẩn đi
+            if (CHE_DO_TEST) return true;
             let clickedOffers = JSON.parse(localStorage.getItem('catcredit_clicked') || '[]');
             if (!clickedOffers.includes(brandKey)) {
                 clickedOffers.push(brandKey);
@@ -236,8 +251,6 @@
 
         async function init() {
             checkUserIP();
-            
-            // Hiện thông báo nếu đang test
             if (CHE_DO_TEST) document.getElementById('test-alert').style.display = 'block';
 
             const grid = document.getElementById('offers-grid');
@@ -271,7 +284,6 @@
                 apiData.data.forEach(item => {
                     let brand = getBrandKey(item.name);
                     
-                    // CHỈ ẨN KHI KHÔNG PHẢI CHẾ ĐỘ TEST
                     if (!CHE_DO_TEST && clickedOffers.includes(brand)) return; 
 
                     let link = getMyLink(item.name, myLinks);
@@ -299,7 +311,6 @@
                     let btnTxt = active ? 'ĐĂNG KÝ NGAY' : 'BẢO TRÌ';
                     let href = active ? o.link : "javascript:void(0)";
                     let target = active ? "_blank" : "_self";
-                    
                     let onclickEvent = active ? `onclick="trackClick('${o.brandKey}')"` : "";
 
                     return `
