@@ -1,342 +1,291 @@
 <!DOCTYPE html>
-<html lang="vi" class="loading-site no-js">
+<html lang="vi">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Đề xuất khoản vay - CatCredit</title>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-	<link rel="stylesheet" id="flatsome-main-css" href="css/flatsome.css" type="text/css" media="all">
-	<link rel="stylesheet" id="flatsome-style-css" href="css/style.css" type="text/css" media="all">
-    <link rel="icon" href="images/cropped-catcredit-icon-32x32.png" sizes="32x32">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Đề xuất tài chính - CatCredit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    
     <style>
-        body { font-family: 'Roboto', sans-serif; background-color: #f5f7fa; color: #333; }
-        
-        /* HEADER TRANG WEB - NHỎ GỌN */
-        .page-header-simple {
-            padding: 15px 0 10px; /* Thu nhỏ padding */
-            background: transparent;
-            border: none;
-            margin-bottom: 10px;
-            text-align: left;
+        :root {
+            --primary: #fec629;
+            --primary-hover: #e5b225;
+            --text-dark: #1f2937;
+            --text-gray: #6b7280;
+            --bg-light: #f3f4f6;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --radius: 12px;
         }
-        .page-header-simple h1 {
-            font-size: 18px; /* Chữ nhỏ lại */
-            font-weight: 800;
-            color: #333;
-            margin: 0;
-            border-left: 4px solid #fec629;
-            padding-left: 10px;
-            line-height: 1.2;
-        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-light); color: var(--text-dark); -webkit-font-smoothing: antialiased; }
+
+        /* HEADER */
+        .site-header { background: var(--white); padding: 15px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+        .header-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; }
+        .logo img { height: 35px; width: auto; }
+        .nav-link { text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 14px; display: flex; align-items: center; gap: 5px; }
+
+        /* MAIN CONTENT */
+        .main-container { max-width: 1200px; margin: 30px auto; padding: 0 15px; }
         
+        .section-title { 
+            font-size: 20px; font-weight: 700; margin-bottom: 20px; 
+            display: flex; align-items: center; gap: 10px;
+        }
+        .section-title::before { content: ''; display: block; width: 4px; height: 24px; background: var(--primary); border-radius: 2px; }
+
+        /* GRID SYSTEM */
         .offers-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 15px; /* Giảm gap */
-            max-width: 1200px; margin: 0 auto 50px; padding: 0 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Card nhỏ gọn hơn */
+            gap: 20px;
         }
 
-        /* CARD VAY - STYLE COMPACT (GỌN) */
-        .loan-box { 
-            background: #fff; border-radius: 8px; /* Bo góc nhẹ hơn */
-            border: 1px solid #e1e1e1; overflow: hidden; position: relative; 
-            display: flex; flex-direction: column; box-shadow: 0 2px 4px rgba(0,0,0,0.02); 
-            transition: 0.3s; 
+        /* CARD DESIGN - MODERN */
+        .offer-card {
+            background: var(--white); border-radius: var(--radius);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02); border: 1px solid #e5e7eb;
+            overflow: hidden; transition: all 0.3s ease;
+            display: flex; flex-direction: column;
+            position: relative;
         }
-        .loan-box:hover { box-shadow: 0 8px 16px rgba(0,0,0,0.08); transform: translateY(-3px); border-color: #fec629; }
-        
-        .top-badge { 
-            position: absolute; top: 0; right: 0; background: #e8f5e9; 
-            color: #27ae60; font-size: 9px; font-weight: 700; padding: 3px 8px; 
-            border-bottom-left-radius: 8px; z-index: 2; text-transform: uppercase; 
-        }
-        
-        /* HEADER CARD (LOGO) - THU NHỎ */
-        .box-header { 
-            padding: 10px; 
-            text-align: center; 
-            border-bottom: 1px solid #f5f5f5; 
-            height: 60px; /* Giảm từ 90px xuống 60px */
-            display: flex; align-items: center; justify-content: center; 
-        }
-        .partner-logo { 
-            max-height: 35px; /* Logo nhỏ lại (cũ 45px) */
-            max-width: 60%; 
-            object-fit: contain; 
-        }
+        .offer-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--primary); }
 
-        /* BODY CARD */
-        .box-body { padding: 12px 15px; flex-grow: 1; }
+        /* Badge */
+        .badge { position: absolute; top: 10px; right: 10px; padding: 4px 8px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+        .badge-hot { background: #ecfdf5; color: #059669; }
+        .badge-wait { background: #f3f4f6; color: #9ca3af; }
+
+        /* Card Header */
+        .card-header { padding: 20px 15px 10px; text-align: center; height: 70px; display: flex; align-items: center; justify-content: center; }
+        .brand-logo { max-height: 40px; max-width: 140px; object-fit: contain; }
+
+        /* Card Body */
+        .card-body { padding: 10px 20px; flex: 1; }
+        .brand-name { text-align: center; font-weight: 700; font-size: 16px; margin-bottom: 15px; color: var(--text-dark); }
         
-        .info-grid { display: flex; justify-content: space-between; text-align: center; }
-        .info-item { width: 33%; border-right: 1px solid #f0f0f0; } .info-item:last-child { border-right: none; }
-        
-        .info-label { font-size: 10px; color: #999; display: block; margin-bottom: 2px; text-transform: uppercase; }
-        .info-value { font-size: 13px; font-weight: 700; color: #111; display: block; }
-        .info-value.highlight { color: #d26e4b; font-size: 14px; }
-        
-        /* FOOTER CARD */
-        .box-footer { padding: 10px 15px 15px; text-align: center; }
-        .btn-loan-action { 
-            display: block; width: 100%; padding: 10px; border-radius: 4px; /* Nút vuông bo nhẹ cho sang */
-            font-weight: 700; font-size: 13px; text-transform: uppercase; 
-            text-decoration: none; transition: 0.2s; border: none; cursor: pointer;
+        .info-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; }
+        .info-label { color: var(--text-gray); }
+        .info-val { font-weight: 600; color: var(--text-dark); }
+        .highlight { color: #d97706; }
+
+        /* Card Footer */
+        .card-footer { padding: 15px 20px 20px; }
+        .btn {
+            display: flex; justify-content: center; align-items: center; gap: 8px;
+            width: 100%; padding: 12px; border-radius: 8px;
+            font-weight: 600; font-size: 14px; text-decoration: none;
+            transition: 0.2s; border: none; cursor: pointer;
         }
-        .btn-active { background: #fec629; color: #000; }
-        .btn-active:hover { background: #eeb928; }
-        .btn-disabled { background: #f3f3f3; color: #aaa; cursor: not-allowed; pointer-events: none; }
-        .card-disabled { opacity: 0.5; filter: grayscale(100%); }
-
-        .loading-spinner { text-align: center; padding: 50px; grid-column: 1 / -1; }
-        .spinner { border: 3px solid #f3f3f3; border-top: 3px solid #fec629; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 0 auto 10px; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        #helper-box { max-width: 800px; margin: 20px auto; background: #333; color: #fff; padding: 20px; border-radius: 10px; font-family: monospace; display: none; }
-        #helper-textarea { width: 100%; height: 200px; background: #222; color: #0f0; border: none; padding: 10px; margin-top: 10px; }
+        .btn-primary { background: var(--primary); color: #000; box-shadow: 0 2px 4px rgba(254, 198, 41, 0.3); }
+        .btn-primary:hover { background: var(--primary-hover); }
+        .btn-disabled { background: #e5e7eb; color: #9ca3af; cursor: not-allowed; }
         
-        @media(max-width: 600px) { 
-            .offers-grid { grid-template-columns: 1fr; gap: 10px; } 
-            .loan-box { flex-direction: row; align-items: center; padding: 10px; height: auto; }
-            .box-header { width: 25%; height: auto; border-bottom: none; border-right: 1px solid #f5f5f5; padding: 0 10px 0 0; }
-            .partner-logo { max-height: 30px; max-width: 100%; }
-            .box-body { width: 45%; padding: 0 10px; display: flex; align-items: center; }
-            .info-grid { flex-direction: column; text-align: left; width: 100%; }
-            .info-item { width: 100%; border-right: none; margin-bottom: 2px; display: flex; align-items: center; justify-content: space-between;}
-            .info-item:not(:first-child) { display: none; } /* Trên mobile chỉ hiện Hạn mức cho gọn */
-            .info-label { display: none; } /* Ẩn label trên mobile */
-            .info-value { font-size: 14px; }
-            .box-footer { width: 30%; padding: 0; }
-            .btn-loan-action { font-size: 11px; padding: 8px 5px; }
-            .top-badge { display: none; }
+        .card-disabled { opacity: 0.6; filter: grayscale(100%); }
+
+        /* LOADING & HELPER */
+        .loading { text-align: center; padding: 40px; width: 100%; }
+        .spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px solid var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 10px; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        #helper-box { background: #111827; color: #10b981; padding: 20px; border-radius: 8px; margin-bottom: 30px; display: none; font-family: monospace; }
+        #helper-textarea { width: 100%; height: 150px; background: #000; color: #fff; border: 1px solid #374151; padding: 10px; margin-top: 10px; border-radius: 4px; }
+        
+        /* FOOTER */
+        .site-footer { background: var(--white); padding: 30px 0; margin-top: 50px; border-top: 1px solid #e5e7eb; text-align: center; }
+        .footer-text { color: var(--text-gray); font-size: 13px; }
+
+        @media (max-width: 600px) {
+            .header-container { padding: 0 15px; }
+            .offers-grid { grid-template-columns: 1fr; gap: 15px; }
+            .offer-card { flex-direction: row; align-items: center; padding: 10px; height: auto; }
+            .card-header { width: 80px; height: 80px; padding: 5px; border-right: 1px solid #f3f4f6; }
+            .brand-logo { max-height: 50px; max-width: 100%; }
+            .card-body { padding: 0 15px; }
+            .brand-name { text-align: left; margin-bottom: 5px; font-size: 15px; }
+            .info-row { margin-bottom: 2px; font-size: 12px; }
+            .info-row:not(:first-child) { display: none; } /* Mobile: Chỉ hiện dòng hạn mức */
+            .card-footer { padding: 0; min-width: 90px; }
+            .btn { padding: 8px 10px; font-size: 12px; border-radius: 6px; }
+            .badge { display: none; }
         }
     </style>
 </head>
+<body>
 
-<body class="page-template-default page page-id-99 wp-theme-flatsome wp-child-theme-vaymeo lightbox nav-dropdown-has-arrow">
-
-<div id="wrapper">
-	<header id="header" class="header">
-		<div class="header-wrapper">
-			<div id="masthead" class="header-main hide-for-sticky">
-				<div class="header-inner flex-row container logo-left medium-logo-left" role="navigation">
-					<div id="logo" class="flex-col logo">
-						<a href="index.html" title="CatCredit" rel="home">
-							<img width="300" height="205" src="images/catcredit-logo.png" class="header_logo header-logo" alt="CatCredit">
-						</a>
-					</div>
-                    <div class="flex-col hide-for-medium flex-right">
-                        <ul class="header-nav header-nav-main nav nav-right nav-size-large nav-spacing-xlarge">
-                            <li><a href="index.html" class="nav-top-link"><i class="fa-solid fa-arrow-left"></i> Trang chủ</a></li>
-                        </ul>
-                    </div>
-				</div>
-			</div>
-		</div>
-	</header>
-
-	<main id="main">
-        <div class="page-header-simple">
-            <div class="container">
-                <h1>Đề xuất tốt nhất</h1>
-            </div>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="images/catcredit-logo.png" alt="CatCredit" onerror="this.style.display='none'; this.parentElement.innerText='CATCREDIT'">
+            </a>
+            <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Trang chủ</a>
         </div>
+    </header>
 
+    <div class="main-container">
+        
         <div id="helper-box">
-            <h3>⚠️ CHƯA CÓ FILE LINKS.JSON</h3>
-            <p>Copy nội dung dưới đây vào file <code>links.json</code></p>
+            <h3 style="color:#fec629">⚠️ COPY MÃ NÀY VÀO FILE: links.json</h3>
             <textarea id="helper-textarea"></textarea>
         </div>
 
-        <div class="offers-grid" id="api-offers-container">
-            <div class="loading-spinner">
+        <div class="section-title">Gói vay đề xuất tốt nhất</div>
+
+        <div id="offers-grid" class="offers-grid">
+            <div class="loading">
                 <div class="spinner"></div>
-                <p>Đang tải dữ liệu...</p>
+                <p>Đang tìm ưu đãi tốt nhất...</p>
             </div>
         </div>
-	</main>
+    </div>
 
-	<footer id="footer" class="footer-wrapper">
-		<section class="section pb-0" style="background-color: #fff; padding-top:20px; padding-bottom: 20px;">
-			<div class="section-content relative">
-				<div class="row row-small align-middle">
-					<div class="col pb-0 medium-12 small-12 large-12">
-						<div class="col-inner text-center">
-                            <p style="font-size: 12px; color: #999;">Bản quyền © CatCredit.vn (Local Version)</p>
-                            <p style="font-size: 10px; color: #ccc; margin-top: 5px;">
-                                <a href="admin-tool.html" style="text-decoration:none; color:inherit; cursor:pointer;">Admin Tool</a>
-                            </p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-	</footer>
-</div>
+    <footer class="site-footer">
+        <p class="footer-text">© 2024 CatCredit.vn - Giải pháp tài chính thông minh</p>
+        <p style="font-size: 11px; margin-top:5px;"><a href="admin-tool.html" style="color:#ccc; text-decoration:none">Admin Access</a></p>
+    </footer>
 
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/flatsome.js"></script>
+    <script>
+        const PUB_ID = "28janns";
+        const TOKEN = "hpoRHLinw3JgcQaV6g6SaQ=="; 
+        const API_URL = `https://publisher-api.riofintech.net/offer/all?pub_id=${PUB_ID}&token=${encodeURIComponent(TOKEN)}`;
 
-<script>
-    const PUB_ID = "28janns";
-    const TOKEN = "hpoRHLinw3JgcQaV6g6SaQ=="; 
-    const ENCODED_TOKEN = encodeURIComponent(TOKEN); 
-    const API_URL = `https://publisher-api.riofintech.net/offer/all?pub_id=${PUB_ID}&token=${ENCODED_TOKEN}`;
-
-    function getSmartDetails(offerName) {
-        let name = offerName.toLowerCase();
-        let d = { limit: '1 - 10 Triệu', interest: 'Ưu đãi tốt', term: 'Linh hoạt' };
-        if(name.includes('doctor')) d = { limit: '500k - 10 Triệu', interest: '0% lần đầu', term: '10 - 30 ngày' };
-        else if (name.includes('moneycat') || name.includes('tamo')) d = { limit: '1 - 15 Triệu', interest: '0% lãi & phí', term: '7 - 30 ngày' };
-        else if (name.includes('takomo') || name.includes('oncredit')) d = { limit: '500k - 10 Triệu', interest: 'Duyệt nhanh', term: 'Linh hoạt' };
-        else if (name.includes('robocash')) d = { limit: '1 - 10 Triệu', interest: 'Miễn phí 7 ngày', term: '3 - 6 tháng' };
-        else if (name.includes('vayvnd')) d = { limit: '500k - 15 Triệu', interest: '0% lần đầu', term: '14 - 30 ngày' };
-        else if (name.includes('jeff') || name.includes('crezu')) d = { limit: 'Đến 20 Triệu', interest: 'So sánh vay', term: '3 - 12 tháng' };
-        else if (name.includes('vietmoney') || name.includes('f88')) d = { limit: 'Đến 50 Triệu', interest: 'Cầm đồ', term: 'Đến 12 tháng' };
-        else if (name.includes('mafc') || name.includes('mcredit')) d = { limit: '10 - 70 Triệu', interest: '1.66%/tháng', term: '12 - 36 tháng' };
-        return d;
-    }
-
-    function getCleanDisplayName(apiName) {
-        let name = apiName.toLowerCase();
-        if (name.includes('vayvnd')) return 'VayVND'; 
-        if (name.includes('cayvang')) return 'Cây Vàng';
-        if (name.includes('doctor')) return 'DoctorDong';
-        if (name.includes('moneycat')) return 'MoneyCat';
-        if (name.includes('tamo')) return 'Tamo';
-        if (name.includes('senmo')) return 'Senmo';
-        if (name.includes('oncredit')) return 'OnCredit';
-        if (name.includes('robocash')) return 'Robocash';
-        if (name.includes('takomo')) return 'Takomo';
-        if (name.includes('jeff')) return 'Jeff App';
-        if (name.includes('crezu')) return 'Crezu';
-        if (name.includes('dong247')) return 'Dong247';
-        if (name.includes('atm')) return 'ATM Online';
-        if (name.includes('findo')) return 'Findo';
-        if (name.includes('tieno')) return 'TienOi';
-        if (name.includes('kredivo')) return 'Kredivo';
-        if (name.includes('f88')) return 'F88';
-        if (name.includes('vietmoney')) return 'VietMoney';
-        if (name.includes('mafc')) return 'Mirae Asset';
-        if (name.includes('mcredit')) return 'MCredit';
-        if (name.includes('fe credit')) return 'FE Credit';
-        if (name.includes('shinhan')) return 'Shinhan Finance';
-        if (name.includes('vpbank')) return 'VPBank';
-        if (name.includes('tpbank')) return 'TPBank';
-        return apiName.replace(/\(.*\)/g, '').replace(/(VN|CP|CPL|CPS|CPI|Android|iOS|Web|App|APK)/gi, '').trim();
-    }
-
-    function getMyLink(apiName, localLinks) {
-        if (!localLinks) return null;
-        for (const [key, url] of Object.entries(localLinks)) {
-            if (url && url.trim().length > 5 && apiName.toLowerCase().includes(key.toLowerCase())) {
-                return url;
-            }
+        // 1. DATA THÔNG MINH
+        function getSmartInfo(name) {
+            let n = name.toLowerCase();
+            if(n.includes('doctor')) return { limit: '10 Triệu', rate: '0% lần đầu', time: '30 ngày' };
+            if(n.includes('moneycat')) return { limit: '15 Triệu', rate: '0% phí', time: '7 - 30 ngày' };
+            if(n.includes('takomo')) return { limit: '10 Triệu', rate: 'Duyệt nhanh', time: 'Linh hoạt' };
+            if(n.includes('vayvnd')) return { limit: '15 Triệu', rate: '0% lãi', time: '30 ngày' }; // Fix VayVND
+            if(n.includes('f88') || n.includes('vietmoney')) return { limit: '50 Triệu', rate: 'Cầm đồ', time: '12 tháng' };
+            if(n.includes('mafc') || n.includes('mcredit')) return { limit: '70 Triệu', rate: '1.67%/tháng', time: '36 tháng' };
+            return { limit: '1 - 10 Triệu', rate: 'Ưu đãi tốt', time: 'Linh hoạt' };
         }
-        return null;
-    }
 
-    function getBrandKey(name) {
-        return name.toLowerCase().trim().split(/[\s\-\.\(\)]+/)[0];
-    }
+        // 2. LÀM SẠCH TÊN HIỂN THỊ (FIX CỨNG)
+        function getCleanName(rawName) {
+            let n = rawName.toLowerCase();
+            if (n.includes('vayvnd')) return 'VayVND';
+            if (n.includes('cayvang')) return 'Cây Vàng';
+            if (n.includes('doctor')) return 'DoctorDong';
+            if (n.includes('moneycat')) return 'MoneyCat';
+            if (n.includes('tamo')) return 'Tamo';
+            if (n.includes('senmo')) return 'Senmo';
+            if (n.includes('robocash')) return 'Robocash';
+            if (n.includes('oncredit')) return 'OnCredit';
+            if (n.includes('takomo')) return 'Takomo';
+            if (n.includes('kredivo')) return 'Kredivo';
+            if (n.includes('jeff')) return 'Jeff App';
+            if (n.includes('crezu')) return 'Crezu';
+            if (n.includes('atm')) return 'ATM Online';
+            if (n.includes('f88')) return 'F88';
+            if (n.includes('mafc')) return 'Mirae Asset';
+            
+            // Nếu không có trong danh sách trên thì dọn rác
+            return rawName.replace(/\(.*\)/g, '')
+                          .replace(/(VN|CP|CPL|CPS|CPI|Android|iOS|Web|App|APK)/gi, '')
+                          .trim();
+        }
 
-    async function fetchOffers() {
-        const container = document.getElementById('api-offers-container');
-        const helperBox = document.getElementById('helper-box');
-        const helperText = document.getElementById('helper-textarea');
+        // 3. LOGIC LẤY LINK & CHECK KEY
+        function getMyLink(name, links) {
+            if (!links) return null;
+            for (const [key, url] of Object.entries(links)) {
+                if (url && url.length > 5 && name.toLowerCase().includes(key.toLowerCase())) return url;
+            }
+            return null;
+        }
+        function getBrandKey(name) { return name.toLowerCase().trim().split(/[\s\-\.\(\)]+/)[0]; }
 
-        try {
-            const [offerRes, linksRes] = await Promise.all([
-                fetch(API_URL),
-                fetch('links.json').catch(() => null)
-            ]);
+        // MAIN FUNCTION
+        async function init() {
+            const grid = document.getElementById('offers-grid');
+            const helper = document.getElementById('helper-box');
+            
+            try {
+                const [apiRes, linkRes] = await Promise.all([
+                    fetch(API_URL),
+                    fetch('links.json').catch(() => null)
+                ]);
 
-            const offerData = await offerRes.json();
-            let myLinks = {};
-            if (linksRes && linksRes.ok) myLinks = await linksRes.json(); else helperBox.style.display = 'block';
+                const apiData = await apiRes.json();
+                let myLinks = {};
 
-            container.innerHTML = '';
-
-            if (offerData.status === 1 && offerData.data && offerData.data.length > 0) {
-                if (helperBox.style.display === 'block') {
-                    let jsonTemplate = "{\n";
-                    offerData.data.forEach((o, i) => {
-                        let comma = i < offerData.data.length - 1 ? "," : "";
-                        jsonTemplate += `  "${o.name}": ""${comma}\n`;
-                    });
-                    jsonTemplate += "}";
-                    helperText.value = jsonTemplate;
+                if (linkRes && linkRes.ok) {
+                    myLinks = await linkRes.json();
+                } else {
+                    helper.style.display = 'block'; // Hiện bảng copy nếu chưa có file link
                 }
 
-                let uniqueOffersMap = {}; 
-                offerData.data.forEach(offer => {
-                    const link = getMyLink(offer.name, myLinks);
-                    const brandKey = getBrandKey(offer.name);
-                    const hasLink = !!link;
-                    const cleanName = getCleanDisplayName(offer.name);
+                if (apiData.status !== 1 || !apiData.data) throw new Error("No Data");
 
-                    if (!uniqueOffersMap[brandKey]) {
-                        uniqueOffersMap[brandKey] = { ...offer, displayName: cleanName, finalLink: link, hasLink: hasLink, smartInfo: getSmartDetails(offer.name) };
-                    } else {
-                        if (!uniqueOffersMap[brandKey].hasLink && hasLink) {
-                            uniqueOffersMap[brandKey] = { ...offer, displayName: cleanName, finalLink: link, hasLink: hasLink, smartInfo: getSmartDetails(offer.name) };
-                        }
+                // TOOL COPY CHO ADMIN
+                if (helper.style.display === 'block') {
+                    let txt = "{\n" + apiData.data.map((o,i) => `  "${o.name}": ""` + (i<apiData.data.length-1?",":"")).join("\n") + "\n}";
+                    document.getElementById('helper-textarea').value = txt;
+                }
+
+                // XỬ LÝ DỮ LIỆU: GỘP TRÙNG & LỌC
+                let uniqueMap = {};
+                apiData.data.forEach(item => {
+                    let brand = getBrandKey(item.name);
+                    let link = getMyLink(item.name, myLinks);
+                    let clean = getCleanName(item.name);
+                    let info = getSmartInfo(item.name);
+                    let hasLink = !!link;
+
+                    // Logic gộp: Ưu tiên cái có Link
+                    if (!uniqueMap[brand] || (!uniqueMap[brand].hasLink && hasLink)) {
+                        uniqueMap[brand] = { ...item, display: clean, link: link, hasLink: hasLink, info: info };
                     }
                 });
 
-                let processedOffers = Object.values(uniqueOffersMap);
-                processedOffers.sort((a, b) => b.hasLink - a.hasLink);
+                let offers = Object.values(uniqueMap).sort((a,b) => b.hasLink - a.hasLink);
+                
+                // RENDER
+                grid.innerHTML = offers.map(o => {
+                    let active = o.hasLink;
+                    let clsBox = active ? "offer-card" : "offer-card card-disabled";
+                    let badge = active ? `<div class="badge badge-hot">Đề xuất</div>` : ``;
+                    let btnCls = active ? "btn btn-primary" : "btn btn-disabled";
+                    let btnTxt = active ? 'ĐĂNG KÝ NGAY' : 'BẢO TRÌ';
+                    let href = active ? o.link : "javascript:void(0)";
+                    let target = active ? "_blank" : "_self";
 
-                processedOffers.forEach(offer => {
-                    let btnClass, btnText, btnHref, badgeHtml, opacityStyle;
-                    if (offer.hasLink) {
-                        btnClass = "btn-loan-action btn-active";
-                        btnText = 'ĐĂNG KÝ';
-                        btnHref = offer.finalLink;
-                        badgeHtml = `<div class="top-badge">Đề xuất</div>`;
-                        opacityStyle = "";
-                    } else {
-                        btnClass = "btn-loan-action btn-disabled";
-                        btnText = 'Bảo trì';
-                        btnHref = "javascript:void(0)";
-                        badgeHtml = ""; // Ẩn badge nếu bảo trì cho gọn
-                        opacityStyle = "opacity: 0.5; filter: grayscale(100%);";
-                    }
-
-                    const cardHTML = `
-                        <div class="loan-box" style="${opacityStyle}">
-                            ${badgeHtml}
-                            <div class="box-header">
-                                <img src="${offer.avatar}" class="partner-logo" alt="${offer.name}" onerror="this.src='images/catcredit-logo.png'">
+                    return `
+                    <div class="${clsBox}">
+                        ${badge}
+                        <div class="card-header">
+                            <img src="${o.avatar}" class="brand-logo" alt="${o.display}" onerror="this.style.display='none'">
+                        </div>
+                        <div class="card-body">
+                            <div class="brand-name">${o.display}</div>
+                            <div class="info-row">
+                                <span class="info-label">Hạn mức</span>
+                                <span class="info-val highlight">${o.info.limit}</span>
                             </div>
-                            <div class="box-body">
-                                <div style="text-align:center; font-weight:700; margin-bottom:5px; font-size:14px;">${offer.displayName}</div>
-                                <div class="info-grid">
-                                    <div class="info-item">
-                                        <span class="info-label">Hạn mức</span>
-                                        <span class="info-value highlight">${offer.smartInfo.limit}</span>
-                                    </div>
-                                    <div class="info-item">
-                                        <span class="info-label">Lãi suất</span>
-                                        <span class="info-value">${offer.smartInfo.interest}</span>
-                                    </div>
-                                    <div class="info-item">
-                                        <span class="info-label">Thời hạn</span>
-                                        <span class="info-value">${offer.smartInfo.term}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box-footer">
-                                <a href="${btnHref}" target="${offer.hasLink ? '_blank' : '_self'}" class="${btnClass}">${btnText}</a>
+                            <div class="info-row">
+                                <span class="info-label">Lãi suất</span>
+                                <span class="info-val">${o.info.rate}</span>
                             </div>
                         </div>
-                    `;
-                    container.innerHTML += cardHTML;
-                });
-            } else { container.innerHTML = '<p style="text-align:center; width:100%">Chưa có dữ liệu.</p>'; }
-        } catch (error) { console.error(error); container.innerHTML = '<p style="text-align:center; color:red; width:100%">Lỗi kết nối.</p>'; }
-    }
-    document.addEventListener('DOMContentLoaded', fetchOffers);
-</script>
+                        <div class="card-footer">
+                            <a href="${href}" target="${target}" class="${btnCls}">
+                                ${btnTxt} ${active ? '<i class="fa-solid fa-arrow-right"></i>' : ''}
+                            </a>
+                        </div>
+                    </div>`;
+                }).join('');
 
+            } catch (e) {
+                console.error(e);
+                grid.innerHTML = `<p style="text-align:center;width:100%;color:red">Lỗi kết nối. Vui lòng thử lại.</p>`;
+            }
+        }
+
+        init();
+    </script>
 </body>
 </html>
