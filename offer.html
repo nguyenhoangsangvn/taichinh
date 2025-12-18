@@ -13,59 +13,102 @@
     <style>
         body { font-family: 'Roboto', sans-serif; background-color: #f5f7fa; color: #333; }
         
-        /* --- SỬA LẠI HEADER CHO GỌN --- */
+        /* HEADER TRANG WEB - NHỎ GỌN */
         .page-header-simple {
-            padding: 20px 0 10px; /* Thu nhỏ khoảng cách */
-            background: transparent; /* Bỏ nền trắng thô */
+            padding: 15px 0 10px; /* Thu nhỏ padding */
+            background: transparent;
             border: none;
-            margin-bottom: 5px;
-            text-align: left; /* Canh trái cho hiện đại */
-        }
-        .page-header-simple .container {
-            padding: 0 15px;
-            max-width: 1200px;
-            margin: 0 auto;
+            margin-bottom: 10px;
+            text-align: left;
         }
         .page-header-simple h1 {
-            font-size: 20px; /* Chữ nhỏ vừa vặn */
+            font-size: 18px; /* Chữ nhỏ lại */
             font-weight: 800;
             color: #333;
             margin: 0;
-            border-left: 5px solid #fec629; /* Điểm nhấn màu vàng */
-            padding-left: 12px;
+            border-left: 4px solid #fec629;
+            padding-left: 10px;
             line-height: 1.2;
         }
-        /* ------------------------------ */
         
         .offers-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 15px; /* Giảm gap */
             max-width: 1200px; margin: 0 auto 50px; padding: 0 15px;
         }
 
-        .loan-box { background: #fff; border-radius: 12px; border: 1px solid #e5e7eb; overflow: hidden; position: relative; display: flex; flex-direction: column; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: 0.3s; }
-        .loan-box:hover { box-shadow: 0 15px 30px rgba(0,0,0,0.08); transform: translateY(-5px); border-color: #fec629; }
-        .top-badge { position: absolute; top: 0; right: 0; background: #e8f5e9; color: #27ae60; font-size: 10px; font-weight: 700; padding: 5px 12px; border-bottom-left-radius: 12px; z-index: 2; text-transform: uppercase; }
+        /* CARD VAY - STYLE COMPACT (GỌN) */
+        .loan-box { 
+            background: #fff; border-radius: 8px; /* Bo góc nhẹ hơn */
+            border: 1px solid #e1e1e1; overflow: hidden; position: relative; 
+            display: flex; flex-direction: column; box-shadow: 0 2px 4px rgba(0,0,0,0.02); 
+            transition: 0.3s; 
+        }
+        .loan-box:hover { box-shadow: 0 8px 16px rgba(0,0,0,0.08); transform: translateY(-3px); border-color: #fec629; }
         
-        .box-header { padding: 20px; text-align: center; border-bottom: 1px dashed #eee; height: 90px; display: flex; align-items: center; justify-content: center; }
-        .partner-logo { max-height: 45px; max-width: 70%; object-fit: contain; }
-        .box-body { padding: 15px 20px; flex-grow: 1; }
+        .top-badge { 
+            position: absolute; top: 0; right: 0; background: #e8f5e9; 
+            color: #27ae60; font-size: 9px; font-weight: 700; padding: 3px 8px; 
+            border-bottom-left-radius: 8px; z-index: 2; text-transform: uppercase; 
+        }
+        
+        /* HEADER CARD (LOGO) - THU NHỎ */
+        .box-header { 
+            padding: 10px; 
+            text-align: center; 
+            border-bottom: 1px solid #f5f5f5; 
+            height: 60px; /* Giảm từ 90px xuống 60px */
+            display: flex; align-items: center; justify-content: center; 
+        }
+        .partner-logo { 
+            max-height: 35px; /* Logo nhỏ lại (cũ 45px) */
+            max-width: 60%; 
+            object-fit: contain; 
+        }
+
+        /* BODY CARD */
+        .box-body { padding: 12px 15px; flex-grow: 1; }
+        
         .info-grid { display: flex; justify-content: space-between; text-align: center; }
         .info-item { width: 33%; border-right: 1px solid #f0f0f0; } .info-item:last-child { border-right: none; }
-        .info-label { font-size: 11px; color: #888; display: block; margin-bottom: 4px; }
-        .info-value { font-size: 14px; font-weight: 700; color: #111; display: block; }
-        .info-value.highlight { color: #d26e4b; font-size: 15px; }
-        .box-footer { padding: 15px 20px 20px; text-align: center; }
-        .btn-loan-action { display: block; width: 100%; padding: 12px; border-radius: 50px; font-weight: 700; font-size: 14px; text-transform: uppercase; text-decoration: none; transition: 0.2s; border: none; cursor: pointer; }
-        .btn-active { background: #fec629; color: #000; box-shadow: 0 4px 10px rgba(254, 198, 41, 0.3); }
-        .btn-active:hover { background: #eeb928; transform: scale(1.02); }
-        .btn-disabled { background: #e5e7eb; color: #9ca3af; cursor: not-allowed; pointer-events: none; }
-        .card-disabled { opacity: 0.6; filter: grayscale(100%); }
+        
+        .info-label { font-size: 10px; color: #999; display: block; margin-bottom: 2px; text-transform: uppercase; }
+        .info-value { font-size: 13px; font-weight: 700; color: #111; display: block; }
+        .info-value.highlight { color: #d26e4b; font-size: 14px; }
+        
+        /* FOOTER CARD */
+        .box-footer { padding: 10px 15px 15px; text-align: center; }
+        .btn-loan-action { 
+            display: block; width: 100%; padding: 10px; border-radius: 4px; /* Nút vuông bo nhẹ cho sang */
+            font-weight: 700; font-size: 13px; text-transform: uppercase; 
+            text-decoration: none; transition: 0.2s; border: none; cursor: pointer;
+        }
+        .btn-active { background: #fec629; color: #000; }
+        .btn-active:hover { background: #eeb928; }
+        .btn-disabled { background: #f3f3f3; color: #aaa; cursor: not-allowed; pointer-events: none; }
+        .card-disabled { opacity: 0.5; filter: grayscale(100%); }
+
         .loading-spinner { text-align: center; padding: 50px; grid-column: 1 / -1; }
-        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #fec629; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 10px; }
+        .spinner { border: 3px solid #f3f3f3; border-top: 3px solid #fec629; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 0 auto 10px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
         #helper-box { max-width: 800px; margin: 20px auto; background: #333; color: #fff; padding: 20px; border-radius: 10px; font-family: monospace; display: none; }
         #helper-textarea { width: 100%; height: 200px; background: #222; color: #0f0; border: none; padding: 10px; margin-top: 10px; }
-        @media(max-width: 600px) { .offers-grid { grid-template-columns: 1fr; } }
+        
+        @media(max-width: 600px) { 
+            .offers-grid { grid-template-columns: 1fr; gap: 10px; } 
+            .loan-box { flex-direction: row; align-items: center; padding: 10px; height: auto; }
+            .box-header { width: 25%; height: auto; border-bottom: none; border-right: 1px solid #f5f5f5; padding: 0 10px 0 0; }
+            .partner-logo { max-height: 30px; max-width: 100%; }
+            .box-body { width: 45%; padding: 0 10px; display: flex; align-items: center; }
+            .info-grid { flex-direction: column; text-align: left; width: 100%; }
+            .info-item { width: 100%; border-right: none; margin-bottom: 2px; display: flex; align-items: center; justify-content: space-between;}
+            .info-item:not(:first-child) { display: none; } /* Trên mobile chỉ hiện Hạn mức cho gọn */
+            .info-label { display: none; } /* Ẩn label trên mobile */
+            .info-value { font-size: 14px; }
+            .box-footer { width: 30%; padding: 0; }
+            .btn-loan-action { font-size: 11px; padding: 8px 5px; }
+            .top-badge { display: none; }
+        }
     </style>
 </head>
 
@@ -94,7 +137,7 @@
 	<main id="main">
         <div class="page-header-simple">
             <div class="container">
-                <h1>Đề xuất khoản vay phù hợp</h1>
+                <h1>Đề xuất tốt nhất</h1>
             </div>
         </div>
 
@@ -113,13 +156,14 @@
 	</main>
 
 	<footer id="footer" class="footer-wrapper">
-		<section class="section pb-0" style="background-color: #fff; padding-top:30px;">
+		<section class="section pb-0" style="background-color: #fff; padding-top:20px; padding-bottom: 20px;">
 			<div class="section-content relative">
 				<div class="row row-small align-middle">
 					<div class="col pb-0 medium-12 small-12 large-12">
 						<div class="col-inner text-center">
-                            <p>Bản quyền © 
-                                <a href="admin-tool.html" style="text-decoration:none; color:inherit; cursor:pointer;" title="Admin Tool">CatCredit.vn</a>
+                            <p style="font-size: 12px; color: #999;">Bản quyền © CatCredit.vn (Local Version)</p>
+                            <p style="font-size: 10px; color: #ccc; margin-top: 5px;">
+                                <a href="admin-tool.html" style="text-decoration:none; color:inherit; cursor:pointer;">Admin Tool</a>
                             </p>
 						</div>
 					</div>
@@ -178,10 +222,7 @@
         if (name.includes('shinhan')) return 'Shinhan Finance';
         if (name.includes('vpbank')) return 'VPBank';
         if (name.includes('tpbank')) return 'TPBank';
-
-        return apiName.replace(/\(.*\)/g, '')
-                      .replace(/(VN|CP|CPL|CPS|CPI|Android|iOS|Web|App|APK)/gi, '')
-                      .trim();
+        return apiName.replace(/\(.*\)/g, '').replace(/(VN|CP|CPL|CPS|CPI|Android|iOS|Web|App|APK)/gi, '').trim();
     }
 
     function getMyLink(apiName, localLinks) {
@@ -211,17 +252,11 @@
 
             const offerData = await offerRes.json();
             let myLinks = {};
-            
-            if (linksRes && linksRes.ok) {
-                myLinks = await linksRes.json();
-            } else {
-                helperBox.style.display = 'block';
-            }
+            if (linksRes && linksRes.ok) myLinks = await linksRes.json(); else helperBox.style.display = 'block';
 
             container.innerHTML = '';
 
             if (offerData.status === 1 && offerData.data && offerData.data.length > 0) {
-                
                 if (helperBox.style.display === 'block') {
                     let jsonTemplate = "{\n";
                     offerData.data.forEach((o, i) => {
@@ -233,7 +268,6 @@
                 }
 
                 let uniqueOffersMap = {}; 
-
                 offerData.data.forEach(offer => {
                     const link = getMyLink(offer.name, myLinks);
                     const brandKey = getBrandKey(offer.name);
@@ -241,22 +275,10 @@
                     const cleanName = getCleanDisplayName(offer.name);
 
                     if (!uniqueOffersMap[brandKey]) {
-                        uniqueOffersMap[brandKey] = { 
-                            ...offer, 
-                            displayName: cleanName,
-                            finalLink: link, 
-                            hasLink: hasLink,
-                            smartInfo: getSmartDetails(offer.name)
-                        };
+                        uniqueOffersMap[brandKey] = { ...offer, displayName: cleanName, finalLink: link, hasLink: hasLink, smartInfo: getSmartDetails(offer.name) };
                     } else {
                         if (!uniqueOffersMap[brandKey].hasLink && hasLink) {
-                            uniqueOffersMap[brandKey] = { 
-                                ...offer, 
-                                displayName: cleanName,
-                                finalLink: link, 
-                                hasLink: hasLink,
-                                smartInfo: getSmartDetails(offer.name)
-                            };
+                            uniqueOffersMap[brandKey] = { ...offer, displayName: cleanName, finalLink: link, hasLink: hasLink, smartInfo: getSmartDetails(offer.name) };
                         }
                     }
                 });
@@ -266,19 +288,18 @@
 
                 processedOffers.forEach(offer => {
                     let btnClass, btnText, btnHref, badgeHtml, opacityStyle;
-
                     if (offer.hasLink) {
                         btnClass = "btn-loan-action btn-active";
-                        btnText = 'ĐĂNG KÝ NGAY <i class="fa-solid fa-angle-right"></i>';
+                        btnText = 'ĐĂNG KÝ';
                         btnHref = offer.finalLink;
                         badgeHtml = `<div class="top-badge">Đề xuất</div>`;
                         opacityStyle = "";
                     } else {
                         btnClass = "btn-loan-action btn-disabled";
-                        btnText = 'ĐANG BẢO TRÌ <i class="fa-solid fa-wrench"></i>';
+                        btnText = 'Bảo trì';
                         btnHref = "javascript:void(0)";
-                        badgeHtml = `<div class="top-badge" style="background:#ccc; color:#666">Tạm dừng</div>`;
-                        opacityStyle = "opacity: 0.6; filter: grayscale(100%);";
+                        badgeHtml = ""; // Ẩn badge nếu bảo trì cho gọn
+                        opacityStyle = "opacity: 0.5; filter: grayscale(100%);";
                     }
 
                     const cardHTML = `
@@ -288,9 +309,7 @@
                                 <img src="${offer.avatar}" class="partner-logo" alt="${offer.name}" onerror="this.src='images/catcredit-logo.png'">
                             </div>
                             <div class="box-body">
-                                <div style="text-align:center; font-weight:700; margin-bottom:10px; font-size:16px;">
-                                    ${offer.displayName}
-                                </div>
+                                <div style="text-align:center; font-weight:700; margin-bottom:5px; font-size:14px;">${offer.displayName}</div>
                                 <div class="info-grid">
                                     <div class="info-item">
                                         <span class="info-label">Hạn mức</span>
@@ -307,23 +326,15 @@
                                 </div>
                             </div>
                             <div class="box-footer">
-                                <a href="${btnHref}" target="${offer.hasLink ? '_blank' : '_self'}" class="${btnClass}">
-                                    ${btnText}
-                                </a>
+                                <a href="${btnHref}" target="${offer.hasLink ? '_blank' : '_self'}" class="${btnClass}">${btnText}</a>
                             </div>
                         </div>
                     `;
                     container.innerHTML += cardHTML;
                 });
-            } else {
-                container.innerHTML = '<p style="text-align:center; width:100%">Chưa có dữ liệu.</p>';
-            }
-        } catch (error) {
-            console.error(error);
-            container.innerHTML = '<p style="text-align:center; color:red; width:100%">Lỗi kết nối.</p>';
-        }
+            } else { container.innerHTML = '<p style="text-align:center; width:100%">Chưa có dữ liệu.</p>'; }
+        } catch (error) { console.error(error); container.innerHTML = '<p style="text-align:center; color:red; width:100%">Lỗi kết nối.</p>'; }
     }
-    
     document.addEventListener('DOMContentLoaded', fetchOffers);
 </script>
 
